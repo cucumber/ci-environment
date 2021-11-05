@@ -1,6 +1,7 @@
-import os from 'os'
-import { parse as parseUrl, format as formatUrl } from 'url'
 import * as messages from '@cucumber/messages'
+import os from 'os'
+import { format as formatUrl, parse as parseUrl } from 'url'
+
 import defaultCiDict from './ciDict.json'
 import evaluateVariableExpression from './evaluateVariableExpression'
 import { CiDict, CiSystem, Env } from './types'

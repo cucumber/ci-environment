@@ -1,4 +1,5 @@
 import assert from 'assert'
+
 import evaluateVariableExpression from '../src/evaluateVariableExpression'
 
 describe('createMeta', () => {

@@ -1,7 +1,8 @@
 import { promises as fs } from 'fs'
-import { detectCI } from './createMeta'
-import ciDict from './ciDict.json'
 import { Writable } from 'stream'
+
+import ciDict from './ciDict.json'
+import { detectCI } from './createMeta'
 
 export async function main(envPath: string, stdout: Writable) {
   const envData = await fs.readFile(envPath, 'utf-8')
