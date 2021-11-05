@@ -2,7 +2,7 @@ import * as messages from '@cucumber/messages'
 import os from 'os'
 import { format as formatUrl, parse as parseUrl } from 'url'
 
-import defaultCiDict from './ciDict.json'
+import { ciDict as defaultCiDict } from './ciDict'
 import evaluateVariableExpression from './evaluateVariableExpression'
 import { CiDict, CiSystem, Env } from './types'
 
