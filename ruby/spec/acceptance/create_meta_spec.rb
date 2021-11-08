@@ -11,6 +11,7 @@ describe 'CreateMeta' do
 
     context "with #{File.basename(test_data_file, '.*')}" do
       subject { JSON.parse(meta.ci.to_json) }
+
       let(:meta) { Cucumber::CreateMeta.create_meta('cucumber-something', '1.2.3', env) }
       let(:env) { Hash[entries] }
       let(:entries) { env_data.split(/\n/).map { |line| line.split(/=/) } }
