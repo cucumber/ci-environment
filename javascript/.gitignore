@@ -10,7 +10,6 @@ node_modules/
 .built*
 .compared
 .codegen
-acceptance/
 storybook-static
 *-go
 *.iml
