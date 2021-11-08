@@ -7,9 +7,9 @@ import evaluateVariableExpression from './evaluateVariableExpression'
 import { CiDict, CiSystem, Env } from './types'
 
 interface gitHash {
-  remote: string,
-  revision: string,
-  branch: string,
+  remote: string
+  revision: string
+  branch: string
   tag?: string
 }
 
