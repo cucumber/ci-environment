@@ -6,7 +6,7 @@ import defaultCiDict from './ciDict.json'
 import evaluateVariableExpression from './evaluateVariableExpression'
 import { CiDict, CiSystem, Env } from './types'
 
-interface gitHash {
+type GitInfo = {
   remote: string
   revision: string
   branch: string
@@ -86,7 +86,7 @@ function createCi(ciName: string, ciSystem: CiSystem, envDict: Env): messages.Ci
 
   const branch = evaluateVariableExpression(ciSystem.git.branch, envDict)
   const tag = evaluateVariableExpression(ciSystem.git.tag, envDict)
-  const git: gitHash = {
+  const git: GitInfo = {
     remote: removeUserInfoFromUrl(evaluateVariableExpression(ciSystem.git.remote, envDict)),
     revision: evaluateVariableExpression(ciSystem.git.revision, envDict),
     branch: branch,
