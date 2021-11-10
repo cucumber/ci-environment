@@ -12,5 +12,3 @@ dependency-reduced-pom.xml
 .tested*
 .compared
 .built
-# Approval tests
-acceptance/

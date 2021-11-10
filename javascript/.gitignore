@@ -3,8 +3,6 @@ dist/
 .nyc_output/
 coverage/
 node_modules/
-yarn.lock
-package-lock.json
 *.log
 .deps
 .tested*
@@ -12,7 +10,6 @@ package-lock.json
 .built*
 .compared
 .codegen
-acceptance/
 storybook-static
 *-go
 *.iml

@@ -1,5 +1,6 @@
-import { removeUserInfoFromUrl } from '../src/createMeta'
 import assert from 'assert'
+
+import { removeUserInfoFromUrl } from '../src/createMeta'
 
 describe('removeUserInfoFromUrl', () => {
   it('returns undefined for undefined', () => {

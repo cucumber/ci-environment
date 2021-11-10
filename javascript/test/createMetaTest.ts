@@ -1,7 +1,8 @@
-import createMeta from '../src/createMeta'
-import assert from 'assert'
-import ciDict from '../src/ciDict.json'
 import * as messages from '@cucumber/messages'
+import assert from 'assert'
+
+import ciDict from '../src/ciDict.json'
+import createMeta from '../src/createMeta'
 
 describe('createMeta', () => {
   it('defines the implementation product', () => {
@@ -78,7 +79,6 @@ describe('createMeta', () => {
         remote: 'https://github.company.com/cucumber/cucumber-ruby.git',
         branch: 'the-branch',
         revision: 'the-revision',
-        tag: undefined,
       },
     }
     assert.deepStrictEqual(meta.ci, ci)
@@ -102,7 +102,6 @@ describe('createMeta', () => {
         remote: 'the-remote',
         branch: 'main',
         revision: 'the-revision',
-        tag: undefined,
       },
     }
     assert.deepStrictEqual(meta.ci, ci)
@@ -146,7 +145,6 @@ describe('createMeta', () => {
     const ci: messages.Ci = {
       git: {
         branch: 'main',
-        tag: undefined,
         remote: 'https://github.com/cucumber-ltd/shouty.rb.git',
         revision: '057f8fe233b17629af084064c2a7b8d1dbb795ad',
       },
