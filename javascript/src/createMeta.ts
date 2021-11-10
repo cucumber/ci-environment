@@ -1,10 +1,16 @@
 import * as messages from '@cucumber/messages'
 import os from 'os'
 import { format as formatUrl, parse as parseUrl } from 'url'
-
 import { ciDict as defaultCiDict } from './ciDict'
 import evaluateVariableExpression from './evaluateVariableExpression'
 import { CiDict, CiSystem, Env } from './types'
+
+type GitInfo = {
+  remote: string
+  revision: string
+  branch: string
+  tag?: string
+}
 
 export default function createMeta(
   toolName: string,
@@ -78,15 +84,21 @@ function createCi(ciName: string, ciSystem: CiSystem, envDict: Env): messages.Ci
   }
 
   const branch = evaluateVariableExpression(ciSystem.git.branch, envDict)
+  const tag = evaluateVariableExpression(ciSystem.git.tag, envDict)
+  const git: GitInfo = {
+    remote: removeUserInfoFromUrl(evaluateVariableExpression(ciSystem.git.remote, envDict)),
+    revision: evaluateVariableExpression(ciSystem.git.revision, envDict),
+    branch: branch,
+  }
+
+  if (tag) {
+    git['tag'] = tag
+  }
+
   return {
     name: ciName,
     url,
     buildNumber,
-    git: {
-      remote: removeUserInfoFromUrl(evaluateVariableExpression(ciSystem.git.remote, envDict)),
-      revision: evaluateVariableExpression(ciSystem.git.revision, envDict),
-      branch: branch,
-      tag: evaluateVariableExpression(ciSystem.git.tag, envDict),
-    },
+    git: git,
   }
 }

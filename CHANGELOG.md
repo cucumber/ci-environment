@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+- [JavaScript] Removed tag property from git object if it is undefined
+  ([PR#4](https://github.com/cucumber/create-meta/pull/4))
+
 ## [6.0.2] - 2021-10-18
 
 ### Fixed

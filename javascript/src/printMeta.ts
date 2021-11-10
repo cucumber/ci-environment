@@ -1,6 +1,5 @@
 import { promises as fs } from 'fs'
 import { Writable } from 'stream'
-
 import { ciDict } from './ciDict'
 import { detectCI } from './createMeta'
 

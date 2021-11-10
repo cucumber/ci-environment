@@ -1,6 +1,5 @@
 Gemfile.lock
 coverage/
-acceptance/
 pkg/
 *.gem
 .compared
