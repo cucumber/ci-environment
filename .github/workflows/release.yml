@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - release/*
+  pull_request:
+    branches:
+      - main
 
 jobs:
 
@@ -109,11 +112,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Publish ruby gem
-        uses: cucumber/action-publish-rubygem@v1.0.0
-        with:
-          working_directory: ruby
-          rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}
+      # - name: Publish ruby gem
+      #   uses: cucumber/action-publish-rubygem@v1.0.0
+      #   with:
+      #     working_directory: ruby
+      #     rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}
 
   publish-mvn:
     name: Publish Maven Package
@@ -130,13 +133,13 @@ jobs:
           java-version: '11'
           cache: 'maven'
 
-      - uses: cucumber/action-publish-mvn@v1.0.0
-        with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
-          nexus-username: cukebot
-          nexus-password: ${{ secrets.SONATYPE_PASSWORD }}
-          working-directory: java
+      # - uses: cucumber/action-publish-mvn@v1.0.0
+      #   with:
+      #     gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+      #     gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      #     nexus-username: cukebot
+      #     nexus-password: ${{ secrets.SONATYPE_PASSWORD }}
+      #     working-directory: java
 
   publish-npm:
     name: Publish NPM module
@@ -153,10 +156,10 @@ jobs:
           cache: 'npm'
           cache-dependency-path: javascript/package-lock.json
 
-      - uses: cucumber/action-publish-npm@v1.0.0
-        with:
-          npm-token: ${{ secrets.NPM_TOKEN }}
-          working-directory: javascript
+      # - uses: cucumber/action-publish-npm@v1.0.0
+      #   with:
+      #     npm-token: ${{ secrets.NPM_TOKEN }}
+      #     working-directory: javascript
 
   create-github-release:
     name: Create GitHub Release and Git tag
@@ -168,6 +171,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: cucumber/action-create-github-release@v1.1.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: cucumber/action-create-github-release@v1.1.0
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
