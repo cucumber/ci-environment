@@ -11,7 +11,6 @@
     "outDir": "dist"
   },
   "include": [
-    "src/ciDict.json",
     "src",
     "test"
   ]

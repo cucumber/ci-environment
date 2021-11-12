@@ -5,11 +5,13 @@
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
+    "pretest": "npm run build-ci-dict",
     "test": "mocha",
     "prepublishOnly": "tsc --build tsconfig.build.json",
     "print-meta": "ts-node --require source-map-support/register --require tsconfig-paths/register ./src/printMeta.ts",
     "eslint-fix": "eslint --ext ts,tsx --max-warnings 0 --fix src test",
-    "eslint": "eslint --ext ts,tsx --max-warnings 0 src test"
+    "eslint": "eslint --ext ts,tsx --max-warnings 0 src test",
+    "build-ci-dict": "cat ciDict.ts.header > src/ciDict.ts && cat ../ciDict.json >> src/ciDict.ts && eslint --fix src/ciDict.ts"
   },
   "repository": {
     "type": "git",
