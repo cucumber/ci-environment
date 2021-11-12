@@ -1,8 +1,7 @@
 # createMeta
 
 Utility function for creating system-specific `Meta` messages.
-
-## CI
+## Supported CI systems
 
 The `ci` field of the `Meta` message contains values from environment variables
 defined by the following supported CI and build servers:
@@ -22,32 +21,6 @@ defined by the following supported CI and build servers:
 * [Travis CI](https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables)
 * [Wercker](https://devcenter.wercker.com/administration/environment-variables/available-env-vars/)
 
-### Adding support for new CI servers
+## Adding new CI system / contributing
 
-If you want to see support for a new CI server, please submit a pull request.
-
-Here are the steps:
-
-* Modify the file `ciDict.json`, using environment variables to extract information.
-* Add an approval test in `testdata/YourCi.txt` and `testdata/YourCi.txt.json`.
-
-Then build and run the tests for all implementations:
-
-    cd java && mvn test
-    cd ../javascript && npm test
-    cd ../ruby && bundle exec rspec
-
-If all tests pass, commit your code and send us a pull request. Bonus points if you
-also update `CHANGELOG.md` and `README.md`.
-
-You might want to look at the source code for [danger](https://github.com/danger/danger/tree/master/lib/danger/ci_source)
-to understand how various CI server environment variables should be interpreted.
-
-## CI definitions
-
-The `ciDict.json` file contains definitions of various CI servers. Each property of a CI
-server definition is an expression that evaluates a value from one or more environment variables.
-
-The expression syntax for environment variables can use the form `${variable/pattern/replacement}`,
-similar to [bash parameter substitution](https://tldp.org/LDP/abs/html/parameter-substitution.html),
-but inspired from [sed's s command](https://www.gnu.org/software/sed/manual/html_node/The-_0022s_0022-Command.html) which provides support for capture group back-references in the replacement.
+Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
