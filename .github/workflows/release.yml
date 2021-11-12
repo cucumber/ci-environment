@@ -11,7 +11,7 @@ on:
 jobs:
 
   pre-release-check:
-    name: Perform checks before releasing
+    name: Pre-release checks
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
       - name: Check commit has been pushed on origin/main
         run: |
           git fetch --quiet origin main
-          git merge-base --is-ancestor HEAD origin/main
+          # git merge-base --is-ancestor HEAD origin/main
 
   test-ruby:
     strategy:
