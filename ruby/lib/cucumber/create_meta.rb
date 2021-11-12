@@ -7,7 +7,7 @@ require 'cucumber/create_meta/variable_expression'
 module Cucumber
   module CreateMeta
     extend Cucumber::CreateMeta::VariableExpression
-    CI_DICT = JSON.parse(IO.read(File.join(File.dirname(__FILE__), "ciDict.json")))
+    CI_DICT = JSON.parse(IO.read(File.join(File.dirname(__FILE__), '..', '..', '..', 'ciDict.json')))
 
     def create_meta(tool_name, tool_version, env = ENV)
       Cucumber::Messages::Meta.new(
