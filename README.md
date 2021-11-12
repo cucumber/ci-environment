@@ -28,16 +28,14 @@ If you want to see support for a new CI server, please submit a pull request.
 
 Here are the steps:
 
-* Modify the top level `ciDict.json`, using environment variables to extract information.
+* Modify the file `ciDict.json`, using environment variables to extract information.
 * Add an approval test in `testdata/YourCi.txt` and `testdata/YourCi.txt.json`.
-* Make copies of the modified files to all the implementations:
 
-    # From a bash shell
-    source ../scripts/functions.sh && rsync_files
+Then build and run the tests for all implementations:
 
-Then build and run the tests:
-
-    make clean && make
+    cd java && mvn test
+    cd ../javascript && npm test
+    cd ../ruby && bundle exec rspec
 
 If all tests pass, commit your code and send us a pull request. Bonus points if you
 also update `CHANGELOG.md` and `README.md`.
