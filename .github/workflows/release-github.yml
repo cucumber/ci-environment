@@ -11,7 +11,7 @@ on:
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml
+    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@set-up-release-process
 
   create-github-release:
     name: Create GitHub Release and Git tag

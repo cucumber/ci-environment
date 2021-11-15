@@ -11,7 +11,7 @@ on:
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml
+    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@set-up-release-process
 
   test-java:
     uses: cucumber/create-meta/.github/workflows/test-java.yml@set-up-release-process
