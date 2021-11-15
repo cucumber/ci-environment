@@ -1,4 +1,4 @@
-name: Release create-meta ruby gem
+name: Release create-meta
 
 on:
   push:
@@ -22,20 +22,16 @@ jobs:
           git fetch --quiet origin main
           # git merge-base --is-ancestor HEAD origin/main
 
-  test-ruby:
-    uses: cucumber/create-meta/.github/workflows/test-ruby.yml@set-up-release-process
-
-  publish-rubygem:
-    name: Publish Ruby Gem
-    needs: [pre-release-check, test-ruby]
+  create-github-release:
+    name: Create GitHub Release and Git tag
+    needs: [pre-release-check]
     runs-on: ubuntu-latest
     # environment: Release
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v2
-
-      # - name: Publish ruby gem
-      #   uses: cucumber/action-publish-rubygem@v1.0.0
+      # - uses: cucumber/action-create-github-release@v1.1.0
       #   with:
-      #     working_directory: ruby
-      #     rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}

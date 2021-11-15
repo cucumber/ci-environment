@@ -1,0 +1,46 @@
+name: Release create-meta npm module
+
+on:
+  push:
+    branches:
+      - release/*
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  pre-release-check:
+    name: Pre-release checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check commit has been pushed on origin/main
+        run: |
+          git fetch --quiet origin main
+          # git merge-base --is-ancestor HEAD origin/main
+
+  test-javascript:
+    uses: cucumber/create-meta/.github/workflows/test-javascript.yml@set-up-release-process
+
+  publish-npm:
+    name: Publish NPM module
+    needs: [pre-release-check, test-javascript]
+    runs-on: ubuntu-latest
+    # environment: Release
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '17'
+          cache: 'npm'
+          cache-dependency-path: javascript/package-lock.json
+
+      # - uses: cucumber/action-publish-npm@v1.0.0
+      #   with:
+      #     npm-token: ${{ secrets.NPM_TOKEN }}
+      #     working-directory: javascript
