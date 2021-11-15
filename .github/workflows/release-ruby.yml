@@ -11,16 +11,7 @@ on:
 jobs:
 
   pre-release-check:
-    name: Pre-release checks
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Check commit has been pushed on origin/main
-        run: |
-          git fetch --quiet origin main
-          # git merge-base --is-ancestor HEAD origin/main
+    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml
 
   test-ruby:
     uses: cucumber/create-meta/.github/workflows/test-ruby.yml@set-up-release-process
