@@ -23,91 +23,19 @@ jobs:
           # git merge-base --is-ancestor HEAD origin/main
 
   test-ruby:
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-        ruby: ['2.5', '2.6', '2.7', '3.0']
-        include:
-          - os: windows-latest
-            ruby: '3.0'
-          - os: macos-latest
-            ruby: '3.0'
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-          working-directory: ruby
-      - name: bundle exec rspec
-        working-directory: ruby
-        run: bundle exec rspec
+    uses: cucumber/create-meta/.github/workflows/test-ruby.yml@main
 
   test-javascript:
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-        node-version: ['12.x', '14.x', '16.x']
-        include:
-          - os: windows-latest
-            node-version: '16.x'
-          - os: macos-latest
-            node-version: '16.x'
-
-    runs-on: ${{ matrix.os }}
-    steps:
-    - name: set git core.autocrlf to 'input'
-      run: git config --global core.autocrlf input
-    - uses: actions/checkout@v2
-    - name: with Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: javascript/package-lock.json
-    - run: npm install-test
-      working-directory: javascript
+    uses: cucumber/create-meta/.github/workflows/test-javascript.yml@main
 
   test-java:
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-        java: ['11', '16']
-        include:
-          - os: windows-latest
-            java: '16'
-          - os: macos-latest
-            java: '16'
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v2
-        with:
-          distribution: 'temurin'
-          java-version: ${{ matrix.java }}
-          cache: 'maven'
-      - run: mvn install
-        working-directory: java
-      - run: mvn test
-        working-directory: java
-      - run: ./scripts/check-jar.sh
-        working-directory: java
+    uses: cucumber/create-meta/.github/workflows/test-java.yml@main
 
   publish-rubygem:
     name: Publish Ruby Gem
     needs: [pre-release-check, test-java, test-javascript, test-ruby]
     runs-on: ubuntu-latest
-    environment: Release
+    # environment: Release
 
     steps:
       - uses: actions/checkout@v2
@@ -122,7 +50,7 @@ jobs:
     name: Publish Maven Package
     needs: [pre-release-check, test-java, test-javascript, test-ruby]
     runs-on: ubuntu-latest
-    environment: Release
+    # environment: Release
 
     steps:
       - uses: actions/checkout@v2
@@ -145,7 +73,7 @@ jobs:
     name: Publish NPM module
     needs: [pre-release-check, test-java, test-javascript, test-ruby]
     runs-on: ubuntu-latest
-    environment: Release
+    # environment: Release
 
     steps:
       - uses: actions/checkout@v2
@@ -165,7 +93,7 @@ jobs:
     name: Create GitHub Release and Git tag
     needs: [publish-rubygem, publish-mvn, publish-npm]
     runs-on: ubuntu-latest
-    environment: Release
+    # environment: Release
     permissions:
       contents: write
 
