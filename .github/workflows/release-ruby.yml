@@ -7,7 +7,6 @@ jobs:
 
   publish-rubygem:
     name: Publish Ruby Gem
-    needs: [pre-release-check, test-java, test-javascript, test-ruby]
     runs-on: ubuntu-latest
     # environment: Release
 
