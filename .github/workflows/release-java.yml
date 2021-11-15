@@ -27,7 +27,7 @@ jobs:
 
   publish-mvn:
     name: Publish Maven Package
-    needs: [pre-release-check, test-java, test-javascript, test-ruby]
+    needs: [pre-release-check, test-java]
     runs-on: ubuntu-latest
     # environment: Release
 
