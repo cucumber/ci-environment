@@ -1,4 +1,4 @@
-name: Release create-meta
+name: Release create-meta on github
 
 on:
   push:
