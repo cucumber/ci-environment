@@ -28,6 +28,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: javascript/package-lock.json
 
+      - run: npm install-ci-test
+        working-directory: javascript
+
       - uses: cucumber/action-publish-npm@v1.0.0
         with:
           npm-token: ${{ secrets.NPM_TOKEN }}
