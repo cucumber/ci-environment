@@ -23,13 +23,13 @@ jobs:
           # git merge-base --is-ancestor HEAD origin/main
 
   test-ruby:
-    uses: cucumber/create-meta/.github/workflows/test-ruby.yml@main
+    uses: cucumber/create-meta/.github/workflows/test-ruby.yml@set-up-release-process
 
   test-javascript:
-    uses: cucumber/create-meta/.github/workflows/test-javascript.yml@main
+    uses: cucumber/create-meta/.github/workflows/test-javascript.yml@set-up-release-process
 
   test-java:
-    uses: cucumber/create-meta/.github/workflows/test-java.yml@main
+    uses: cucumber/create-meta/.github/workflows/test-java.yml@set-up-release-process
 
   publish-rubygem:
     name: Publish Ruby Gem
