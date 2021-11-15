@@ -32,19 +32,7 @@ jobs:
     uses: cucumber/create-meta/.github/workflows/test-java.yml@set-up-release-process
 
   publish-rubygem:
-    name: Publish Ruby Gem
-    needs: [pre-release-check, test-java, test-javascript, test-ruby]
-    runs-on: ubuntu-latest
-    # environment: Release
-
-    steps:
-      - uses: actions/checkout@v2
-
-      # - name: Publish ruby gem
-      #   uses: cucumber/action-publish-rubygem@v1.0.0
-      #   with:
-      #     working_directory: ruby
-      #     rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}
+    uses: cucumber/create-meta/.github/workflows/release-ruby.yml@set-up-release-process
 
   publish-mvn:
     name: Publish Maven Package
