@@ -4,29 +4,26 @@ on:
   push:
     branches:
       - release/*
-  pull_request:
-    branches:
-      - main
-
+  
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@set-up-release-process
+    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@main
 
   test-ruby:
-    uses: cucumber/create-meta/.github/workflows/test-ruby.yml@set-up-release-process
+    uses: cucumber/create-meta/.github/workflows/test-ruby.yml@main
 
   publish-rubygem:
     name: Publish Ruby Gem
     needs: [pre-release-check, test-ruby]
     runs-on: ubuntu-latest
-    # environment: Release
+    environment: Release
 
     steps:
       - uses: actions/checkout@v2
 
-      # - name: Publish ruby gem
-      #   uses: cucumber/action-publish-rubygem@v1.0.0
-      #   with:
-      #     working_directory: ruby
-      #     rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}
+      - name: Publish ruby gem
+        uses: cucumber/action-publish-rubygem@v1.0.0
+        with:
+          working_directory: ruby
+          rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}

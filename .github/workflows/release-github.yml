@@ -4,25 +4,22 @@ on:
   push:
     branches:
       - release/*
-  pull_request:
-    branches:
-      - main
-
+  
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@set-up-release-process
+    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@main
 
   create-github-release:
     name: Create GitHub Release and Git tag
     needs: [pre-release-check]
     runs-on: ubuntu-latest
-    # environment: Release
+    environment: Release
     permissions:
       contents: write
 
     steps:
       - uses: actions/checkout@v2
-      # - uses: cucumber/action-create-github-release@v1.1.0
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: cucumber/action-create-github-release@v1.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

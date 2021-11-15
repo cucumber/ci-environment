@@ -4,23 +4,20 @@ on:
   push:
     branches:
       - release/*
-  pull_request:
-    branches:
-      - main
 
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@set-up-release-process
+    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@main
 
   test-java:
-    uses: cucumber/create-meta/.github/workflows/test-java.yml@set-up-release-process
+    uses: cucumber/create-meta/.github/workflows/test-java.yml@main
 
   publish-mvn:
     name: Publish Maven Package
     needs: [pre-release-check, test-java]
     runs-on: ubuntu-latest
-    # environment: Release
+    environment: Release
 
     steps:
       - uses: actions/checkout@v2
@@ -31,10 +28,10 @@ jobs:
           java-version: '11'
           cache: 'maven'
 
-      # - uses: cucumber/action-publish-mvn@v1.0.0
-      #   with:
-      #     gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-      #     gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      #     nexus-username: cukebot
-      #     nexus-password: ${{ secrets.SONATYPE_PASSWORD }}
-      #     working-directory: java
+      - uses: cucumber/action-publish-mvn@v1.0.0
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          nexus-username: cukebot
+          nexus-password: ${{ secrets.SONATYPE_PASSWORD }}
+          working-directory: java
