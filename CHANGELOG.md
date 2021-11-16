@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- Update links in descriptor files to point to the new repository at https://github.com/cucumber/create-meta
+
 - [Ruby][Java] Fix ciDict.json was missing from the Ruby Gem and the Java Artifact
   ([PR#13](https://github.com/cucumber/create-meta/pull/13))
 
