@@ -12,7 +12,6 @@ import io.cucumber.messages.types.Product;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.FileInputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -24,10 +23,10 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public final class CreateMeta {
     private static final JsonObject CI_DICT;
-    private static final String JSON_PATH = "../ciDict.json";
+    private static final String JSON_PATH = "/io/cucumber/createmeta/ciDict.json";
 
     static {
-        try (Reader reader = new InputStreamReader(new FileInputStream(JSON_PATH), UTF_8)) {
+        try (Reader reader = new InputStreamReader(CreateMeta.class.getResourceAsStream(JSON_PATH), UTF_8)) {
             CI_DICT = Json.parse(reader).asObject();
         } catch (IOException e) {
             throw new RuntimeException("Unable to parse " + JSON_PATH, e);
