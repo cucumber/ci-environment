@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-- Update links in descriptor files to point to the new repository at https://github.com/cucumber/create-meta
+## [6.0.4] - 2021-11-16
 
+### Fixed
+- Update links in descriptor files to point to the new repository at https://github.com/cucumber/create-meta
 - [Ruby][Java] Fix ciDict.json was missing from the Ruby Gem and the Java Artifact
   ([PR#13](https://github.com/cucumber/create-meta/pull/13))
 
@@ -110,8 +112,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/create-meta/compare/v6.0.3...main
-[6.0.3]: https://github.com/cucumber/create-meta/compare/v6.0.2...main
+[Unreleased]: https://github.com/cucumber/create-meta/compare/v6.0.4...main
+[6.0.4]: https://github.com/cucumber/create-meta/compare/v6.0.3...v6.0.4
+[6.0.3]: https://github.com/cucumber/create-meta/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/cucumber/create-meta/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/cucumber/create-meta/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/cucumber/create-meta/compare/v5.0.0...v6.0.0
@@ -125,6 +128,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.2.0]: https://github.com/cucumber/create-meta/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/cucumber/create-meta/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/cucumber/cucumber/releases/tag/v1.0.0
+
 in alphabetical order -->
 [aslakhellesoy]:    https://github.com/aslakhellesoy
 [kgeilmann]:        https://github.com/kgeilmann
