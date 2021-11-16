@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- [Ruby][Java] Fix ciDict.json was missing from the Ruby Gem and the Java Artifact
+  ([PR#13](https://github.com/cucumber/create-meta/pull/13))
+
 ## [6.0.3] - 2021-11-15
 ### Fixed
 - [JavaScript] Removed tag property from git object if it is undefined
