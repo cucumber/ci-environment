@@ -119,12 +119,12 @@
                 <executions>
                 <execution>
                     <id>copy-resources</id>
-                    <phase>process-resources</phase>
+                    <phase>generate-resources</phase>
                     <goals>
                         <goal>copy-resources</goal>
                     </goals>
                     <configuration>
-                    <outputDirectory>${basedir}/src/main/resources/io/cucumber/createmeta</outputDirectory>
+                    <outputDirectory>${project.build.outputDirectory}/io/cucumber/createmeta</outputDirectory>
                     <overwrite>true</overwrite>
                     <resources>
                         <resource>
