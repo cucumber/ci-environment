@@ -124,7 +124,7 @@
                         <goal>copy-resources</goal>
                     </goals>
                     <configuration>
-                    <outputDirectory>${project.build.directory}/classes/io/cucumber/createmeta</outputDirectory>
+                    <outputDirectory>${project.build.outputDirectory}/io/cucumber/createmeta</outputDirectory>
                     <overwrite>true</overwrite>
                     <resources>
                         <resource>
