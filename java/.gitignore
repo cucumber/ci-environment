@@ -12,4 +12,3 @@ dependency-reduced-pom.xml
 .tested*
 .compared
 .built
-src/main/resources/**/ciDict.json
