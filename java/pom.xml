@@ -108,32 +108,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                <execution>
-                    <id>copy-resources</id>
-                    <phase>generate-resources</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-                    <configuration>
-                    <outputDirectory>${project.build.outputDirectory}/io/cucumber/createmeta</outputDirectory>
-                    <overwrite>true</overwrite>
-                    <resources>
-                        <resource>
-                            <directory>..</directory>
-                            <includes>
-                                <include>ciDict.json</include>
-                            </includes>
-                        </resource>
-                    </resources>
-                    </configuration>
-                </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>
