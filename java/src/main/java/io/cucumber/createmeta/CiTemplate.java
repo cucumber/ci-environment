@@ -1,19 +1,19 @@
 package io.cucumber.createmeta;
 
-public class CiTemplate {
+final class CiTemplate {
     public final String name;
     public final String url;
     public final String buildNumber;
     public final GitTemplate git;
 
-    public CiTemplate(String name, String url, String buildNumber, GitTemplate git) {
+    CiTemplate(String name, String url, String buildNumber, GitTemplate git) {
         this.name = name;
         this.url = url;
         this.buildNumber = buildNumber;
         this.git = git;
     }
 
-    public static class GitTemplate {
+    final static class GitTemplate {
         public final String remote;
         public final String revision;
         public final String branch;
