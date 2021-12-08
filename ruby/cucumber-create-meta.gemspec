@@ -20,9 +20,6 @@ Gem::Specification.new do |s|
     'source_code_uri' => 'https://github.com/cucumber/create-meta/tree/main/ruby'
   }
 
-  s.add_dependency 'cucumber-messages', '~> 17.1', '>= 17.1.1'
-  s.add_dependency 'sys-uname', '~> 1.2', '>= 1.2.2'
-
   s.add_development_dependency 'rake', '~> 13.0', '>= 13.0.6'
   s.add_development_dependency 'rspec', '~> 3.10', '>= 3.10.0'
 

@@ -1,5 +1,5 @@
 module Cucumber
-  module CreateMeta
+  module CiEnvironment
     module VariableExpression
       def evaluate(expression, env)
         return nil if expression.nil?

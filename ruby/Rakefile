@@ -11,4 +11,10 @@ Dir['./rake/*.rb'].each do |f|
   require f
 end
 
+file 'lib/cucumber/ci_environment/CiEnvironments.json' => '../CiEnvironments.json' do |t|
+  FileUtils.cp t.prerequisites[0], t.name
+end
+
+task 'spec:warnings' => 'lib/cucumber/ci_environment/CiEnvironments.json'
+
 task default: ['spec:warnings']

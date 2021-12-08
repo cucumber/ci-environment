@@ -32,6 +32,6 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
         working-directory: ruby
-    - name: bundle exec rspec
+    - name: bundle exec rake
       working-directory: ruby
-      run: bundle exec rspec
+      run: bundle exec rake
