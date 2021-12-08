@@ -1,4 +1,4 @@
-package io.cucumber.createmeta;
+package io.cucumber.cienvironment;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static io.cucumber.createmeta.DetectCiEnvironment.detectCiEnvironment;
+import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
 import static java.nio.file.Files.newBufferedReader;
 import static java.nio.file.Files.newDirectoryStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;

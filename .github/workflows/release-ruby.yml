@@ -1,4 +1,4 @@
-name: Release create-meta ruby gem
+name: Release ci-environment ruby gem
 
 on:
   push:
@@ -8,10 +8,10 @@ on:
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@main
+    uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
 
   test-ruby:
-    uses: cucumber/create-meta/.github/workflows/test-ruby.yml@main
+    uses: cucumber/ci-environment/.github/workflows/test-ruby.yml@main
 
   publish-rubygem:
     name: Publish Ruby Gem

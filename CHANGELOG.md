@@ -10,14 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [6.0.4] - 2021-11-16
 
 ### Fixed
-- Update links in descriptor files to point to the new repository at https://github.com/cucumber/create-meta
+- Update links in descriptor files to point to the new repository at https://github.com/cucumber/ci-environment
 - [Ruby][Java] Fix ciDict.json was missing from the Ruby Gem and the Java Artifact
-  ([PR#13](https://github.com/cucumber/create-meta/pull/13))
+  ([PR#13](https://github.com/cucumber/ci-environment/pull/13))
 
 ## [6.0.3] - 2021-11-15
 ### Fixed
 - [JavaScript] Removed tag property from git object if it is undefined
-([PR#4](https://github.com/cucumber/create-meta/pull/4))
+([PR#4](https://github.com/cucumber/ci-environment/pull/4))
 
 ## [6.0.2] - 2021-10-18
 ### Fixed
@@ -112,21 +112,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/create-meta/compare/v6.0.4...main
-[6.0.4]: https://github.com/cucumber/create-meta/compare/v6.0.3...v6.0.4
-[6.0.3]: https://github.com/cucumber/create-meta/compare/v6.0.2...v6.0.3
-[6.0.2]: https://github.com/cucumber/create-meta/compare/v6.0.1...v6.0.2
-[6.0.1]: https://github.com/cucumber/create-meta/compare/v6.0.0...v6.0.1
-[6.0.0]: https://github.com/cucumber/create-meta/compare/v5.0.0...v6.0.0
-[5.0.0]: https://github.com/cucumber/create-meta/compare/v4.0.0...v5.0.0
-[4.0.0]: https://github.com/cucumber/create-meta/compare/v3.0.0...v4.0.0
-[3.0.0]: https://github.com/cucumber/create-meta/compare/v2.0.4...v3.0.0
-[2.0.4]: https://github.com/cucumber/create-meta/compare/v2.0.2...v2.0.4
-[2.0.2]: https://github.com/cucumber/create-meta/compare/v2.0.1...v2.0.2
-[2.0.1]: https://github.com/cucumber/create-meta/compare/v2.0.0...v2.0.1
-[2.0.0]: https://github.com/cucumber/create-meta/compare/v1.2.0...v2.0.0
-[1.2.0]: https://github.com/cucumber/create-meta/compare/v1.1.0...v1.2.0
-[1.1.0]: https://github.com/cucumber/create-meta/compare/v1.0.0...v1.1.0
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v6.0.4...main
+[6.0.4]: https://github.com/cucumber/ci-environment/compare/v6.0.3...v6.0.4
+[6.0.3]: https://github.com/cucumber/ci-environment/compare/v6.0.2...v6.0.3
+[6.0.2]: https://github.com/cucumber/ci-environment/compare/v6.0.1...v6.0.2
+[6.0.1]: https://github.com/cucumber/ci-environment/compare/v6.0.0...v6.0.1
+[6.0.0]: https://github.com/cucumber/ci-environment/compare/v5.0.0...v6.0.0
+[5.0.0]: https://github.com/cucumber/ci-environment/compare/v4.0.0...v5.0.0
+[4.0.0]: https://github.com/cucumber/ci-environment/compare/v3.0.0...v4.0.0
+[3.0.0]: https://github.com/cucumber/ci-environment/compare/v2.0.4...v3.0.0
+[2.0.4]: https://github.com/cucumber/ci-environment/compare/v2.0.2...v2.0.4
+[2.0.2]: https://github.com/cucumber/ci-environment/compare/v2.0.1...v2.0.2
+[2.0.1]: https://github.com/cucumber/ci-environment/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/cucumber/ci-environment/compare/v1.2.0...v2.0.0
+[1.2.0]: https://github.com/cucumber/ci-environment/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/cucumber/ci-environment/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/cucumber/cucumber/releases/tag/v1.0.0
 
 in alphabetical order -->

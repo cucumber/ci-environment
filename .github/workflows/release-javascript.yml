@@ -1,4 +1,4 @@
-name: Release create-meta npm module
+name: Release ci-environment npm module
 
 on:
   push:
@@ -8,10 +8,10 @@ on:
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@main
+    uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
 
   test-javascript:
-    uses: cucumber/create-meta/.github/workflows/test-javascript.yml@main
+    uses: cucumber/ci-environment/.github/workflows/test-javascript.yml@main
 
   publish-npm:
     name: Publish NPM module

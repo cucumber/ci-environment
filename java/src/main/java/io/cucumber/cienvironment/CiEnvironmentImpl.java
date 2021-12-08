@@ -1,10 +1,10 @@
-package io.cucumber.createmeta;
+package io.cucumber.cienvironment;
 
 import java.util.Map;
 import java.util.Objects;
 
-import static io.cucumber.createmeta.DetectCiEnvironment.removeUserInfoFromUrl;
-import static io.cucumber.createmeta.VariableExpression.evaluate;
+import static io.cucumber.cienvironment.DetectCiEnvironment.removeUserInfoFromUrl;
+import static io.cucumber.cienvironment.VariableExpression.evaluate;
 
 final class CiEnvironmentImpl implements CiEnvironment {
     public String name;

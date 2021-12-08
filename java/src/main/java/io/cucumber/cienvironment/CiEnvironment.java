@@ -1,4 +1,4 @@
-package io.cucumber.createmeta;
+package io.cucumber.cienvironment;
 
 public interface CiEnvironment {
     String getName();

@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for considering contributing to Cucumber create-meta!
+Thank you for considering contributing to Cucumber ci-environment!
 
 ## Code of Conduct
 

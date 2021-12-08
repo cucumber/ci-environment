@@ -9,21 +9,21 @@
         <version>2.1.2</version>
     </parent>
 
-    <artifactId>create-meta</artifactId>
+    <artifactId>ci-environment</artifactId>
     <version>6.0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Cucumber create meta</name>
-    <description>Produce the meta message for Cucumber-JVM</description>
-    <url>https://github.com/cucumber/create-meta</url>
+    <name>Cucumber CiEnvironment</name>
+    <description>Detect CI Environment from environment variables</description>
+    <url>https://github.com/cucumber/ci-environment</url>
 
     <properties>
-        <project.Automatic-Module-Name>io.cucumber.createmeta</project.Automatic-Module-Name>
+        <project.Automatic-Module-Name>io.cucumber.cienvironment</project.Automatic-Module-Name>
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/cucumber/create-meta.git</connection>
-        <developerConnection>scm:git:git@github.com:cucumber/create-meta.git</developerConnection>
-        <url>git://github.com/cucumber/create-meta.git</url>
+        <connection>scm:git:git://github.com/cucumber/ci-environment.git</connection>
+        <developerConnection>scm:git:git@github.com:cucumber/ci-environment.git</developerConnection>
+        <url>git://github.com/cucumber/ci-environment.git</url>
     </scm>
 
     <dependencyManagement>
@@ -79,7 +79,7 @@
                             <goal>execute</goal>
                         </goals>
                         <configuration>
-                            <source>${project.basedir}/src/main/groovy/io/cucumber/createmeta/CiEnvironments.groovy</source>
+                            <source>${project.basedir}/src/main/groovy/io/cucumber/cienvironment/CiEnvironments.groovy</source>
                         </configuration>
                     </execution>
                 </executions>

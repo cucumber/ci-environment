@@ -1,20 +1,20 @@
 {
-  "name": "@cucumber/create-meta",
+  "name": "@cucumber/ci-environment",
   "version": "6.0.4",
-  "description": "Produce the meta message for Cucumber JavaScript",
+  "description": "Detect CI Environment from environment variables",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "pretest": "npm run build-ci-environments",
+    "pretest": "npm run generate-ci-environments-ts",
     "test": "mocha",
     "prepublishOnly": "tsc --build tsconfig.build.json",
     "eslint-fix": "eslint --ext ts,tsx --max-warnings 0 --fix src test",
     "eslint": "eslint --ext ts,tsx --max-warnings 0 src test",
-    "build-ci-environments": "cat CiEnvironments.ts.header > src/CiEnvironments.ts && cat ../CiEnvironments.json >> src/CiEnvironments.ts && eslint --fix src/CiEnvironments.ts"
+    "generate-ci-environments-ts": "cat CiEnvironments.ts.header > src/CiEnvironments.ts && cat ../CiEnvironments.json >> src/CiEnvironments.ts && eslint --fix src/CiEnvironments.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/cucumber/create-meta.git"
+    "url": "git://github.com/cucumber/ci-environment.git"
   },
   "keywords": [
     "cucumber"
@@ -22,9 +22,9 @@
   "author": "Cucumber Limited <cukes@googlegroups.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cucumber/create-meta/issues"
+    "url": "https://github.com/cucumber/ci-environment/issues"
   },
-  "homepage": "https://github.com/cucumber/create-meta",
+  "homepage": "https://github.com/cucumber/ci-environment",
   "devDependencies": {
     "@types/glob": "7.2.0",
     "@types/mocha": "9.0.0",

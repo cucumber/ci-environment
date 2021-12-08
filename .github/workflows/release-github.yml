@@ -1,14 +1,14 @@
-name: Release create-meta on github
+name: Release on github
 
 on:
   push:
     branches:
       - release/*
-  
+
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@main
+    uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
 
   create-github-release:
     name: Create GitHub Release and Git tag

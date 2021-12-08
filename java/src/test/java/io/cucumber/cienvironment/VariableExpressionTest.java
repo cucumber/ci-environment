@@ -1,10 +1,10 @@
-package io.cucumber.createmeta;
+package io.cucumber.cienvironment;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
-import static io.cucumber.createmeta.VariableExpression.evaluate;
+import static io.cucumber.cienvironment.VariableExpression.evaluate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 

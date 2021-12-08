@@ -1,4 +1,4 @@
-package io.cucumber.createmeta;
+package io.cucumber.cienvironment;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package io.cucumber.createmeta;
+package io.cucumber.cienvironment;
 
-import static io.cucumber.createmeta.DetectCiEnvironment.detectCiEnvironment;
+import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
 
 public class CiEnvironmentExample {
     public static void main(String[] args) {
