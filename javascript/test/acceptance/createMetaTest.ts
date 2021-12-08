@@ -2,7 +2,7 @@ import assert from 'assert'
 import fs from 'fs'
 import path from 'path'
 
-import CreateMeta from '../../src/createMeta'
+import detectCiEnvironment from '../../src/detectCiEnvironment'
 import { Env } from '../../src/types'
 
 const TEST_DATA_DIR = '../testdata'
@@ -15,17 +15,17 @@ describe('CreateMeta', () => {
       return
     }
 
-    const env_data = fs.readFileSync(`${TEST_DATA_DIR}/${test_data_file}`, { encoding: 'utf8' })
-    const entries = env_data.split(/\n/).map((line) => line.split(/=/))
+    const envData = fs.readFileSync(`${TEST_DATA_DIR}/${test_data_file}`, { encoding: 'utf8' })
+    const entries = envData.split(/\n/).map((line) => line.split(/=/))
     const env: Env = Object.fromEntries(entries)
-    const meta = CreateMeta('cucumber-something', '1.2.3', env)
+    const ciEnvironment = detectCiEnvironment(env)
 
-    const expected_json = fs.readFileSync(`${TEST_DATA_DIR}/${test_data_file}.json`, {
+    const expectedJson = fs.readFileSync(`${TEST_DATA_DIR}/${test_data_file}.json`, {
       encoding: 'utf8',
     })
 
     it(`with ${path.basename(test_data_file, '.txt')}`, () => {
-      assert.deepStrictEqual(meta.ci, JSON.parse(expected_json))
+      assert.deepStrictEqual(ciEnvironment, JSON.parse(expectedJson))
     })
   })
 })

@@ -1,16 +1,9 @@
-import * as messages from '@cucumber/messages'
 import assert from 'assert'
 
-import createMeta from '../src/createMeta'
+import detectCiEnvironment from '../src/detectCiEnvironment'
+import { CiEnvironment } from '../src/types'
 
 describe('createMeta', () => {
-  it('defines the implementation product', () => {
-    const meta = createMeta('someTool', '1.2.3', {}, {})
-
-    assert.strictEqual(meta.implementation.name, 'someTool')
-    assert.strictEqual(meta.implementation.version, '1.2.3')
-  })
-
   it('detects CircleCI', () => {
     const envDict = {
       CIRCLE_BUILD_URL: 'the-url',
@@ -21,8 +14,8 @@ describe('createMeta', () => {
       CIRCLE_BUILD_NUM: '234',
     }
 
-    const meta = createMeta('someTool', '1.2.3', envDict)
-    const ci: messages.Ci = {
+    const ciEnvironment = detectCiEnvironment(envDict)
+    const expected: CiEnvironment = {
       name: 'CircleCI',
       url: 'the-url',
       buildNumber: '234',
@@ -33,11 +26,11 @@ describe('createMeta', () => {
         tag: 'the-tag',
       },
     }
-    assert.deepStrictEqual(meta.ci, ci)
+    assert.deepStrictEqual(ciEnvironment, expected)
   })
 
   it('detects GitHub Actions', () => {
-    const envDict = {
+    const env = {
       GITHUB_SERVER_URL: 'https://github.com',
       GITHUB_REPOSITORY: 'cucumber/cucumber-ruby',
       GITHUB_RUN_ID: '140170388',
@@ -45,8 +38,8 @@ describe('createMeta', () => {
       GITHUB_REF: 'refs/tags/the-tag',
     }
 
-    const meta = createMeta('someTool', '1.2.3', envDict)
-    const ci: messages.Ci = {
+    const ciEnvironment = detectCiEnvironment(env)
+    const expected: CiEnvironment = {
       name: 'GitHub Actions',
       url: 'https://github.com/cucumber/cucumber-ruby/actions/runs/140170388',
       buildNumber: '140170388',
@@ -57,11 +50,11 @@ describe('createMeta', () => {
         tag: 'the-tag',
       },
     }
-    assert.deepStrictEqual(meta.ci, ci)
+    assert.deepStrictEqual(ciEnvironment, expected)
   })
 
   it('detects GitHub Actions with custom base url', () => {
-    const envDict = {
+    const env = {
       GITHUB_SERVER_URL: 'https://github.company.com',
       GITHUB_REPOSITORY: 'cucumber/cucumber-ruby',
       GITHUB_RUN_ID: '140170388',
@@ -69,8 +62,8 @@ describe('createMeta', () => {
       GITHUB_REF: 'refs/heads/the-branch',
     }
 
-    const meta = createMeta('someTool', '1.2.3', envDict)
-    const ci: messages.Ci = {
+    const ciEnvironment = detectCiEnvironment(env)
+    const expected: CiEnvironment = {
       name: 'GitHub Actions',
       url: 'https://github.company.com/cucumber/cucumber-ruby/actions/runs/140170388',
       buildNumber: '140170388',
@@ -80,11 +73,11 @@ describe('createMeta', () => {
         revision: 'the-revision',
       },
     }
-    assert.deepStrictEqual(meta.ci, ci)
+    assert.deepStrictEqual(ciEnvironment, expected)
   })
 
   it('post-processes git refs to branch', () => {
-    const envDict = {
+    const env = {
       BUILD_BUILDURI: 'the-url',
       BUILD_REPOSITORY_URI: 'the-remote',
       BUILD_SOURCEBRANCH: 'refs/heads/main',
@@ -92,8 +85,8 @@ describe('createMeta', () => {
       BUILD_BUILDNUMBER: '456',
     }
 
-    const meta = createMeta('someTool', '1.2.3', envDict)
-    const ci: messages.Ci = {
+    const ciEnvironment = detectCiEnvironment(env)
+    const expected: CiEnvironment = {
       name: 'Azure Pipelines',
       url: 'the-url',
       buildNumber: '456',
@@ -103,11 +96,11 @@ describe('createMeta', () => {
         revision: 'the-revision',
       },
     }
-    assert.deepStrictEqual(meta.ci, ci)
+    assert.deepStrictEqual(ciEnvironment, expected)
   })
 
   it('post-processes git refs to tag', () => {
-    const envDict = {
+    const env = {
       BUILD_BUILDURI: 'the-url',
       BUILD_REPOSITORY_URI: 'the-remote',
       BUILD_SOURCEBRANCH: 'refs/tags/v1.2.3',
@@ -115,8 +108,8 @@ describe('createMeta', () => {
       BUILD_BUILDNUMBER: '456',
     }
 
-    const meta = createMeta('someTool', '1.2.3', envDict)
-    const ci: messages.Ci = {
+    const ciEnvironment = detectCiEnvironment(env)
+    const expected: CiEnvironment = {
       name: 'Azure Pipelines',
       url: 'the-url',
       buildNumber: '456',
@@ -127,11 +120,11 @@ describe('createMeta', () => {
         tag: 'v1.2.3',
       },
     }
-    assert.deepStrictEqual(meta.ci, ci)
+    assert.deepStrictEqual(ciEnvironment, expected)
   })
 
   it('extracts build number from url', () => {
-    const envDict = {
+    const env = {
       WERCKER_GIT_BRANCH: 'main',
       WERCKER_GIT_COMMIT: '057f8fe233b17629af084064c2a7b8d1dbb795ad',
       WERCKER_GIT_DOMAIN: 'github.com',
@@ -140,8 +133,8 @@ describe('createMeta', () => {
       WERCKER_RUN_URL: 'https://cihost.com/path/to/build/629af084064c2',
     }
 
-    const meta = createMeta('someTool', '1.2.3', envDict)
-    const ci: messages.Ci = {
+    const ciEnvironment = detectCiEnvironment(env)
+    const expected: CiEnvironment = {
       git: {
         branch: 'main',
         remote: 'https://github.com/cucumber-ltd/shouty.rb.git',
@@ -151,6 +144,6 @@ describe('createMeta', () => {
       url: 'https://cihost.com/path/to/build/629af084064c2',
       buildNumber: '629af084064c2',
     }
-    assert.deepStrictEqual(meta.ci, ci)
+    assert.deepStrictEqual(ciEnvironment, expected)
   })
 })

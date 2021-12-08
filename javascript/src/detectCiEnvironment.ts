@@ -1,50 +1,18 @@
-import * as messages from '@cucumber/messages'
-import os from 'os'
 import { format as formatUrl, parse as parseUrl } from 'url'
 
 import { ciDict as defaultCiDict } from './ciDict'
 import evaluateVariableExpression from './evaluateVariableExpression'
-import { CiDict, CiSystem, Env } from './types'
+import { CiDict, CiEnvironment, Env, Git } from './types'
 
-type GitInfo = {
-  remote: string
-  revision: string
-  branch: string
-  tag?: string
-}
-
-export default function createMeta(
-  toolName: string,
-  toolVersion: string,
-  envDict: Env,
-  ciDict?: CiDict
-): messages.Meta {
+export default function detectCiEnvironment(env: Env, ciDict?: CiDict): CiEnvironment {
   if (ciDict === undefined) {
     ciDict = defaultCiDict
   }
-  return {
-    protocolVersion: messages.version,
-    implementation: {
-      name: toolName,
-      version: toolVersion,
-    },
-    cpu: {
-      name: os.arch(),
-    },
-    os: {
-      name: os.platform(),
-      version: os.release(),
-    },
-    runtime: {
-      name: 'node.js',
-      version: process.versions.node,
-    },
-    ci: detectCI(ciDict, envDict),
-  }
+  return detectCI(ciDict, env)
 }
 
-export function detectCI(ciDict: CiDict, envDict: Env): messages.Ci | undefined {
-  const detected: messages.Ci[] = []
+export function detectCI(ciDict: CiDict, envDict: Env): CiEnvironment {
+  const detected: CiEnvironment[] = []
   for (const [ciName, ciSystem] of Object.entries(ciDict)) {
     const ci = createCi(ciName, ciSystem, envDict)
     if (ci) {
@@ -75,7 +43,11 @@ export function removeUserInfoFromUrl(value: string): string {
   return formatUrl(url)
 }
 
-function createCi(ciName: string, ciSystem: CiSystem, envDict: Env): messages.Ci | undefined {
+function createCi(
+  ciName: string,
+  ciSystem: CiEnvironment,
+  envDict: Env
+): CiEnvironment | undefined {
   const url = evaluateVariableExpression(ciSystem.url, envDict)
   const buildNumber = evaluateVariableExpression(ciSystem.buildNumber, envDict)
   if (url === undefined) {
@@ -84,16 +56,12 @@ function createCi(ciName: string, ciSystem: CiSystem, envDict: Env): messages.Ci
     return undefined
   }
 
-  const branch = evaluateVariableExpression(ciSystem.git.branch, envDict)
   const tag = evaluateVariableExpression(ciSystem.git.tag, envDict)
-  const git: GitInfo = {
+  const git: Git = {
     remote: removeUserInfoFromUrl(evaluateVariableExpression(ciSystem.git.remote, envDict)),
     revision: evaluateVariableExpression(ciSystem.git.revision, envDict),
-    branch: branch,
-  }
-
-  if (tag) {
-    git['tag'] = tag
+    branch: evaluateVariableExpression(ciSystem.git.branch, envDict),
+    ...(tag ? { tag } : {}),
   }
 
   return {

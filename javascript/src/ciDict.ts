@@ -4,6 +4,7 @@ import { CiDict } from './types'
 
 export const ciDict: CiDict = {
   'Azure Pipelines': {
+    name: 'Azure Pipelines',
     url: '${BUILD_BUILDURI}',
     buildNumber: '${BUILD_BUILDNUMBER}',
     git: {
@@ -14,6 +15,7 @@ export const ciDict: CiDict = {
     },
   },
   Bamboo: {
+    name: 'Bamboo',
     url: '${bamboo_buildResultsUrl}',
     buildNumber: '${bamboo_buildNumber}',
     git: {
@@ -24,6 +26,7 @@ export const ciDict: CiDict = {
     },
   },
   Buddy: {
+    name: 'Buddy',
     url: '${BUDDY_EXECUTION_URL}',
     buildNumber: '${BUDDY_EXECUTION_ID}',
     git: {
@@ -34,6 +37,7 @@ export const ciDict: CiDict = {
     },
   },
   Bitrise: {
+    name: 'Bitrise',
     url: '${BITRISE_BUILD_URL}',
     buildNumber: '${BITRISE_BUILD_NUMBER}',
     git: {
@@ -44,6 +48,7 @@ export const ciDict: CiDict = {
     },
   },
   CircleCI: {
+    name: 'CircleCI',
     url: '${CIRCLE_BUILD_URL}',
     buildNumber: '${CIRCLE_BUILD_NUM}',
     git: {
@@ -54,6 +59,7 @@ export const ciDict: CiDict = {
     },
   },
   CodeFresh: {
+    name: 'CodeFresh',
     url: '${CF_BUILD_URL}',
     buildNumber: '${CF_BUILD_ID}',
     git: {
@@ -64,6 +70,7 @@ export const ciDict: CiDict = {
     },
   },
   CodeShip: {
+    name: 'CodeShip',
     url: '${CI_BUILD_URL}',
     buildNumber: '${CI_BUILD_NUMBER}',
     git: {
@@ -74,6 +81,7 @@ export const ciDict: CiDict = {
     },
   },
   'GitHub Actions': {
+    name: 'GitHub Actions',
     url: '${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}',
     buildNumber: '${GITHUB_RUN_ID}',
     git: {
@@ -84,6 +92,7 @@ export const ciDict: CiDict = {
     },
   },
   GitLab: {
+    name: 'GitLab',
     url: '${CI_JOB_URL}',
     buildNumber: '${CI_JOB_ID}',
     git: {
@@ -94,6 +103,7 @@ export const ciDict: CiDict = {
     },
   },
   GoCD: {
+    name: 'GoCD',
     url: '${GO_SERVER_URL}/pipelines/${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}/${GO_STAGE_NAME}/${GO_STAGE_COUNTER}',
     buildNumber: '${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}/${GO_STAGE_NAME}/${GO_STAGE_COUNTER}',
     git: {
@@ -104,6 +114,7 @@ export const ciDict: CiDict = {
     },
   },
   Jenkins: {
+    name: 'Jenkins',
     url: '${BUILD_URL}',
     buildNumber: '${BUILD_NUMBER}',
     git: {
@@ -114,6 +125,7 @@ export const ciDict: CiDict = {
     },
   },
   Semaphore: {
+    name: 'Semaphore',
     url: '${SEMAPHORE_ORGANIZATION_URL}/jobs/${SEMAPHORE_JOB_ID}',
     buildNumber: '${SEMAPHORE_JOB_ID}',
     git: {
@@ -124,6 +136,7 @@ export const ciDict: CiDict = {
     },
   },
   'Travis CI': {
+    name: 'Travis CI',
     url: '${TRAVIS_BUILD_WEB_URL}',
     buildNumber: '${TRAVIS_JOB_NUMBER}',
     git: {
@@ -134,6 +147,7 @@ export const ciDict: CiDict = {
     },
   },
   Wercker: {
+    name: 'Wercker',
     url: '${WERCKER_RUN_URL}',
     buildNumber: '${WERCKER_RUN_URL/.*\\/([^\\/]+)$/\\1}',
     git: {

@@ -1,6 +1,6 @@
 import assert from 'assert'
 
-import { removeUserInfoFromUrl } from '../src/createMeta'
+import { removeUserInfoFromUrl } from '../src/detectCiEnvironment'
 
 describe('removeUserInfoFromUrl', () => {
   it('returns undefined for undefined', () => {
