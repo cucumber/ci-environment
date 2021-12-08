@@ -7,16 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [7.0.0] - 2021-12-08
 ### Changed
 - This library has been renamed to `ci-environment` and no longer depends on Cucumber `messages`.
-  ([PR#34](https://github.com/cucumber/ci-environment/pull/34))
+([PR#34](https://github.com/cucumber/ci-environment/pull/34))
 
 ## [6.0.4] - 2021-11-16
-
 ### Fixed
 - Update links in descriptor files to point to the new repository at https://github.com/cucumber/ci-environment
 - [Ruby][Java] Fix ciDict.json was missing from the Ruby Gem and the Java Artifact
-  ([PR#13](https://github.com/cucumber/ci-environment/pull/13))
+([PR#13](https://github.com/cucumber/ci-environment/pull/13))
 
 ## [6.0.3] - 2021-11-15
 ### Fixed
@@ -116,7 +116,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v6.0.4...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v7.0.0...main
+[7.0.0]: https://github.com/cucumber/ci-environment/compare/v6.0.4...main
 [6.0.4]: https://github.com/cucumber/ci-environment/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/cucumber/ci-environment/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/cucumber/ci-environment/compare/v6.0.1...v6.0.2
@@ -132,8 +133,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.2.0]: https://github.com/cucumber/ci-environment/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/cucumber/ci-environment/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/cucumber/cucumber/releases/tag/v1.0.0
-
-in alphabetical order -->
-[aslakhellesoy]:    https://github.com/aslakhellesoy
-[kgeilmann]:        https://github.com/kgeilmann
+       https://github.com/kgeilmann
 [vincent-psarga]:   https://github.com/vincent-psarga
