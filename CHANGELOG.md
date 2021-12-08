@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [7.0.1] - 2021-12-08
+### Fixed
+- Fix Ruby release
+
 ## [7.0.0] - 2021-12-08
 ### Changed
 - This library has been renamed to `ci-environment` and no longer depends on Cucumber `messages`.
@@ -116,7 +120,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v7.0.0...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v7.0.1...main
+[7.0.1]: https://github.com/cucumber/ci-environment/compare/v7.0.0...main
 [7.0.0]: https://github.com/cucumber/ci-environment/compare/v6.0.4...main
 [6.0.4]: https://github.com/cucumber/ci-environment/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/cucumber/ci-environment/compare/v6.0.2...v6.0.3
@@ -133,5 +138,3 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.2.0]: https://github.com/cucumber/ci-environment/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/cucumber/ci-environment/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/cucumber/cucumber/releases/tag/v1.0.0
-       https://github.com/kgeilmann
-[vincent-psarga]:   https://github.com/vincent-psarga
