@@ -1,5 +1,3 @@
-import { format as formatUrl, parse as parseUrl } from 'url'
-
 import { ciDict as defaultCiDict } from './ciDict'
 import evaluateVariableExpression from './evaluateVariableExpression'
 import { CiDict, CiEnvironment, Env, Git } from './types'
@@ -37,10 +35,14 @@ export function detectCI(ciDict: CiDict, envDict: Env): CiEnvironment {
 
 export function removeUserInfoFromUrl(value: string): string {
   if (!value) return value
-  const url = parseUrl(value)
-  if (url.auth === null) return value
-  url.auth = null
-  return formatUrl(url)
+  try {
+    const url = new URL(value)
+    url.password = ''
+    url.username = ''
+    return url.toString()
+  } catch (ignore) {
+    return value
+  }
 }
 
 function createCi(

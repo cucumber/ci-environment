@@ -29,7 +29,7 @@ describe('removeUserInfoFromUrl', () => {
 
     it('removes credentials when found', () => {
       assert.strictEqual(
-        removeUserInfoFromUrl('http://login@example.com/git/repo.git'),
+        removeUserInfoFromUrl('http://aslak@example.com/git/repo.git'),
         'http://example.com/git/repo.git'
       )
     })
