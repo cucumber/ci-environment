@@ -38,4 +38,4 @@ jobs:
       working-directory: javascript
     - run: npm run eslint-fix
       working-directory: javascript
-    - run: ./scripts/fail-if-dirty.sh
+    - run: ./scripts/fail-if-dirty

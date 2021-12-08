@@ -24,7 +24,7 @@ jobs:
       - name: Synchronize CiEnvironments.json
         working-directory: ruby
         run: bundle exec rake lib/cucumber/ci_environment/CiEnvironments.json
-      - run: ./scripts/fail-if-dirty.sh
+      - run: ./scripts/fail-if-dirty
       - name: Publish ruby gem
         uses: cucumber/action-publish-rubygem@v1.0.0
         with:
