@@ -4,21 +4,21 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class VariableExpression {
+final class VariableExpression {
     private static final Pattern variablePattern = Pattern.compile("\\$\\{(.*?)(?:(?<!\\\\)/(.*)/(.*))?}");
 
-    private VariableExpression(){
+    private VariableExpression() {
 
     }
 
-    public static String evaluate(String expression, Map<String, String> env) {
-        if(expression == null) return null;
+    static String evaluate(String expression, Map<String, String> env) {
+        if (expression == null) return null;
         Matcher variableMatcher = variablePattern.matcher(expression);
         StringBuffer sb = new StringBuffer();
         while (variableMatcher.find()) {
             String variable = variableMatcher.group(1);
             String value = getValue(env, variable);
-            if(value == null) {
+            if (value == null) {
                 return null;
             }
             String pattern = variableMatcher.group(2);

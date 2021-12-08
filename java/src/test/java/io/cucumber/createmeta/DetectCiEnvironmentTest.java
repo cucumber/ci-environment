@@ -1,9 +1,7 @@
-package io.cucumber.createmeta.acceptance;
+package io.cucumber.createmeta;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cucumber.messages.types.Ci;
-import io.cucumber.messages.types.Meta;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
@@ -22,12 +20,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static io.cucumber.createmeta.CreateMeta.createMeta;
+import static io.cucumber.createmeta.DetectCiEnvironment.detectCiEnvironment;
 import static java.nio.file.Files.newBufferedReader;
 import static java.nio.file.Files.newDirectoryStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CreateMetaTest {
+class DetectCiEnvironmentTest {
     private static final ObjectMapper mapper = new ObjectMapper()
             .enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
 
@@ -40,18 +38,18 @@ class CreateMetaTest {
 
     @ParameterizedTest
     @MethodSource
-    void acceptance_tests_pass(@ConvertWith(Converter.class) Expectation expectation) throws IOException {
-        Meta meta = createMeta("cucumber-jvm", "1.2.3", expectation.env);
-        assertEquals(expectation.expectedCi, meta.getCi());
+    void acceptance_tests_pass(@ConvertWith(Converter.class) Expectation expectation) {
+        CiEnvironment ciEnvironment = detectCiEnvironment(expectation.env);
+        assertEquals(expectation.expected, ciEnvironment);
     }
 
     static class Expectation {
         public final Map<String, String> env;
-        public final Ci expectedCi;
+        public final CiEnvironment expected;
 
-        Expectation(Map<String, String> env, Ci expectedCi) {
+        Expectation(Map<String, String> env, CiEnvironment expected) {
             this.env = env;
-            this.expectedCi = expectedCi;
+            this.expected = expected;
         }
     }
 
@@ -72,8 +70,8 @@ class CreateMetaTest {
                         env.put(parts[0], parts[1]);
                     }
                 }
-                Ci expectedCi = mapper.readValue(new File(path.toString() + ".json"), Ci.class);
-                return new Expectation(env, expectedCi);
+                CiEnvironment expected = mapper.readValue(new File(path + ".json"), CiEnvironmentImpl.class);
+                return new Expectation(env, expected);
             } catch (IOException e) {
                 throw new ArgumentConversionException("Could not load " + source, e);
             }

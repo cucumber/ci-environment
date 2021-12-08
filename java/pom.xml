@@ -40,12 +40,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>messages</artifactId>
-            <version>[17.1.1,18.0.0)</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
             <version>2.2</version>
@@ -85,7 +79,7 @@
                             <goal>execute</goal>
                         </goals>
                         <configuration>
-                            <source>${project.basedir}/src/main/groovy/io/cucumber/createmeta/CiServers.groovy</source>
+                            <source>${project.basedir}/src/main/groovy/io/cucumber/createmeta/CiEnvironments.groovy</source>
                         </configuration>
                     </execution>
                 </executions>
@@ -102,7 +96,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${basedir}/target/generated-sources/ci-servers/java</source>
+                                <source>${basedir}/target/generated-sources/ci-environments/java</source>
                             </sources>
                         </configuration>
                     </execution>
