@@ -1,10 +1,74 @@
-# createMeta
+# CiEnvironment
 
-Utility function for creating system-specific `Meta` messages.
-## Supported CI systems
+This library detects the CI environment based on environment variables defined
+by CI servers.
 
-The `ci` field of the `Meta` message contains values from environment variables
-defined by the following supported CI and build servers:
+If a CI server is detected, a `CiEnvironment` struct is returned:
+
+```json
+{
+  "name": "...",
+  "url": "...",
+  "buildNumber": "...",
+  "git": {
+    "remote": "...",
+    "revision": "...",
+    "branch": "..."
+  }
+}
+```
+
+Some CI servers expose usernames and passwords in the environment variable
+that is used to detect `git.remote`. For security reasons, this library removes
+the username and password from the `git.remote` field in the `CiEnvironment` struct.
+
+### TypeScript
+
+```shell
+npm install @cucumber/ci-environment
+```
+
+```typescript
+import detectCiEnvironment from '@cucumber/ci-environment'
+
+const ciEnvironment = detectCiEnvironment(process.env)
+console.log(JSON.stringify(ciEnvironment, null, 2))
+```
+
+### Java
+
+```xml
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>ci-environment</artifactId>
+</dependency>
+```
+
+```java
+import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
+
+public class CiEnvironmentExample {
+    public static void main(String[] args) {
+        CiEnvironment ciEnvironment = detectCiEnvironment(System.getenv());
+        System.out.println("ciEnvironment = " + ciEnvironment);
+    }
+}
+```
+
+### Ruby
+
+```Gemfile
+gem 'cucumber-ci-environment'
+```
+
+```ruby
+require 'cucumber/ci_environment'
+
+ci_environment = Cucumber::CiEnvironment.detect_ci_environment(ENV)
+p ci_environment
+```
+
+## Supported CI servers
 
 * [Azure Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)
 * [Bamboo](https://confluence.atlassian.com/bamboo/bamboo-variables-289277087.html)
@@ -21,6 +85,6 @@ defined by the following supported CI and build servers:
 * [Travis CI](https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables)
 * [Wercker](https://devcenter.wercker.com/administration/environment-variables/available-env-vars/)
 
-## Adding new CI system / contributing
+## Contributing
 
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.

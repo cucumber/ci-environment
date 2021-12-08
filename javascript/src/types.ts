@@ -1,13 +1,18 @@
-export interface CiSystem {
+export type CiEnvironment = {
+  name: string
   url: string
   buildNumber: string
-  git: {
-    remote: string | undefined
-    branch: string | undefined
-    revision: string | undefined
-    tag: string | undefined
-  }
+  git: Git
 }
 
-export type CiDict = Record<string, CiSystem>
+export type Git = {
+  remote?: string
+  branch?: string
+  revision?: string
+  tag?: string
+}
+
+export type CiEnvironments = {
+  ciEnvironments: readonly CiEnvironment[]
+}
 export type Env = Record<string, string | undefined>

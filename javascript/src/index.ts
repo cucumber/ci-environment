@@ -1,3 +1,3 @@
-import createMeta from './createMeta'
+import detectCiEnvironment from './detectCiEnvironment'
 
-export default createMeta
+export default detectCiEnvironment

@@ -1,4 +1,4 @@
-name: Release create-meta maven package
+name: Release maven package
 
 on:
   push:
@@ -8,10 +8,10 @@ on:
 jobs:
 
   pre-release-check:
-    uses: cucumber/create-meta/.github/workflows/prerelease-checks.yml@main
+    uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
 
   test-java:
-    uses: cucumber/create-meta/.github/workflows/test-java.yml@main
+    uses: cucumber/ci-environment/.github/workflows/test-java.yml@main
 
   publish-mvn:
     name: Publish Maven Package
