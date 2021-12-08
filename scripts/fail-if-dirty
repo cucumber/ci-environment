@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script fails if the git working copy is dirty, and prints the diff
+set -e
+
+diff=$(git diff)
+if [[ ! -z "${diff}" ]]; then
+  >&2 echo "The working copy is dirty:"
+  >&2 echo "${diff}"
+  exit 1
+fi
+

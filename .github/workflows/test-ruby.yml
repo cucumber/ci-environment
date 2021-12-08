@@ -35,3 +35,4 @@ jobs:
     - name: bundle exec rake
       working-directory: ruby
       run: bundle exec rake
+    - run: ./scripts/fail-if-dirty.sh
