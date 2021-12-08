@@ -1,5 +1,9 @@
 # CiEnvironment
 
+[![test-java](https://github.com/cucumber/ci-environment/actions/workflows/test-java.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-java.yml)
+[![test-javascript](https://github.com/cucumber/ci-environment/actions/workflows/test-javascript.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-javascript.yml)
+[![test-ruby](https://github.com/cucumber/ci-environment/actions/workflows/test-ruby.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-ruby.yml)
+
 This library detects the CI environment based on environment variables defined
 by CI servers.
 
