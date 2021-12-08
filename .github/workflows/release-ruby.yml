@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - release/*
-  
+
 jobs:
 
   pre-release-check:
@@ -21,6 +21,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Synchronize CI Dict
+        working-directory: ruby
+        run: bundle exec rake copy_ci_dict
 
       - name: Publish ruby gem
         uses: cucumber/action-publish-rubygem@v1.0.0
