@@ -21,6 +21,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+          working-directory: ruby
       - name: Synchronize CiEnvironments.json
         working-directory: ruby
         run: bundle exec rake lib/cucumber/ci_environment/CiEnvironments.json
