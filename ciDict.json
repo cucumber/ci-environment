@@ -1,5 +1,6 @@
 {
   "Azure Pipelines": {
+    "name": "Azure Pipelines",
     "url": "${BUILD_BUILDURI}",
     "buildNumber": "${BUILD_BUILDNUMBER}",
     "git": {
@@ -10,6 +11,7 @@
     }
   },
   "Bamboo": {
+    "name": "Bamboo",
     "url": "${bamboo_buildResultsUrl}",
     "buildNumber": "${bamboo_buildNumber}",
     "git": {
@@ -20,6 +22,7 @@
     }
   },
   "Buddy": {
+    "name": "Buddy",
     "url": "${BUDDY_EXECUTION_URL}",
     "buildNumber": "${BUDDY_EXECUTION_ID}",
     "git": {
@@ -30,6 +33,7 @@
     }
   },
   "Bitrise": {
+    "name": "Bitrise",
     "url": "${BITRISE_BUILD_URL}",
     "buildNumber": "${BITRISE_BUILD_NUMBER}",
     "git": {
@@ -40,6 +44,7 @@
     }
   },
   "CircleCI": {
+    "name": "CircleCI",
     "url": "${CIRCLE_BUILD_URL}",
     "buildNumber": "${CIRCLE_BUILD_NUM}",
     "git": {
@@ -50,6 +55,7 @@
     }
   },
   "CodeFresh": {
+    "name": "CodeFresh",
     "url": "${CF_BUILD_URL}",
     "buildNumber": "${CF_BUILD_ID}",
     "git": {
@@ -60,6 +66,7 @@
     }
   },
   "CodeShip": {
+    "name": "CodeShip",
     "url": "${CI_BUILD_URL}",
     "buildNumber": "${CI_BUILD_NUMBER}",
     "git": {
@@ -70,6 +77,7 @@
     }
   },
   "GitHub Actions": {
+    "name": "GitHub Actions",
     "url": "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}",
     "buildNumber": "${GITHUB_RUN_ID}",
     "git": {
@@ -80,6 +88,7 @@
     }
   },
   "GitLab": {
+    "name": "GitLab",
     "url": "${CI_JOB_URL}",
     "buildNumber": "${CI_JOB_ID}",
     "git": {
@@ -90,6 +99,7 @@
     }
   },
   "GoCD": {
+    "name": "GoCD",
     "url": "${GO_SERVER_URL}/pipelines/${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}/${GO_STAGE_NAME}/${GO_STAGE_COUNTER}",
     "buildNumber": "${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}/${GO_STAGE_NAME}/${GO_STAGE_COUNTER}",
     "git": {
@@ -100,6 +110,7 @@
     }
   },
   "Jenkins": {
+    "name": "Jenkins",
     "url": "${BUILD_URL}",
     "buildNumber": "${BUILD_NUMBER}",
     "git": {
@@ -110,6 +121,7 @@
     }
   },
   "Semaphore": {
+    "name": "Semaphore",
     "url": "${SEMAPHORE_ORGANIZATION_URL}/jobs/${SEMAPHORE_JOB_ID}",
     "buildNumber": "${SEMAPHORE_JOB_ID}",
     "git": {
@@ -120,6 +132,7 @@
     }
   },
   "Travis CI": {
+    "name": "Travis CI",
     "url": "${TRAVIS_BUILD_WEB_URL}",
     "buildNumber": "${TRAVIS_JOB_NUMBER}",
     "git": {
@@ -130,6 +143,7 @@
     }
   },
   "Wercker": {
+    "name": "Wercker",
     "url": "${WERCKER_RUN_URL}",
     "buildNumber": "${WERCKER_RUN_URL/.*\\/([^\\/]+)$/\\1}",
     "git": {
