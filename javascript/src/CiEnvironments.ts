@@ -1,9 +1,9 @@
-// This file is auto-generated using npm run build-ci-dict
+// This file is auto-generated using npm run build-ci-environments
 
-import { CiDict } from './types'
+import { CiEnvironment } from './types'
 
-export const ciDict: CiDict = {
-  'Azure Pipelines': {
+export const CiEnvironments: readonly CiEnvironment[] = [
+  {
     name: 'Azure Pipelines',
     url: '${BUILD_BUILDURI}',
     buildNumber: '${BUILD_BUILDNUMBER}',
@@ -14,7 +14,7 @@ export const ciDict: CiDict = {
       tag: '${BUILD_SOURCEBRANCH/refs/tags/(.*)/\\1}',
     },
   },
-  Bamboo: {
+  {
     name: 'Bamboo',
     url: '${bamboo_buildResultsUrl}',
     buildNumber: '${bamboo_buildNumber}',
@@ -25,7 +25,7 @@ export const ciDict: CiDict = {
       tag: null,
     },
   },
-  Buddy: {
+  {
     name: 'Buddy',
     url: '${BUDDY_EXECUTION_URL}',
     buildNumber: '${BUDDY_EXECUTION_ID}',
@@ -36,7 +36,7 @@ export const ciDict: CiDict = {
       tag: '${BUDDY_EXECUTION_TAG}',
     },
   },
-  Bitrise: {
+  {
     name: 'Bitrise',
     url: '${BITRISE_BUILD_URL}',
     buildNumber: '${BITRISE_BUILD_NUMBER}',
@@ -47,7 +47,7 @@ export const ciDict: CiDict = {
       tag: '${BITRISE_GIT_TAG}',
     },
   },
-  CircleCI: {
+  {
     name: 'CircleCI',
     url: '${CIRCLE_BUILD_URL}',
     buildNumber: '${CIRCLE_BUILD_NUM}',
@@ -58,7 +58,7 @@ export const ciDict: CiDict = {
       tag: '${CIRCLE_TAG}',
     },
   },
-  CodeFresh: {
+  {
     name: 'CodeFresh',
     url: '${CF_BUILD_URL}',
     buildNumber: '${CF_BUILD_ID}',
@@ -69,7 +69,7 @@ export const ciDict: CiDict = {
       tag: null,
     },
   },
-  CodeShip: {
+  {
     name: 'CodeShip',
     url: '${CI_BUILD_URL}',
     buildNumber: '${CI_BUILD_NUMBER}',
@@ -80,7 +80,7 @@ export const ciDict: CiDict = {
       tag: null,
     },
   },
-  'GitHub Actions': {
+  {
     name: 'GitHub Actions',
     url: '${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}',
     buildNumber: '${GITHUB_RUN_ID}',
@@ -91,7 +91,7 @@ export const ciDict: CiDict = {
       tag: '${GITHUB_REF/refs/tags/(.*)/\\1}',
     },
   },
-  GitLab: {
+  {
     name: 'GitLab',
     url: '${CI_JOB_URL}',
     buildNumber: '${CI_JOB_ID}',
@@ -102,7 +102,7 @@ export const ciDict: CiDict = {
       tag: '${CI_COMMIT_TAG}',
     },
   },
-  GoCD: {
+  {
     name: 'GoCD',
     url: '${GO_SERVER_URL}/pipelines/${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}/${GO_STAGE_NAME}/${GO_STAGE_COUNTER}',
     buildNumber: '${GO_PIPELINE_NAME}/${GO_PIPELINE_COUNTER}/${GO_STAGE_NAME}/${GO_STAGE_COUNTER}',
@@ -113,7 +113,7 @@ export const ciDict: CiDict = {
       tag: null,
     },
   },
-  Jenkins: {
+  {
     name: 'Jenkins',
     url: '${BUILD_URL}',
     buildNumber: '${BUILD_NUMBER}',
@@ -124,7 +124,7 @@ export const ciDict: CiDict = {
       tag: null,
     },
   },
-  Semaphore: {
+  {
     name: 'Semaphore',
     url: '${SEMAPHORE_ORGANIZATION_URL}/jobs/${SEMAPHORE_JOB_ID}',
     buildNumber: '${SEMAPHORE_JOB_ID}',
@@ -135,7 +135,7 @@ export const ciDict: CiDict = {
       tag: '${SEMAPHORE_GIT_TAG_NAME}',
     },
   },
-  'Travis CI': {
+  {
     name: 'Travis CI',
     url: '${TRAVIS_BUILD_WEB_URL}',
     buildNumber: '${TRAVIS_JOB_NUMBER}',
@@ -146,7 +146,7 @@ export const ciDict: CiDict = {
       tag: '${TRAVIS_TAG}',
     },
   },
-  Wercker: {
+  {
     name: 'Wercker',
     url: '${WERCKER_RUN_URL}',
     buildNumber: '${WERCKER_RUN_URL/.*\\/([^\\/]+)$/\\1}',
@@ -157,4 +157,4 @@ export const ciDict: CiDict = {
       tag: null,
     },
   },
-}
+]

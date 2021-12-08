@@ -12,5 +12,7 @@ export type Git = {
   tag?: string
 }
 
-export type CiDict = Record<string, CiEnvironment>
+export type CiEnvironments = {
+  ciEnvironments: readonly CiEnvironment[]
+}
 export type Env = Record<string, string | undefined>
