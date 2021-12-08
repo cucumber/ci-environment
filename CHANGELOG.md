@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- This library has been renamed to `ci-environment` and no longer depends on Cucumber `messages`.
+  ([PR#34](https://github.com/cucumber/ci-environment/pull/34))
+
 ## [6.0.4] - 2021-11-16
 
 ### Fixed
