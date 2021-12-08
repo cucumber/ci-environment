@@ -3,7 +3,7 @@ import fs from 'fs'
 import glob from 'glob'
 import path from 'path'
 
-import detectCiEnvironment from '../src/detectCiEnvironment'
+import detectCiEnvironment from '../src/index'
 import { Env } from '../src/types'
 
 describe('detectCiEnvironment', () => {

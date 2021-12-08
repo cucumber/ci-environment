@@ -2,11 +2,8 @@ import { CiEnvironments } from './CiEnvironments'
 import evaluateVariableExpression from './evaluateVariableExpression'
 import { CiEnvironment, Env, Git } from './types'
 
-export default function detectCiEnvironment(
-  env: Env,
-  ciEnvironments = CiEnvironments
-): CiEnvironment | undefined {
-  for (const ciEnvironment of ciEnvironments) {
+export default function detectCiEnvironment(env: Env): CiEnvironment | undefined {
+  for (const ciEnvironment of CiEnvironments) {
     const detected = detect(ciEnvironment, env)
     if (detected) {
       return detected

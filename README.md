@@ -1,10 +1,57 @@
-# createMeta
+# CiEnvironment
 
-Utility function for creating system-specific `Meta` messages.
-## Supported CI systems
+This library detects the CI environment based on environment variables defined
+by CI servers.
 
-The `ci` field of the `Meta` message contains values from environment variables
-defined by the following supported CI and build servers:
+If a CI server is detected, a struct of the following structure is returned:
+
+```json
+{
+  "name": "...",
+  "url": "...",
+  "buildNumber": "...",
+  "git": {
+    "remote": "...",
+    "revision": "...",
+    "branch": "..."
+  }
+}
+```
+
+## Usage
+
+### TypeScript
+
+```typescript
+import detectCiEnvironment from '@cucumber/ci-environment'
+
+const ciEnvironment = detectCiEnvironment(process.env)
+console.log(JSON.stringify(ciEnvironment, null, 2))
+```
+
+### Java
+
+```java
+import static io.cucumber.createmeta.DetectCiEnvironment.detectCiEnvironment;
+
+public class CiEnvironmentExample {
+    public static void main(String[] args) {
+        CiEnvironment ciEnvironment = detectCiEnvironment(System.getenv());
+        System.out.println("ciEnvironment = " + ciEnvironment);
+    }
+}
+```
+
+### Ruby
+
+```ruby
+require 'cucumber/ci_environment'
+
+ci_environment = Cucumber::CiEnvironment.detect_ci_environment(ENV)
+p ci_environment
+```
+
+## Supported CI servers
 
 * [Azure Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)
 * [Bamboo](https://confluence.atlassian.com/bamboo/bamboo-variables-289277087.html)
@@ -21,6 +68,6 @@ defined by the following supported CI and build servers:
 * [Travis CI](https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables)
 * [Wercker](https://devcenter.wercker.com/administration/environment-variables/available-env-vars/)
 
-## Adding new CI system / contributing
+## Contributing
 
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.

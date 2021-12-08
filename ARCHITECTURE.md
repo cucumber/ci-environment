@@ -2,8 +2,9 @@
 
 ## CI definitions
 
-The `ciDict.json` file contains definitions of various CI servers. Each property of a CI
-server definition is an expression that evaluates a value from one or more environment variables.
+The `CiEnvironment.json` file contains an array of `CiEnvironment` structs for
+all the supported CI servers. Each property of a `CiEnvironment` struct
+is an expression that evaluates a value from one or more environment variables.
 
 The expression syntax for environment variables can use the form `${variable/pattern/replacement}`,
 similar to [bash parameter substitution](https://tldp.org/LDP/abs/html/parameter-substitution.html),

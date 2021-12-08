@@ -7,7 +7,7 @@ module Cucumber
     extend VariableExpression
     CI_ENVIRONMENTS_PATH = File.join(File.dirname(__FILE__), 'ci_environment/CiEnvironments.json')
 
-    def detect_ci_environment(env = ENV)
+    def detect_ci_environment(env)
       ci_environments = JSON.parse(IO.read(CI_ENVIRONMENTS_PATH))
       ci_environments.each do |ci_environment|
         detected = detect(ci_environment, env)

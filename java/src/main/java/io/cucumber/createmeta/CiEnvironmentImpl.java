@@ -72,6 +72,16 @@ final class CiEnvironmentImpl implements CiEnvironment {
         return Objects.hash(name, url, buildNumber, git);
     }
 
+    @Override
+    public String toString() {
+        return "CiEnvironmentImpl{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", buildNumber='" + buildNumber + '\'' +
+                ", git=" + git +
+                '}';
+    }
+
     final static class Git implements CiEnvironment.Git {
         public String remote;
         public String revision;
@@ -119,6 +129,16 @@ final class CiEnvironmentImpl implements CiEnvironment {
         @Override
         public int hashCode() {
             return Objects.hash(remote, revision, branch, tag);
+        }
+
+        @Override
+        public String toString() {
+            return "Git{" +
+                    "remote='" + remote + '\'' +
+                    ", revision='" + revision + '\'' +
+                    ", branch='" + branch + '\'' +
+                    ", tag='" + tag + '\'' +
+                    '}';
         }
     }
 }
