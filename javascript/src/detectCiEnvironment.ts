@@ -28,15 +28,27 @@ function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
   if (!revision) {
     return undefined
   }
+
+  const remote = evaluateVariableExpression(ciEnvironment.git.remote, env)
+  if (!remote) {
+    return undefined
+  }
+
   const git: Git = {
     revision,
-    remote: removeUserInfoFromUrl(evaluateVariableExpression(ciEnvironment.git.remote, env)),
-    branch: evaluateVariableExpression(ciEnvironment.git.branch, env),
+    remote: removeUserInfoFromUrl(remote),
   }
+
   const tag = evaluateVariableExpression(ciEnvironment.git.tag, env)
   if (tag) {
     git.tag = tag
   }
+
+  const branch = evaluateVariableExpression(ciEnvironment.git.branch, env)
+  if (branch) {
+    git.branch = branch
+  }
+
   return git
 }
 
