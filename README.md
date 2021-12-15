@@ -18,7 +18,7 @@ If a CI server is detected, a `CiEnvironment` struct is returned:
     "remote": "...",
     "revision": "...",
     "branch": "...",
-    "tag": "...",
+    "tag": "..."
   }
 }
 ```
