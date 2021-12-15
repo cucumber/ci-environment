@@ -56,14 +56,18 @@ final class CiEnvironmentImpl implements CiEnvironment {
     }
 
     private Git detectGit(Map<String, String> env) {
-        return Optional.ofNullable(evaluate(git.revision, env))
-                .map(revision -> new Git(
-                        removeUserInfoFromUrl(evaluate(git.remote, env)),
-                        revision,
-                        evaluate(git.branch, env),
-                        evaluate(git.tag, env)
-                ))
-                .orElse(null);
+        String revision = evaluate(git.revision, env);
+        if (revision == null) return null;
+
+        String remote = evaluate(git.remote, env);
+        if (remote == null) return null;
+
+        return new Git(
+            removeUserInfoFromUrl(remote),
+            revision,
+            evaluate(git.branch, env),
+            evaluate(git.tag, env)
+        );
     }
 
     @Override
