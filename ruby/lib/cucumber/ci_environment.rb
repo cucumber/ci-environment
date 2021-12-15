@@ -34,14 +34,18 @@ module Cucumber
       revision = evaluate(ci_environment['git']['revision'], env)
       return nil if revision.nil?
 
+      remote = evaluate(ci_environment['git']['remote'], env)
+      return nil if remote.nil?
+
       git_info = {
-        remote: remove_userinfo_from_url(evaluate(ci_environment['git']['remote'], env)),
-        revision: evaluate(ci_environment['git']['revision'], env),
-        branch: evaluate(ci_environment['git']['branch'], env),
+        remote: remove_userinfo_from_url(remote),
+        revision: revision,
       }
 
       tag = evaluate(ci_environment['git']['tag'], env)
+      branch = evaluate(ci_environment['git']['branch'], env)
       git_info[:tag] = tag if tag
+      git_info[:branch] = branch if branch
       git_info
     end
 
