@@ -2,13 +2,13 @@ export type CiEnvironment = {
   name: string
   url: string
   buildNumber: string
-  git: Git
+  git?: Git
 }
 
 export type Git = {
-  remote?: string
+  remote: string
+  revision: string
   branch?: string
-  revision?: string
   tag?: string
 }
 

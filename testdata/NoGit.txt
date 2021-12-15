@@ -1,0 +1,2 @@
+BUILD_URL=https://cihost.com/path/to/the/build
+BUILD_NUMBER=1234

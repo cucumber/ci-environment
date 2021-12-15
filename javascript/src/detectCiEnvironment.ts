@@ -23,6 +23,28 @@ export function removeUserInfoFromUrl(value: string): string {
   }
 }
 
+function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
+  const revision = evaluateVariableExpression(ciEnvironment.git.revision, env)
+  if (!revision) {
+    return undefined
+  }
+
+  const remote = evaluateVariableExpression(ciEnvironment.git.remote, env)
+  if (!remote) {
+    return undefined
+  }
+
+  const tag = evaluateVariableExpression(ciEnvironment.git.tag, env)
+  const branch = evaluateVariableExpression(ciEnvironment.git.branch, env)
+
+  return {
+    revision,
+    remote: removeUserInfoFromUrl(remote),
+    ...(tag && { tag }),
+    ...(branch && { branch }),
+  }
+}
+
 function detect(ciEnvironment: CiEnvironment, env: Env): CiEnvironment | undefined {
   const url = evaluateVariableExpression(ciEnvironment.url, env)
   const buildNumber = evaluateVariableExpression(ciEnvironment.buildNumber, env)
@@ -31,19 +53,12 @@ function detect(ciEnvironment: CiEnvironment, env: Env): CiEnvironment | undefin
     // If this cannot be determined, we return nothing.
     return undefined
   }
-
-  const tag = evaluateVariableExpression(ciEnvironment.git.tag, env)
-  const git: Git = {
-    remote: removeUserInfoFromUrl(evaluateVariableExpression(ciEnvironment.git.remote, env)),
-    revision: evaluateVariableExpression(ciEnvironment.git.revision, env),
-    branch: evaluateVariableExpression(ciEnvironment.git.branch, env),
-    ...(tag ? { tag } : {}),
-  }
+  const git = detectGit(ciEnvironment, env)
 
   return {
     name: ciEnvironment.name,
     url,
     buildNumber,
-    git: git,
+    ...(git && { git }),
   }
 }
