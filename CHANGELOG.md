@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [8.0.0] - 2021-12-15
 ### Changed
 - Make `git` optional, make `git.revision` and `git.remote` mandatory ([#37](https://github.com/cucumber/ci-environment/pull/37))
 
@@ -122,7 +124,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v7.0.1...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v8.0.0...main
+[8.0.0]: https://github.com/cucumber/ci-environment/compare/v7.0.1...main
 [7.0.1]: https://github.com/cucumber/ci-environment/compare/v7.0.0...main
 [7.0.0]: https://github.com/cucumber/ci-environment/compare/v6.0.4...main
 [6.0.4]: https://github.com/cucumber/ci-environment/compare/v6.0.3...v6.0.4

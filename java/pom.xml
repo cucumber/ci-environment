@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>ci-environment</artifactId>
-    <version>7.0.1</version>
+    <version>8.0.0</version>
     <packaging>jar</packaging>
     <name>Cucumber CiEnvironment</name>
     <description>Detect CI Environment from environment variables</description>
