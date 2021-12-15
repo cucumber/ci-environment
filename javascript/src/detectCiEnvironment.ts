@@ -34,22 +34,15 @@ function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
     return undefined
   }
 
-  const git: Git = {
+  const tag = evaluateVariableExpression(ciEnvironment.git.tag, env)
+  const branch = evaluateVariableExpression(ciEnvironment.git.branch, env)
+
+  return {
     revision,
     remote: removeUserInfoFromUrl(remote),
+    ...(tag && { tag }),
+    ...(branch && { branch }),
   }
-
-  const tag = evaluateVariableExpression(ciEnvironment.git.tag, env)
-  if (tag) {
-    git.tag = tag
-  }
-
-  const branch = evaluateVariableExpression(ciEnvironment.git.branch, env)
-  if (branch) {
-    git.branch = branch
-  }
-
-  return git
 }
 
 function detect(ciEnvironment: CiEnvironment, env: Env): CiEnvironment | undefined {
@@ -60,14 +53,12 @@ function detect(ciEnvironment: CiEnvironment, env: Env): CiEnvironment | undefin
     // If this cannot be determined, we return nothing.
     return undefined
   }
-  const ci: CiEnvironment = {
+  const git = detectGit(ciEnvironment, env)
+
+  return {
     name: ciEnvironment.name,
     url,
     buildNumber,
+    ...(git && { git }),
   }
-  const git = detectGit(ciEnvironment, env)
-  if (git) {
-    ci.git = git
-  }
-  return ci
 }
