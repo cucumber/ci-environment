@@ -23,17 +23,26 @@ module Cucumber
         name: ci_environment['name'],
         url: url,
         buildNumber: evaluate(ci_environment['buildNumber'], env),
-        git: {
-          remote: remove_userinfo_from_url(evaluate(ci_environment['git']['remote'], env)),
-          revision: evaluate(ci_environment['git']['revision'], env),
-          branch: evaluate(ci_environment['git']['branch'], env),
-        }
       }
-      tag = evaluate(ci_environment['git']['tag'], env)
-      if tag
-        result[:git][:tag] = tag
-      end
+
+      detected_git = detect_git(ci_environment, env)
+      result[:git] = detected_git if detected_git
       result
+    end
+
+    def detect_git(ci_environment, env)
+      revision = evaluate(ci_environment['git']['revision'], env)
+      return nil if revision.nil?
+
+      git_info = {
+        remote: remove_userinfo_from_url(evaluate(ci_environment['git']['remote'], env)),
+        revision: evaluate(ci_environment['git']['revision'], env),
+        branch: evaluate(ci_environment['git']['branch'], env),
+      }
+
+      tag = evaluate(ci_environment['git']['tag'], env)
+      git_info[:tag] = tag if tag
+      git_info
     end
 
     def remove_userinfo_from_url(value)
@@ -48,6 +57,6 @@ module Cucumber
       end
     end
 
-    module_function :detect_ci_environment, :detect, :remove_userinfo_from_url
+    module_function :detect_ci_environment, :detect, :detect_git, :remove_userinfo_from_url
   end
 end
