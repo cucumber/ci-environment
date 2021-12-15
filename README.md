@@ -17,7 +17,8 @@ If a CI server is detected, a `CiEnvironment` struct is returned:
   "git": {
     "remote": "...",
     "revision": "...",
-    "branch": "..."
+    "branch": "...",
+    "tag": "...",
   }
 }
 ```
