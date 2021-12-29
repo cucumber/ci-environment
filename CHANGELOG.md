@@ -129,7 +129,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - First release
 
 [Unreleased]: https://github.com/cucumber/ci-environment/compare/v8.0.1...main
-[8.0.0]: https://github.com/cucumber/ci-environment/compare/v8.0.0...v8.0.1
+[8.0.1]: https://github.com/cucumber/ci-environment/compare/v8.0.0...v8.0.1
 [8.0.0]: https://github.com/cucumber/ci-environment/compare/v7.0.1...v8.0.0
 [7.0.1]: https://github.com/cucumber/ci-environment/compare/v7.0.0...v7.0.1
 [7.0.0]: https://github.com/cucumber/ci-environment/compare/v6.0.4...v7.0.0
