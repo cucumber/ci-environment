@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [8.0.1] - 2021-12-29
 ### Fixed
 - [Ruby] `detect_ci_environment` was not returning `nil` if no CI had been detected
 
@@ -126,10 +128,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v8.0.0...main
-[8.0.0]: https://github.com/cucumber/ci-environment/compare/v7.0.1...main
-[7.0.1]: https://github.com/cucumber/ci-environment/compare/v7.0.0...main
-[7.0.0]: https://github.com/cucumber/ci-environment/compare/v6.0.4...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v8.0.1...main
+[8.0.0]: https://github.com/cucumber/ci-environment/compare/v8.0.0...v8.0.1
+[8.0.0]: https://github.com/cucumber/ci-environment/compare/v7.0.1...v8.0.0
+[7.0.1]: https://github.com/cucumber/ci-environment/compare/v7.0.0...v7.0.1
+[7.0.0]: https://github.com/cucumber/ci-environment/compare/v6.0.4...v7.0.0
 [6.0.4]: https://github.com/cucumber/ci-environment/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/cucumber/ci-environment/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/cucumber/ci-environment/compare/v6.0.1...v6.0.2
