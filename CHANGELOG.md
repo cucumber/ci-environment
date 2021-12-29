@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- [Ruby] `detect_ci_environment` was not returning `nil` if no CI had been detected
 
 ## [8.0.0] - 2021-12-15
 ### Changed

@@ -13,6 +13,8 @@ module Cucumber
         detected = detect(ci_environment, env)
         return detected unless detected.nil?
       end
+
+      nil
     end
 
     def detect(ci_environment, env)
