@@ -2,6 +2,7 @@
   "name": "@cucumber/ci-environment",
   "version": "8.0.1",
   "description": "Detect CI Environment from environment variables",
+  "type": "module",
   "main": "dist/cjs/src/index.js",
   "types": "dist/cjs/src/index.d.ts",
   "files": [

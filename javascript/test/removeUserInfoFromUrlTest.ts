@@ -1,6 +1,6 @@
 import assert from 'assert'
 
-import { removeUserInfoFromUrl } from '../src/detectCiEnvironment'
+import { removeUserInfoFromUrl } from '../src/detectCiEnvironment.js'
 
 describe('removeUserInfoFromUrl', () => {
   it('returns undefined for undefined', () => {

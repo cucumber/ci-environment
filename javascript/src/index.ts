@@ -1,3 +1,3 @@
-import detectCiEnvironment from './detectCiEnvironment'
+import detectCiEnvironment from './detectCiEnvironment.js'
 
 export default detectCiEnvironment

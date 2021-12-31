@@ -1,8 +1,8 @@
 import { URL } from 'url'
 
-import { CiEnvironments } from './CiEnvironments'
-import evaluateVariableExpression from './evaluateVariableExpression'
-import { CiEnvironment, Env, Git } from './types'
+import { CiEnvironments } from './CiEnvironments.js'
+import evaluateVariableExpression from './evaluateVariableExpression.js'
+import { CiEnvironment, Env, Git } from './types.js'
 
 export default function detectCiEnvironment(env: Env): CiEnvironment | undefined {
   for (const ciEnvironment of CiEnvironments) {
