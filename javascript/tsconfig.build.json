@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "composite": true,
     "declaration": true,
@@ -8,7 +8,8 @@
     "target": "es6",
     "module": "commonjs",
     "rootDir": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "noEmit": false
   },
   "include": [
     "src",

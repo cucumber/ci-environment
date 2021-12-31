@@ -1,3 +1,5 @@
+import { URL } from 'url'
+
 import { CiEnvironments } from './CiEnvironments'
 import evaluateVariableExpression from './evaluateVariableExpression'
 import { CiEnvironment, Env, Git } from './types'
