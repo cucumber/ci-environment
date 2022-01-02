@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [8.1.0] - 2022-01-02
 ### Added
 - [JavaScript] - package as hybrid esm/commonjs module ([#47](https://github.com/cucumber/ci-environment/pull/47))
 
@@ -130,7 +132,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v8.0.1...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v8.1.0...main
+[8.1.0]: https://github.com/cucumber/ci-environment/compare/v8.0.1...v8.1.0
 [8.0.1]: https://github.com/cucumber/ci-environment/compare/v8.0.0...v8.0.1
 [8.0.0]: https://github.com/cucumber/ci-environment/compare/v7.0.1...v8.0.0
 [7.0.1]: https://github.com/cucumber/ci-environment/compare/v7.0.0...v7.0.1
