@@ -1,19 +1,24 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@cucumber/messages": ["messages/javascript"],
-      "@cucumber/message-streams": ["message-streams/javascript"],
-      "@cucumber/gherkin": ["gherkin/javascript/src/index.ts"],
-      "@cucumber/gherkin-streams": ["gherkin-streams/javascript/src/index.ts"],
-      "@cucumber/gherkin-utils": ["gherkin-utils/javascript/src/index.ts"],
-      "@cucumber/ci-environment": ["ci-environment/javascript/src/index.ts"],
-      "@cucumber/fake-cucumber": ["fake-cucumber/javascript/src/index.ts"],
-      "@cucumber/query": ["query/javascript/src/index.ts"],
-      "@cucumber/compatibility-kit": ["compatibility-kit/javascript/src/index.ts"],
-      "@cucumber/react": ["react/javascript/src/index.ts"]
-    },
+    "declaration": true,
+    "target": "es2018",
+    "lib": [
+      "es2019",
+      "dom"
+    ],
+    "sourceMap": true,
+    "allowJs": false,
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "module": "esNext",
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "experimentalDecorators": true,
     "noEmit": true
   }
 }

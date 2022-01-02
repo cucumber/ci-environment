@@ -3,11 +3,11 @@ import fs from 'fs'
 import glob from 'glob'
 import path from 'path'
 
-import detectCiEnvironment from '../src/index'
-import { Env } from '../src/types'
+import detectCiEnvironment from '../src/index.js'
+import { Env } from '../src/types.js'
 
 describe('detectCiEnvironment', () => {
-  for (const txt of glob.sync(`${__dirname}/../../testdata/*.txt`)) {
+  for (const txt of glob.sync(`../testdata/*.txt`)) {
     it(`detects ${path.basename(txt, '.txt')}`, () => {
       const envData = fs.readFileSync(txt, { encoding: 'utf8' })
       const entries = envData.split(/\n/).map((line) => line.split(/=/))
