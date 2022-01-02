@@ -1,5 +1,3 @@
-import { URL } from 'url'
-
 import { CiEnvironments } from './CiEnvironments.js'
 import evaluateVariableExpression from './evaluateVariableExpression.js'
 import { CiEnvironment, Env, Git } from './types.js'
