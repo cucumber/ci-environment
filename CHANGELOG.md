@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- [JavaScript] make `buildNumber` optional ([#51](https://github.com/cucumber/ci-environment/pull/51))
+
 ## [8.1.0] - 2022-01-02
 ### Added
 - [JavaScript] - package as hybrid esm/commonjs module ([#47](https://github.com/cucumber/ci-environment/pull/47))
