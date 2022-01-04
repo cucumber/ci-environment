@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-import static io.cucumber.cienvironment.DetectCiEnvironment.removeUserInfoFromUrl;
 import static io.cucumber.cienvironment.VariableExpression.evaluate;
 import static java.util.Objects.requireNonNull;
 import static java.util.Optional.empty;
@@ -67,7 +66,7 @@ final class CiEnvironmentImpl implements CiEnvironment {
         if (remote == null) return null;
 
         return new Git(
-            removeUserInfoFromUrl(remote),
+            RemoveUserInfo.fromUrl(remote),
             revision,
             evaluate(git.branch, env),
             evaluate(git.tag, env)
