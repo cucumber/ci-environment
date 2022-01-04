@@ -3,20 +3,18 @@ package io.cucumber.cienvironment;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
+import java.util.Optional;
 
 public final class DetectCiEnvironment {
     private DetectCiEnvironment() {
 
     }
-
-    public static CiEnvironment detectCiEnvironment(Map<String, String> env) {
-        for (CiEnvironmentImpl ciTemplate : CiEnvironments.TEMPLATES) {
-            CiEnvironment detected = ciTemplate.detect(env);
-            if (detected != null) {
-                return detected;
-            }
-        }
-        return null;
+    public static Optional<CiEnvironment> detectCiEnvironment(Map<String, String> env) {
+        return CiEnvironments.TEMPLATES.stream()
+                .map(ciEnvironment -> ciEnvironment.detect(env))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .findFirst();
     }
 
     static String removeUserInfoFromUrl(String value) {

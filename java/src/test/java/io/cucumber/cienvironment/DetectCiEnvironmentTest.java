@@ -19,10 +19,12 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
 import static java.nio.file.Files.newBufferedReader;
 import static java.nio.file.Files.newDirectoryStream;
+import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DetectCiEnvironmentTest {
@@ -39,17 +41,21 @@ class DetectCiEnvironmentTest {
     @ParameterizedTest
     @MethodSource
     void acceptance_tests_pass(@ConvertWith(Converter.class) Expectation expectation) {
-        CiEnvironment ciEnvironment = detectCiEnvironment(expectation.env);
-        assertEquals(expectation.expected, ciEnvironment);
+        Optional<CiEnvironment> ciEnvironment = detectCiEnvironment(expectation.env);
+        assertEquals(expectation.getExpected(), ciEnvironment);
     }
 
     static class Expectation {
-        public final Map<String, String> env;
-        public final CiEnvironment expected;
+        private final Map<String, String> env;
+        private final CiEnvironment expected;
 
         Expectation(Map<String, String> env, CiEnvironment expected) {
-            this.env = env;
-            this.expected = expected;
+            this.env = requireNonNull(env);
+            this.expected = requireNonNull(expected);
+        }
+
+        public Optional<CiEnvironment> getExpected() {
+            return Optional.of(expected);
         }
     }
 

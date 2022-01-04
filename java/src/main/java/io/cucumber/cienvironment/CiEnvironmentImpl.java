@@ -6,6 +6,10 @@ import java.util.Optional;
 
 import static io.cucumber.cienvironment.DetectCiEnvironment.removeUserInfoFromUrl;
 import static io.cucumber.cienvironment.VariableExpression.evaluate;
+import static java.util.Objects.requireNonNull;
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
+import static java.util.Optional.ofNullable;
 
 final class CiEnvironmentImpl implements CiEnvironment {
     public String name;
@@ -17,8 +21,8 @@ final class CiEnvironmentImpl implements CiEnvironment {
     }
 
     CiEnvironmentImpl(String name, String url, String buildNumber, Git git) {
-        this.name = name;
-        this.url = url;
+        this.name = requireNonNull(name);
+        this.url = requireNonNull(url);
         this.buildNumber = buildNumber;
         this.git = git;
     }
@@ -34,25 +38,25 @@ final class CiEnvironmentImpl implements CiEnvironment {
     }
 
     @Override
-    public String getBuildNumber() {
-        return buildNumber;
+    public Optional<String> getBuildNumber() {
+        return ofNullable(buildNumber);
     }
 
     @Override
-    public CiEnvironment.Git getGit() {
-        return git;
+    public Optional<CiEnvironment.Git> getGit() {
+        return ofNullable(git);
     }
 
-    CiEnvironment detect(Map<String, String> env) {
+    Optional<CiEnvironment> detect(Map<String, String> env) {
         String url = evaluate(getUrl(), env);
-        if (url == null) return null;
+        if (url == null) return empty();
 
-        return new CiEnvironmentImpl(
+        return of(new CiEnvironmentImpl(
                 name,
                 url,
-                evaluate(getBuildNumber(), env),
+                evaluate(getBuildNumber().orElse(null), env),
                 detectGit(env)
-        );
+        ));
     }
 
     private Git detectGit(Map<String, String> env) {
@@ -103,8 +107,8 @@ final class CiEnvironmentImpl implements CiEnvironment {
         }
 
         Git(String remote, String revision, String branch, String tag) {
-            this.remote = remote;
-            this.revision = revision;
+            this.remote = requireNonNull(remote);
+            this.revision = requireNonNull(revision);
             this.branch = branch;
             this.tag = tag;
         }
@@ -120,13 +124,13 @@ final class CiEnvironmentImpl implements CiEnvironment {
         }
 
         @Override
-        public String getBranch() {
-            return branch;
+        public Optional<String> getBranch() {
+            return ofNullable(branch);
         }
 
         @Override
-        public String getTag() {
-            return tag;
+        public Optional<String> getTag() {
+            return ofNullable(tag);
         }
 
         @Override
