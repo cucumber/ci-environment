@@ -9,19 +9,22 @@ by CI servers.
 
 If a CI server is detected, a `CiEnvironment` struct is returned:
 
-```json
+```javascript
 {
   "name": "...",
   "url": "...",
-  "buildNumber": "...",
-  "git": {
-    "remote": "...",
+  "buildNumber": "...", // optional
+  "git": {              // optional
+    "remote": "...",    
     "revision": "...",
-    "branch": "...",
-    "tag": "..."
+    "branch": "...",    // optional
+    "tag": "..."        // optional
   }
 }
 ```
+
+Note that some fields are optional (they may not be set if the corresponding environment
+variables are not defined).
 
 Some CI servers expose usernames and passwords in the environment variable
 that is used to detect `git.remote`. For security reasons, this library removes
