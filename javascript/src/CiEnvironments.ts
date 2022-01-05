@@ -22,7 +22,6 @@ export const CiEnvironments: readonly CiEnvironment[] = [
       remote: '${bamboo_planRepository_repositoryUrl}',
       revision: '${bamboo_planRepository_revision}',
       branch: '${bamboo_planRepository_branch}',
-      tag: null,
     },
   },
   {
@@ -66,7 +65,6 @@ export const CiEnvironments: readonly CiEnvironment[] = [
       remote: '${CF_COMMIT_URL/(.*)\\/commit.+$/\\1}.git',
       revision: '${CF_REVISION}',
       branch: '${CF_BRANCH}',
-      tag: null,
     },
   },
   {
@@ -77,7 +75,6 @@ export const CiEnvironments: readonly CiEnvironment[] = [
       remote: '${CI_PULL_REQUEST/(.*)\\/pull\\/\\d+/\\1.git}',
       revision: '${CI_COMMIT_ID}',
       branch: '${CI_BRANCH}',
-      tag: null,
     },
   },
   {
@@ -110,7 +107,6 @@ export const CiEnvironments: readonly CiEnvironment[] = [
       remote: '${GO_SCM_*_PR_URL/(.*)\\/pull\\/\\d+/\\1.git}',
       revision: '${GO_REVISION}',
       branch: '${GO_SCM_*_PR_BRANCH/.*:(.*)/\\1}',
-      tag: null,
     },
   },
   {
@@ -121,7 +117,6 @@ export const CiEnvironments: readonly CiEnvironment[] = [
       remote: '${GIT_URL}',
       revision: '${GIT_COMMIT}',
       branch: '${GIT_LOCAL_BRANCH}',
-      tag: null,
     },
   },
   {
@@ -154,7 +149,6 @@ export const CiEnvironments: readonly CiEnvironment[] = [
       remote: 'https://${WERCKER_GIT_DOMAIN}/${WERCKER_GIT_OWNER}/${WERCKER_GIT_REPOSITORY}.git',
       revision: '${WERCKER_GIT_COMMIT}',
       branch: '${WERCKER_GIT_BRANCH}',
-      tag: null,
     },
   },
 ]

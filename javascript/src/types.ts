@@ -1,7 +1,7 @@
 export type CiEnvironment = {
   name: string
   url: string
-  buildNumber: string
+  buildNumber?: string
   git?: Git
 }
 

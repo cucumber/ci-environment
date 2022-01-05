@@ -24,18 +24,18 @@ export function removeUserInfoFromUrl(value: string): string {
 }
 
 function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
-  const revision = evaluateVariableExpression(ciEnvironment.git.revision, env)
+  const revision = evaluateVariableExpression(ciEnvironment.git?.revision, env)
   if (!revision) {
     return undefined
   }
 
-  const remote = evaluateVariableExpression(ciEnvironment.git.remote, env)
+  const remote = evaluateVariableExpression(ciEnvironment.git?.remote, env)
   if (!remote) {
     return undefined
   }
 
-  const tag = evaluateVariableExpression(ciEnvironment.git.tag, env)
-  const branch = evaluateVariableExpression(ciEnvironment.git.branch, env)
+  const tag = evaluateVariableExpression(ciEnvironment.git?.tag, env)
+  const branch = evaluateVariableExpression(ciEnvironment.git?.branch, env)
 
   return {
     revision,
@@ -47,12 +47,12 @@ function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
 
 function detect(ciEnvironment: CiEnvironment, env: Env): CiEnvironment | undefined {
   const url = evaluateVariableExpression(ciEnvironment.url, env)
-  const buildNumber = evaluateVariableExpression(ciEnvironment.buildNumber, env)
   if (url === undefined) {
     // The url is what consumers will use as the primary key for a build
     // If this cannot be determined, we return nothing.
     return undefined
   }
+  const buildNumber = evaluateVariableExpression(ciEnvironment.buildNumber, env)
   const git = detectGit(ciEnvironment, env)
 
   return {

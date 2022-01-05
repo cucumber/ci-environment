@@ -3,16 +3,8 @@ import assert from 'assert'
 import { removeUserInfoFromUrl } from '../src/detectCiEnvironment.js'
 
 describe('removeUserInfoFromUrl', () => {
-  it('returns undefined for undefined', () => {
-    assert.strictEqual(removeUserInfoFromUrl(undefined), undefined)
-  })
-
-  it('returns null for null', () => {
-    assert.strictEqual(removeUserInfoFromUrl(null), null)
-  })
-
   it('returns empty string for empty string', () => {
-    assert.strictEqual(removeUserInfoFromUrl(null), null)
+    assert.strictEqual(removeUserInfoFromUrl(''), '')
   })
 
   it('leaves the data intact when no sensitive information is detected', () => {
