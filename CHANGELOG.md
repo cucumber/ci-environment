@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - [JavaScript] make `buildNumber` optional ([#51](https://github.com/cucumber/ci-environment/pull/51))
+- [Java] use `Optional<T>` for optional values ([#50](https://github.com/cucumber/ci-environment/pull/50))
 
 ## [8.1.0] - 2022-01-02
 ### Added
