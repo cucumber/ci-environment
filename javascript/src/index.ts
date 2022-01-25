@@ -1,4 +1,4 @@
 import detectCiEnvironment from './detectCiEnvironment.js'
 
-export * from './types'
+export * from './types.js'
 export default detectCiEnvironment
