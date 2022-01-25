@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [9.0.0] - 2022-01-25
 ### Added
 - [JavaScript] export `Env`, `Git`, `CiEnvironment` and `CiEnvironments` types
 
@@ -139,7 +140,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v8.1.0...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.0...main
+[9.0.0]: https://github.com/cucumber/ci-environment/compare/v8.1.0...main
 [8.1.0]: https://github.com/cucumber/ci-environment/compare/v8.0.1...v8.1.0
 [8.0.1]: https://github.com/cucumber/ci-environment/compare/v8.0.0...v8.0.1
 [8.0.0]: https://github.com/cucumber/ci-environment/compare/v7.0.1...v8.0.0
