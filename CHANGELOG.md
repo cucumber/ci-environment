@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- [JavaScript] export `Env`, `Git`, `CiEnvironment` and `CiEnvironments` types
+
 ### Changed
 - [JavaScript] make `buildNumber` optional ([#51](https://github.com/cucumber/ci-environment/pull/51))
 - [Java] use `Optional<T>` for optional values ([#50](https://github.com/cucumber/ci-environment/pull/50))

@@ -15,4 +15,5 @@ export type Git = {
 export type CiEnvironments = {
   ciEnvironments: readonly CiEnvironment[]
 }
+
 export type Env = Record<string, string | undefined>
