@@ -1,7 +1,7 @@
 {
   "git": {
     "remote": "https://github.com/cucumber-ltd/shouty.rb.git",
-    "revision": "99684bcacf01d95875834d87903dcb072306c9ad",
+    "revision": "2436f28fad432a895bfc595bce16e907144b0dc3",
     "branch": "master"
   },
   "name": "GitHub Actions",

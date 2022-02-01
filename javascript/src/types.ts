@@ -17,3 +17,13 @@ export type CiEnvironments = {
 }
 
 export type Env = Record<string, string | undefined>
+
+export type GithubActionsEvent = {
+  pull_request: {
+    head: {
+      sha: string
+    }
+  }
+}
+
+export type SyncFileReader = (path: string) => Buffer
