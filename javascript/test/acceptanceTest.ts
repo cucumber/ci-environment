@@ -25,7 +25,7 @@ describe('detectCiEnvironment', () => {
 const syncFileReader: SyncFileReader = (path: string) => {
   if (path.endsWith('_github_workflow/event.json')) {
     const event: GithubActionsEvent = {
-      before: '2436f28fad432a895bfc595bce16e907144b0dc3'
+      before: '2436f28fad432a895bfc595bce16e907144b0dc3',
     }
     return Buffer.from(JSON.stringify(event, null, 2), 'utf-8')
   }
