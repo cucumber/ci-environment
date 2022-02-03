@@ -63,7 +63,7 @@ function detectRevision(
     if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
     const event: GithubActionsEvent = JSON.parse(syncFileReader(env.GITHUB_EVENT_PATH).toString())
 
-    return event.pull_request.head.sha
+    return event.before
   }
   return evaluateVariableExpression(ciEnvironment.git?.revision, env)
 }
