@@ -18,10 +18,13 @@ import static java.util.Optional.ofNullable;
 
 final class CiEnvironmentImpl implements CiEnvironment {
     public static final Pattern GITHUB_PULL_REQUEST_ACTION_BEFORE = Pattern.compile(".*\"before\"\\s*:\\s*\"([a-f0-9]+)\".*");
-    public final String name;
-    public final String url;
-    public final String buildNumber;
-    public final Git git;
+    public String name;
+    public String url;
+    public String buildNumber;
+    public Git git;
+
+    CiEnvironmentImpl() {
+    }
 
     CiEnvironmentImpl(String name, String url, String buildNumber, Git git) {
         this.name = requireNonNull(name);
