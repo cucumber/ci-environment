@@ -52,12 +52,14 @@ module Cucumber
     end
 
     def detect_revision(ci_environment, env, file_reader)
-      return evaluate(ci_environment['git']['revision'], env) unless ci_environment['name'] == 'GitHub Actions'
-      github_event_path = env['GITHUB_EVENT_PATH']
-      raise StandardError('GITHUB_EVENT_PATH not set') unless github_event_path
+      if env['GITHUB_EVENT_NAME'] == 'pull_request'
+        raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
+        event = JSON.parse(file_reader.call(env['GITHUB_EVENT_PATH']))
+        raise StandardError('GITHUB_EVENT_PATH not set') unless event['before']
+        return event['before']
+      end
 
-      event = JSON.parse(file_reader.call(github_event_path))
-      event['before']
+      return evaluate(ci_environment['git']['revision'], env)
     end
 
     def remove_userinfo_from_url(value)

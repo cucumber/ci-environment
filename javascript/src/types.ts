@@ -17,9 +17,3 @@ export type CiEnvironments = {
 }
 
 export type Env = Record<string, string | undefined>
-
-export type GithubActionsEvent = {
-  before: string
-}
-
-export type SyncFileReader = (path: string) => Buffer

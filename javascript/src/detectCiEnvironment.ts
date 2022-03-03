@@ -2,7 +2,13 @@ import { readFileSync } from 'fs'
 
 import { CiEnvironments } from './CiEnvironments.js'
 import evaluateVariableExpression from './evaluateVariableExpression.js'
-import { CiEnvironment, Env, Git, GithubActionsEvent, SyncFileReader } from './types.js'
+import { CiEnvironment, Env, Git } from './types.js'
+
+export type SyncFileReader = (path: string) => Buffer
+
+export type GithubActionsEvent = {
+  before: string
+}
 
 export default function detectCiEnvironment(
   env: Env,
@@ -59,10 +65,12 @@ function detectRevision(
   env: Env,
   syncFileReader: SyncFileReader
 ): string | undefined {
-  if (ciEnvironment.name === 'GitHub Actions') {
+  if (env.GITHUB_EVENT_NAME === 'pull_request') {
     if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
-    const event: GithubActionsEvent = JSON.parse(syncFileReader(env.GITHUB_EVENT_PATH).toString())
-
+    const event = JSON.parse(syncFileReader(env.GITHUB_EVENT_PATH).toString())
+    if (!('before' in event)) {
+      throw new Error('No before property in ${env.GITHUB_EVENT_PATH}')
+    }
     return event.before
   }
   return evaluateVariableExpression(ciEnvironment.git?.revision, env)
