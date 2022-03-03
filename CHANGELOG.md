@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- Provide correct SHA for GitHub Actions ([#67](https://github.com/cucumber/ci-environment/issues/67), [#69](https://github.com/cucumber/ci-environment/pull/69))
+
 ## [9.0.0] - 2022-01-25
 ### Added
 - [JavaScript] export `Env`, `Git`, `CiEnvironment` and `CiEnvironments` types
