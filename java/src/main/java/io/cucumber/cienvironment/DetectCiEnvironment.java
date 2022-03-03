@@ -22,7 +22,7 @@ public final class DetectCiEnvironment {
         });
     }
 
-    public static Optional<CiEnvironment> detectCiEnvironment(Map<String, String> env, Function<Path, Stream<String>> getLines) {
+    static Optional<CiEnvironment> detectCiEnvironment(Map<String, String> env, Function<Path, Stream<String>> getLines) {
         return CiEnvironments.TEMPLATES.stream()
                 .map(ciEnvironment -> ciEnvironment.detect(env, getLines))
                 .filter(Optional::isPresent)
