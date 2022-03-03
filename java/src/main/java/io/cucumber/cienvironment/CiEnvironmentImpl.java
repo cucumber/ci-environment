@@ -17,14 +17,11 @@ import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 
 final class CiEnvironmentImpl implements CiEnvironment {
-    public static final Pattern BEFORE = Pattern.compile(".*\"before\"\\s*:\\s*\"([a-f0-9]+)\".*");
-    public String name;
-    public String url;
-    public String buildNumber;
-    public Git git;
-
-    CiEnvironmentImpl() {
-    }
+    public static final Pattern GITHUB_PULL_REQUEST_ACTION_BEFORE = Pattern.compile(".*\"before\"\\s*:\\s*\"([a-f0-9]+)\".*");
+    public final String name;
+    public final String url;
+    public final String buildNumber;
+    public final Git git;
 
     CiEnvironmentImpl(String name, String url, String buildNumber, Git git) {
         this.name = requireNonNull(name);
@@ -92,8 +89,8 @@ final class CiEnvironmentImpl implements CiEnvironment {
     }
 
     static String getBeforeProperty(Stream<String> lines) {
-        return lines.filter(line -> BEFORE.matcher(line).matches()).findFirst().map(line -> {
-            Matcher matcher = BEFORE.matcher(line);
+        return lines.filter(line -> GITHUB_PULL_REQUEST_ACTION_BEFORE.matcher(line).matches()).findFirst().map(line -> {
+            Matcher matcher = GITHUB_PULL_REQUEST_ACTION_BEFORE.matcher(line);
             return matcher.matches() ? matcher.group(1) : null;
         }).orElse(null);
     }
