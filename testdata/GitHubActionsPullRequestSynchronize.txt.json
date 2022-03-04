@@ -1,0 +1,10 @@
+{
+  "git": {
+    "remote": "https://github.com/cucumber-ltd/shouty.rb.git",
+    "revision": "3738117e3337e54955580f4e98cf767d96b42135",
+    "branch": "some-branch"
+  },
+  "name": "GitHub Actions",
+  "url": "https://github.com/cucumber-ltd/shouty.rb/actions/runs/154666429",
+  "buildNumber": "154666429"
+}

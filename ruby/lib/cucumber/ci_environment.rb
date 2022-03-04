@@ -7,17 +7,17 @@ module Cucumber
     extend VariableExpression
     CI_ENVIRONMENTS_PATH = File.join(File.dirname(__FILE__), 'ci_environment/CiEnvironments.json')
 
-    def detect_ci_environment(env, file_reader = IO.method(:read))
-      ci_environments = JSON.parse(file_reader.call(CI_ENVIRONMENTS_PATH))
+    def detect_ci_environment(env)
+      ci_environments = JSON.parse(IO.read(CI_ENVIRONMENTS_PATH))
       ci_environments.each do |ci_environment|
-        detected = detect(ci_environment, env, file_reader)
+        detected = detect(ci_environment, env)
         return detected unless detected.nil?
       end
 
       nil
     end
 
-    def detect(ci_environment, env, file_reader)
+    def detect(ci_environment, env)
       url = evaluate(ci_environment['url'], env)
       return nil if url.nil?
 
@@ -27,13 +27,13 @@ module Cucumber
         buildNumber: evaluate(ci_environment['buildNumber'], env),
       }
 
-      detected_git = detect_git(ci_environment, env, file_reader)
+      detected_git = detect_git(ci_environment, env)
       result[:git] = detected_git if detected_git
       result
     end
 
-    def detect_git(ci_environment, env, file_reader)
-      revision = detect_revision(ci_environment, env, file_reader)
+    def detect_git(ci_environment, env)
+      revision = detect_revision(ci_environment, env)
       return nil if revision.nil?
 
       remote = evaluate(ci_environment['git']['remote'], env)
@@ -51,12 +51,13 @@ module Cucumber
       git_info
     end
 
-    def detect_revision(ci_environment, env, file_reader)
+    def detect_revision(ci_environment, env)
       if env['GITHUB_EVENT_NAME'] == 'pull_request'
         raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
-        event = JSON.parse(file_reader.call(env['GITHUB_EVENT_PATH']))
-        raise StandardError("No after property in #{env['GITHUB_EVENT_PATH']}:\n#{JSON.pretty_generate(event)}") unless event['after']
-        return event['after']
+        event = JSON.parse(IO.read(env['GITHUB_EVENT_PATH']))
+        revision = event['pull_request']['head']['sha'] rescue nil
+        raise StandardError("Could not find .pull_request.head.sha in #{env['GITHUB_EVENT_PATH']}:\n#{JSON.pretty_generate(event)}") if revision.nil?
+        return revision
       end
 
       return evaluate(ci_environment['git']['revision'], env)

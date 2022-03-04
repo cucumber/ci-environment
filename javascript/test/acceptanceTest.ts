@@ -3,7 +3,6 @@ import fs from 'fs'
 import glob from 'glob'
 import path from 'path'
 
-import { GithubActionsEvent, SyncFileReader } from '../src/detectCiEnvironment.js'
 import detectCiEnvironment, { Env } from '../src/index.js'
 
 describe('detectCiEnvironment', () => {
@@ -12,7 +11,7 @@ describe('detectCiEnvironment', () => {
       const envData = fs.readFileSync(txt, { encoding: 'utf8' })
       const entries = envData.split(/\n/).map((line) => line.split(/=/))
       const env: Env = Object.fromEntries(entries)
-      const ciEnvironment = detectCiEnvironment(env, gitHubActionReader)
+      const ciEnvironment = detectCiEnvironment(env)
 
       const expectedJson = fs.readFileSync(`${txt}.json`, {
         encoding: 'utf8',
@@ -21,10 +20,3 @@ describe('detectCiEnvironment', () => {
     })
   }
 })
-
-const gitHubActionReader: SyncFileReader = () => {
-  const event: GithubActionsEvent = {
-    after: '2436f28fad432a895bfc595bce16e907144b0dc3',
-  }
-  return Buffer.from(JSON.stringify(event, null, 2), 'utf-8')
-}
