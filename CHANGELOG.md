@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [9.0.1] - 2022-03-04
 ### Fixed
 - Provide correct SHA for GitHub Actions ([#67](https://github.com/cucumber/ci-environment/issues/67), [#69](https://github.com/cucumber/ci-environment/pull/69))
 
@@ -143,7 +144,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.0...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.1...main
+[9.0.1]: https://github.com/cucumber/ci-environment/compare/v9.0.0...main
 [9.0.0]: https://github.com/cucumber/ci-environment/compare/v8.1.0...main
 [8.1.0]: https://github.com/cucumber/ci-environment/compare/v8.0.1...v8.1.0
 [8.0.1]: https://github.com/cucumber/ci-environment/compare/v8.0.0...v8.0.1
