@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [9.0.2] - 2022-03-04
 ### Fixed
 - Correctly determine GitHub branch from `GITHUB_HEAD_REF` instead of `GITHUB_REF` ([#85](https://github.com/cucumber/ci-environment/pull/85))
 - Better error message if revision cannot be determined from GitHub pull request ([#85](https://github.com/cucumber/ci-environment/pull/85))
@@ -148,7 +149,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.1...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.2...main
+[9.0.2]: https://github.com/cucumber/ci-environment/compare/v9.0.1...main
 [9.0.1]: https://github.com/cucumber/ci-environment/compare/v9.0.0...main
 [9.0.0]: https://github.com/cucumber/ci-environment/compare/v8.1.0...main
 [8.1.0]: https://github.com/cucumber/ci-environment/compare/v8.0.1...v8.1.0
