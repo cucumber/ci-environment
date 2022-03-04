@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
@@ -42,7 +43,8 @@ class DetectCiEnvironmentTest {
     @ParameterizedTest
     @MethodSource
     void acceptance_tests_pass(@ConvertWith(Converter.class) Expectation expectation) {
-        Optional<CiEnvironment> ciEnvironment = detectCiEnvironment(expectation.env, path -> Stream.of("{\"before\": \"2436f28fad432a895bfc595bce16e907144b0dc3\"}"));
+        Function<Path, Stream<String>> gitHubEventReader = path -> Stream.of("{\"after\": \"2436f28fad432a895bfc595bce16e907144b0dc3\"}");
+        Optional<CiEnvironment> ciEnvironment = detectCiEnvironment(expectation.env, gitHubEventReader);
         assertEquals(expectation.getExpected(), ciEnvironment);
     }
 

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- Correctly determine GitHub branch from `GITHUB_HEAD_REF` instead of `GITHUB_REF`
+- Better error message if revision cannot be determined from GitHub pull request
+
 ## [9.0.1] - 2022-03-04
 ### Fixed
 - Provide correct SHA for GitHub Actions ([#67](https://github.com/cucumber/ci-environment/issues/67), [#69](https://github.com/cucumber/ci-environment/pull/69))

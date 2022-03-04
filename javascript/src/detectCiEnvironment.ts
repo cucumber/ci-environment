@@ -66,18 +66,13 @@ function detectRevision(
   syncFileReader: SyncFileReader
 ): string | undefined {
   if (env.GITHUB_EVENT_NAME === 'pull_request') {
-    for (const [key, value] of Object.entries(env)) {
-      if (key.match(/^GITHUB_/)) {
-        console.log(`${key}=${value}`)
-      }
-    }
-
     if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
     const json = syncFileReader(env.GITHUB_EVENT_PATH).toString()
-    console.log(json)
     const event = JSON.parse(json)
     if (!('after' in event)) {
-      throw new Error(`No after property in ${env.GITHUB_EVENT_PATH}:\n${json}`)
+      throw new Error(
+        `No after property in ${env.GITHUB_EVENT_PATH}:\n${JSON.stringify(event, null, 2)}`
+      )
     }
     return event.after
   }

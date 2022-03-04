@@ -55,8 +55,8 @@ module Cucumber
       if env['GITHUB_EVENT_NAME'] == 'pull_request'
         raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
         event = JSON.parse(file_reader.call(env['GITHUB_EVENT_PATH']))
-        raise StandardError('GITHUB_EVENT_PATH not set') unless event['before']
-        return event['before']
+        raise StandardError("No after property in #{env['GITHUB_EVENT_PATH']}:\n#{JSON.pretty_generate(event)}") unless event['after']
+        return event['after']
       end
 
       return evaluate(ci_environment['git']['revision'], env)

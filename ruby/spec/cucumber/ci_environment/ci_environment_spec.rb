@@ -9,7 +9,7 @@ describe 'detect_ci_environment' do
       subject { JSON.parse(ci_environment.to_json) }
 
       def mock_reader(path)
-        return '{"before": "2436f28fad432a895bfc595bce16e907144b0dc3"}' if path.end_with?('_github_workflow/event.json')
+        return '{"after": "2436f28fad432a895bfc595bce16e907144b0dc3"}' if path.end_with?('_github_workflow/event.json')
         IO.read(path)
       end
 
