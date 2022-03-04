@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- Handle GitHub Action `opened` as well as `synchronize` event (and any other `pull_request` event with `.pull_request.head.sha` in the event payload) ([#86](https://github.com/cucumber/ci-environment/issues/86), [#87](https://github.com/cucumber/ci-environment/pull/87))
+
 ## [9.0.2] - 2022-03-04
 ### Fixed
 - Correctly determine GitHub branch from `GITHUB_HEAD_REF` instead of `GITHUB_REF` ([#85](https://github.com/cucumber/ci-environment/pull/85))
