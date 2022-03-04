@@ -1,10 +1,21 @@
+import { readFileSync } from 'fs'
+
 import { CiEnvironments } from './CiEnvironments.js'
 import evaluateVariableExpression from './evaluateVariableExpression.js'
 import { CiEnvironment, Env, Git } from './types.js'
 
-export default function detectCiEnvironment(env: Env): CiEnvironment | undefined {
+export type SyncFileReader = (path: string) => Buffer
+
+export type GithubActionsEvent = {
+  before: string
+}
+
+export default function detectCiEnvironment(
+  env: Env,
+  fileReader: SyncFileReader = readFileSync
+): CiEnvironment | undefined {
   for (const ciEnvironment of CiEnvironments) {
-    const detected = detect(ciEnvironment, env)
+    const detected = detect(ciEnvironment, env, fileReader)
     if (detected) {
       return detected
     }
@@ -23,8 +34,12 @@ export function removeUserInfoFromUrl(value: string): string {
   }
 }
 
-function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
-  const revision = evaluateVariableExpression(ciEnvironment.git?.revision, env)
+function detectGit(
+  ciEnvironment: CiEnvironment,
+  env: Env,
+  syncFileReader: SyncFileReader
+): Git | undefined {
+  const revision = detectRevision(ciEnvironment, env, syncFileReader)
   if (!revision) {
     return undefined
   }
@@ -45,7 +60,27 @@ function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
   }
 }
 
-function detect(ciEnvironment: CiEnvironment, env: Env): CiEnvironment | undefined {
+function detectRevision(
+  ciEnvironment: CiEnvironment,
+  env: Env,
+  syncFileReader: SyncFileReader
+): string | undefined {
+  if (env.GITHUB_EVENT_NAME === 'pull_request') {
+    if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
+    const event = JSON.parse(syncFileReader(env.GITHUB_EVENT_PATH).toString())
+    if (!('before' in event)) {
+      throw new Error('No before property in ${env.GITHUB_EVENT_PATH}')
+    }
+    return event.before
+  }
+  return evaluateVariableExpression(ciEnvironment.git?.revision, env)
+}
+
+function detect(
+  ciEnvironment: CiEnvironment,
+  env: Env,
+  syncFileReader: SyncFileReader
+): CiEnvironment | undefined {
   const url = evaluateVariableExpression(ciEnvironment.url, env)
   if (url === undefined) {
     // The url is what consumers will use as the primary key for a build
@@ -53,7 +88,7 @@ function detect(ciEnvironment: CiEnvironment, env: Env): CiEnvironment | undefin
     return undefined
   }
   const buildNumber = evaluateVariableExpression(ciEnvironment.buildNumber, env)
-  const git = detectGit(ciEnvironment, env)
+  const git = detectGit(ciEnvironment, env, syncFileReader)
 
   return {
     name: ciEnvironment.name,

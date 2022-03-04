@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
 import static java.nio.file.Files.newBufferedReader;
@@ -41,7 +42,7 @@ class DetectCiEnvironmentTest {
     @ParameterizedTest
     @MethodSource
     void acceptance_tests_pass(@ConvertWith(Converter.class) Expectation expectation) {
-        Optional<CiEnvironment> ciEnvironment = detectCiEnvironment(expectation.env);
+        Optional<CiEnvironment> ciEnvironment = detectCiEnvironment(expectation.env, path -> Stream.of("{\"before\": \"2436f28fad432a895bfc595bce16e907144b0dc3\"}"));
         assertEquals(expectation.getExpected(), ciEnvironment);
     }
 

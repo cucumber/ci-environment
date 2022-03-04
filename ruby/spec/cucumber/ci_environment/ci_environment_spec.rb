@@ -8,7 +8,12 @@ describe 'detect_ci_environment' do
     context "with #{File.basename(test_data_file, '.txt')}" do
       subject { JSON.parse(ci_environment.to_json) }
 
-      let(:ci_environment) { Cucumber::CiEnvironment.detect_ci_environment(env) }
+      def mock_reader(path)
+        return '{"before": "2436f28fad432a895bfc595bce16e907144b0dc3"}' if path.end_with?('_github_workflow/event.json')
+        IO.read(path)
+      end
+
+      let(:ci_environment) { Cucumber::CiEnvironment.detect_ci_environment(env, method(:mock_reader)) }
       let(:env) { Hash[entries] }
       let(:entries) { env_data.split(/\n/).map { |line| line.split(/=/) } }
       let(:env_data) { IO.read(test_data_file) }
