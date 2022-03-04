@@ -19,9 +19,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
 import static java.nio.file.Files.newBufferedReader;
@@ -43,8 +40,7 @@ class DetectCiEnvironmentTest {
     @ParameterizedTest
     @MethodSource
     void acceptance_tests_pass(@ConvertWith(Converter.class) Expectation expectation) {
-        Function<Path, Stream<String>> gitHubEventReader = path -> Stream.of("{\"after\": \"2436f28fad432a895bfc595bce16e907144b0dc3\"}");
-        Optional<CiEnvironment> ciEnvironment = detectCiEnvironment(expectation.env, gitHubEventReader);
+        CiEnvironment ciEnvironment = detectCiEnvironment(expectation.env).orElseThrow(() -> new RuntimeException("Could not detect from env " + expectation.env));
         assertEquals(expectation.getExpected(), ciEnvironment);
     }
 
@@ -57,8 +53,8 @@ class DetectCiEnvironmentTest {
             this.expected = requireNonNull(expected);
         }
 
-        public Optional<CiEnvironment> getExpected() {
-            return Optional.of(expected);
+        public CiEnvironment getExpected() {
+            return expected;
         }
     }
 

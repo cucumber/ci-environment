@@ -4,18 +4,9 @@ import { CiEnvironments } from './CiEnvironments.js'
 import evaluateVariableExpression from './evaluateVariableExpression.js'
 import { CiEnvironment, Env, Git } from './types.js'
 
-export type SyncFileReader = (path: string) => Buffer
-
-export type GithubActionsEvent = {
-  after: string
-}
-
-export default function detectCiEnvironment(
-  env: Env,
-  fileReader: SyncFileReader = readFileSync
-): CiEnvironment | undefined {
+export default function detectCiEnvironment(env: Env): CiEnvironment | undefined {
   for (const ciEnvironment of CiEnvironments) {
-    const detected = detect(ciEnvironment, env, fileReader)
+    const detected = detect(ciEnvironment, env)
     if (detected) {
       return detected
     }
@@ -34,12 +25,8 @@ export function removeUserInfoFromUrl(value: string): string {
   }
 }
 
-function detectGit(
-  ciEnvironment: CiEnvironment,
-  env: Env,
-  syncFileReader: SyncFileReader
-): Git | undefined {
-  const revision = detectRevision(ciEnvironment, env, syncFileReader)
+function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
+  const revision = detectRevision(ciEnvironment, env)
   if (!revision) {
     return undefined
   }
@@ -60,30 +47,27 @@ function detectGit(
   }
 }
 
-function detectRevision(
-  ciEnvironment: CiEnvironment,
-  env: Env,
-  syncFileReader: SyncFileReader
-): string | undefined {
+function detectRevision(ciEnvironment: CiEnvironment, env: Env): string | undefined {
   if (env.GITHUB_EVENT_NAME === 'pull_request') {
     if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
-    const json = syncFileReader(env.GITHUB_EVENT_PATH).toString()
+    const json = readFileSync(env.GITHUB_EVENT_PATH, 'utf-8')
     const event = JSON.parse(json)
-    if (!('after' in event)) {
+    const revision = event.pull_request?.head?.sha
+    if (!revision) {
       throw new Error(
-        `No after property in ${env.GITHUB_EVENT_PATH}:\n${JSON.stringify(event, null, 2)}`
+        `Could not find .pull_request.head.sha in ${env.GITHUB_EVENT_PATH}:\n${JSON.stringify(
+          event,
+          null,
+          2
+        )}`
       )
     }
-    return event.after
+    return revision
   }
   return evaluateVariableExpression(ciEnvironment.git?.revision, env)
 }
 
-function detect(
-  ciEnvironment: CiEnvironment,
-  env: Env,
-  syncFileReader: SyncFileReader
-): CiEnvironment | undefined {
+function detect(ciEnvironment: CiEnvironment, env: Env): CiEnvironment | undefined {
   const url = evaluateVariableExpression(ciEnvironment.url, env)
   if (url === undefined) {
     // The url is what consumers will use as the primary key for a build
@@ -91,7 +75,7 @@ function detect(
     return undefined
   }
   const buildNumber = evaluateVariableExpression(ciEnvironment.buildNumber, env)
-  const git = detectGit(ciEnvironment, env, syncFileReader)
+  const git = detectGit(ciEnvironment, env)
 
   return {
     name: ciEnvironment.name,
