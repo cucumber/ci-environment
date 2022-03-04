@@ -4,8 +4,7 @@ import glob from 'glob'
 import path from 'path'
 
 import { GithubActionsEvent, SyncFileReader } from '../src/detectCiEnvironment.js'
-import detectCiEnvironment from '../src/index.js'
-import { Env } from '../src/types.js'
+import detectCiEnvironment, { Env } from '../src/index.js'
 
 describe('detectCiEnvironment', () => {
   for (const txt of glob.sync(`../testdata/*.txt`)) {
@@ -25,7 +24,7 @@ describe('detectCiEnvironment', () => {
 
 const gitHubActionReader: SyncFileReader = () => {
   const event: GithubActionsEvent = {
-    before: '2436f28fad432a895bfc595bce16e907144b0dc3',
+    after: '2436f28fad432a895bfc595bce16e907144b0dc3',
   }
   return Buffer.from(JSON.stringify(event, null, 2), 'utf-8')
 }

@@ -7,7 +7,7 @@ import { CiEnvironment, Env, Git } from './types.js'
 export type SyncFileReader = (path: string) => Buffer
 
 export type GithubActionsEvent = {
-  before: string
+  after: string
 }
 
 export default function detectCiEnvironment(
@@ -74,9 +74,10 @@ function detectRevision(
 
     if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
     const json = syncFileReader(env.GITHUB_EVENT_PATH).toString()
+    console.log(json)
     const event = JSON.parse(json)
     if (!('after' in event)) {
-      throw new Error(`No before property in ${env.GITHUB_EVENT_PATH}:\n${json}`)
+      throw new Error(`No after property in ${env.GITHUB_EVENT_PATH}:\n${json}`)
     }
     return event.after
   }
