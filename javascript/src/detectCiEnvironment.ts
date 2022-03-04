@@ -67,9 +67,10 @@ function detectRevision(
 ): string | undefined {
   if (env.GITHUB_EVENT_NAME === 'pull_request') {
     if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
-    const event = JSON.parse(syncFileReader(env.GITHUB_EVENT_PATH).toString())
+    const json = syncFileReader(env.GITHUB_EVENT_PATH).toString()
+    const event = JSON.parse(json)
     if (!('before' in event)) {
-      throw new Error('No before property in ${env.GITHUB_EVENT_PATH}')
+      throw new Error(`No before property in ${env.GITHUB_EVENT_PATH}:\n${json}`)
     }
     return event.before
   }
