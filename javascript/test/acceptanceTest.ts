@@ -3,7 +3,7 @@ import fs from 'fs'
 import glob from 'glob'
 import path from 'path'
 
-import { GithubActionsEvent, SyncFileReader } from '../src/detectCiEnvironment'
+import { GithubActionsEvent, SyncFileReader } from '../src/detectCiEnvironment.js'
 import detectCiEnvironment from '../src/index.js'
 import { Env } from '../src/types.js'
 
