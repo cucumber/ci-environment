@@ -66,15 +66,19 @@ function detectRevision(
   syncFileReader: SyncFileReader
 ): string | undefined {
   if (env.GITHUB_EVENT_NAME === 'pull_request') {
+    for (const [key, value] of Object.entries(env)) {
+      if (key.match(/^GITHUB_/)) {
+        console.log(`${key}=${value}`)
+      }
+    }
+
     if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
     const json = syncFileReader(env.GITHUB_EVENT_PATH).toString()
-    console.log('TEMPORARY DEBUG')
-    console.log(json)
     const event = JSON.parse(json)
-    if (!('before' in event)) {
+    if (!('after' in event)) {
       throw new Error(`No before property in ${env.GITHUB_EVENT_PATH}:\n${json}`)
     }
-    return event.before
+    return event.after
   }
   return evaluateVariableExpression(ciEnvironment.git?.revision, env)
 }
