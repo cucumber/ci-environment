@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static io.cucumber.cienvironment.VariableExpression.evaluate;
@@ -17,7 +18,6 @@ import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 
 final class CiEnvironmentImpl implements CiEnvironment {
-    public static final Pattern GITHUB_PULL_REQUEST_ACTION_BEFORE = Pattern.compile(".*\"before\"\\s*:\\s*\"([a-f0-9]+)\".*");
     public String name;
     public String url;
     public String buildNumber;
@@ -86,16 +86,20 @@ final class CiEnvironmentImpl implements CiEnvironment {
                 throw new RuntimeException("GITHUB_EVENT_PATH not set");
             }
             Path path = Paths.get(env.get("GITHUB_EVENT_PATH"));
-            return getBeforeProperty(getLines.apply(path));
+            return getJsonProperty(path, getLines, "after");
         }
         return evaluate(git.revision, env);
     }
 
-    static String getBeforeProperty(Stream<String> lines) {
-        return lines.filter(line -> GITHUB_PULL_REQUEST_ACTION_BEFORE.matcher(line).matches()).findFirst().map(line -> {
-            Matcher matcher = GITHUB_PULL_REQUEST_ACTION_BEFORE.matcher(line);
+    static String getJsonProperty(Path path, Function<Path, Stream<String>> getLines, String property) {
+        Pattern pattern = Pattern.compile(".*\"" + property + "\"\\s*:\\s*\"([^\"]+)\".*");
+        return getLines.apply(path).filter(line -> pattern.matcher(line.trim()).matches()).findFirst().map(line -> {
+            Matcher matcher = pattern.matcher(line.trim());
             return matcher.matches() ? matcher.group(1) : null;
-        }).orElse(null);
+        }).orElseThrow(() -> {
+            String json = getLines.apply(path).collect(Collectors.joining(""));
+            return new RuntimeException(String.format("No after property in %s:\n%s", path, json));
+        });
     }
 
     @Override

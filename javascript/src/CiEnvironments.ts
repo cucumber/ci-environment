@@ -84,7 +84,7 @@ export const CiEnvironments: readonly CiEnvironment[] = [
     git: {
       remote: '${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git',
       revision: '${GITHUB_SHA}',
-      branch: '${GITHUB_REF/refs/heads/(.*)/\\1}',
+      branch: '${GITHUB_HEAD_REF}',
       tag: '${GITHUB_REF/refs/tags/(.*)/\\1}',
     },
   },
