@@ -47,6 +47,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.eclipsesource.minimal-json</groupId>
+            <artifactId>minimal-json</artifactId>
+            <version>0.9.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
             <version>2.2</version>
@@ -85,7 +92,8 @@
                             <goal>execute</goal>
                         </goals>
                         <configuration>
-                            <source>${project.basedir}/src/main/groovy/io/cucumber/cienvironment/CiEnvironments.groovy</source>
+                            <source>${project.basedir}/src/main/groovy/io/cucumber/cienvironment/CiEnvironments.groovy
+                            </source>
                         </configuration>
                     </execution>
                 </executions>
@@ -104,6 +112,39 @@
                             <sources>
                                 <source>${basedir}/target/generated-sources/ci-environments/java</source>
                             </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.eclipsesource.minimal-json:minimal-json</include>
+                                </includes>
+                            </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>com.eclipsesource.json</pattern>
+                                    <shadedPattern>io.cucumber.cienvironment.internal.com.eclipsesource.json</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters>
+                                <filter>
+                                    <artifact>com.eclipsesource.minimal-json:minimal-json</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
                         </configuration>
                     </execution>
                 </executions>

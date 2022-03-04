@@ -1,13 +1,14 @@
 package io.cucumber.cienvironment;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.eclipsesource.json.Json;
+import com.eclipsesource.json.JsonValue;
+
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static io.cucumber.cienvironment.VariableExpression.evaluate;
 import static java.util.Objects.requireNonNull;
@@ -83,17 +84,11 @@ final class CiEnvironmentImpl implements CiEnvironment {
             if (env.get("GITHUB_EVENT_PATH") == null) {
                 throw new RuntimeException("GITHUB_EVENT_PATH not set");
             }
-            Path path = Paths.get(env.get("GITHUB_EVENT_PATH"));
             try {
-                String json = Files.lines(path).collect(Collectors.joining());
-                Json ob = Json.read(json);
-                try {
-                    return ob.asJsonMap().get("pull_request").asJsonMap().get("head").asJsonMap().get("sha").asString();
-                } catch (RuntimeException e) {
-                    throw new RuntimeException(String.format("Could not find .pull_request.head.sha in %s:\n%s", path, json));
-                }
-            } catch (IOException e) {
-                throw new RuntimeException("Could not read " + path, e);
+                JsonValue event = Json.parse(new InputStreamReader(new FileInputStream(env.get("GITHUB_EVENT_PATH")), StandardCharsets.UTF_8));
+                return event.asObject().get("pull_request").asObject().get("head").asObject().get("sha").asString();
+            } catch (Exception e) {
+                throw new RuntimeException("Could not read .pull_request.head.sha from " + env.get("GITHUB_EVENT_PATH"), e);
             }
         }
         return evaluate(git.revision, env);
