@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [9.0.3] - 2022-03-04
 ### Fixed
 - Handle GitHub Action `opened` as well as `synchronize` event (and any other `pull_request` event with `.pull_request.head.sha` in the event payload) ([#86](https://github.com/cucumber/ci-environment/issues/86), [#87](https://github.com/cucumber/ci-environment/pull/87))
 
@@ -152,7 +153,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.2...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.3...main
+[9.0.3]: https://github.com/cucumber/ci-environment/compare/v9.0.2...main
 [9.0.2]: https://github.com/cucumber/ci-environment/compare/v9.0.1...main
 [9.0.1]: https://github.com/cucumber/ci-environment/compare/v9.0.0...main
 [9.0.0]: https://github.com/cucumber/ci-environment/compare/v8.1.0...main

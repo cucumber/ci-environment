@@ -1,6 +1,6 @@
 {
   "name": "@cucumber/ci-environment",
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "Detect CI Environment from environment variables",
   "type": "module",
   "main": "dist/cjs/src/index.js",
