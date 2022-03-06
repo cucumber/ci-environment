@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- [Java] Make `DetectCiEnvironment.detectCiEnvironment` public
 
 ## [9.0.3] - 2022-03-04
 ### Fixed

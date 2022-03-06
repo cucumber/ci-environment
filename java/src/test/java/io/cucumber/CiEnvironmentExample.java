@@ -1,4 +1,8 @@
-package io.cucumber.cienvironment;
+package io.cucumber;
+
+import io.cucumber.cienvironment.CiEnvironment;
+
+import java.util.Optional;
 
 import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
 
