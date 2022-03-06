@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [9.0.4] - 2022-03-06
 ### Fixed
 - [Java] Make `DetectCiEnvironment.detectCiEnvironment` public
 
@@ -155,7 +157,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.3...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.0.4...main
+[9.0.4]: https://github.com/cucumber/ci-environment/compare/v9.0.3...main
 [9.0.3]: https://github.com/cucumber/ci-environment/compare/v9.0.2...main
 [9.0.2]: https://github.com/cucumber/ci-environment/compare/v9.0.1...main
 [9.0.1]: https://github.com/cucumber/ci-environment/compare/v9.0.0...main
