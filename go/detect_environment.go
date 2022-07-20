@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-//go:embed CIEnvironments.json
+//go:embed CiEnvironments.json
 var ciEnvironmentTemplates string
 
 func DetectCIEnvironment() *CiEnvironment {
