@@ -31,18 +31,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-cache
       - name: Run gofmt
+        working-directory: go
         run: gofmt -d -e . 2>&1 | tee outfile && test -z "$(cat outfile)" && rm outfile
-      - name: Run staticcheck
-        if: matrix.go-version == '1.17.x'
-        run: |
-          bin/staticcheck_linux_amd64_2021.1.2 github.com/cucumber/ci-environment/go
+      # - name: Run staticcheck
+      #   if: matrix.go-version == '1.17.x'
+      #   run: |
+      #     bin/staticcheck_linux_amd64_2021.1.2 github.com/cucumber/ci-environment/go
       - name: Run go vet
-        run: |
-          go vet ./...
+        working-directory: go
+        run: go vet ./...
       - name: Run go test
-        run: |
-          go test -coverprofile=coverage.txt -covermode=atomic ./...
+        working-directory: go
+        run: go test -coverprofile=coverage.txt -covermode=atomic ./...
       - name: Report on code coverage
+        working-directory: go
         if: matrix.go-version == '1.17.x'
         uses: codecov/codecov-action@v1
         with:
