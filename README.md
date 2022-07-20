@@ -3,6 +3,7 @@
 [![test-java](https://github.com/cucumber/ci-environment/actions/workflows/test-java.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-java.yml)
 [![test-javascript](https://github.com/cucumber/ci-environment/actions/workflows/test-javascript.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-javascript.yml)
 [![test-ruby](https://github.com/cucumber/ci-environment/actions/workflows/test-ruby.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-ruby.yml)
+[![test-go](https://github.com/cucumber/ci-environment/actions/workflows/test-go.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-go.yml)
 
 This library detects the CI environment based on environment variables defined
 by CI servers.
@@ -74,6 +75,26 @@ require 'cucumber/ci_environment'
 
 ci_environment = Cucumber::CiEnvironment.detect_ci_environment(ENV)
 p ci_environment
+```
+
+### Go
+
+```shell
+go get github.com/cucumber/ci-environment/go@latest
+```
+
+```Go
+import (
+  "fmt"
+	cienvironment "github.com/cucumber/ci-environment/go"
+)
+
+func main() {
+  ci := cienvironment.DetectCIEnvironment()
+  if ci == nil {
+    fmt.Println("No CI environment detected")
+  }
+}
 ```
 
 ## Supported CI servers

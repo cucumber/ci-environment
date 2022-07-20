@@ -23,11 +23,11 @@ type testCase struct {
 func TestDetectCIEnvironment(t *testing.T) {
 	testCases := loadTestData()
 	for _, tc := range testCases {
-		t.Run(tc.fileName, testFoo(tc.envVars, tc.want))
+		t.Run(tc.fileName, testDetectCIEnvironment(tc.envVars, tc.want))
 	}
 }
 
-func testFoo(envVars map[string]string, want *cienvironment.CiEnvironment) func(*testing.T) {
+func testDetectCIEnvironment(envVars map[string]string, want *cienvironment.CiEnvironment) func(*testing.T) {
 	return func(t *testing.T) {
 		for k, v := range envVars {
 			t.Setenv(k, v)

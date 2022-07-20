@@ -17,9 +17,14 @@ var ciEnvironmentTemplates string
 
 func DetectCIEnvironment() *CiEnvironment {
 	ciEnvironments := []*CiEnvironment{}
-	re := regexp.MustCompile(`([^\\])\\/`) // TODO: Explain Azure
+
+	// The Azure template currently only has single back-slashes to escape the slashes in the variable/pattern/replacement
+	// patterns	"${BUILD_SOURCEBRANCH/refs\/heads\/(.*)/\\1}" where others are like "${CI_PULL_REQUEST/(.*)\\/pull\\/\\d+/\\1.git}".
+	// To make these all consistant prior to parsing, we'll replace those with double back-slashes prior to processing.
+	re := regexp.MustCompile(`([^\\])\\/`)
 	template := re.ReplaceAllString(ciEnvironmentTemplates, `${1}\\/`)
 	err := json.Unmarshal([]byte(template), &ciEnvironments)
+
 	if err != nil {
 		l := log.New(os.Stderr, "", 0)
 		l.Printf("error parsing ci templates %s", err)
@@ -28,6 +33,7 @@ func DetectCIEnvironment() *CiEnvironment {
 	var environment *CiEnvironment = nil
 	for _, ciEnvironment := range ciEnvironments {
 
+		// evaluate the expressions for each part of the ci environment configuration
 		ciEnvironment.URL, _ = evalutate(ciEnvironment.URL)
 		ciEnvironment.BuildNumber, _ = evalutate(ciEnvironment.BuildNumber)
 		ciEnvironment.Git.Branch, _ = evalutate(ciEnvironment.Git.Branch)
@@ -46,6 +52,7 @@ func DetectCIEnvironment() *CiEnvironment {
 	return environment.SanitizeGit()
 }
 
+// evaluate each token parsed from the expression and create a value by concatenating all evaluated tokens.
 func evalutate(expression string) (string, error) {
 	result := ""
 	sc := NewScanner(expression)
@@ -55,6 +62,8 @@ func evalutate(expression string) (string, error) {
 		case *variableExpression:
 			s, err := t.Evaluate()
 			if err != nil {
+				l := log.New(os.Stderr, "", 0)
+				l.Printf("error evalutating %s: %s", expression, err)
 				return result, err
 			}
 			result = fmt.Sprintf("%s%s", result, s)
@@ -65,6 +74,7 @@ func evalutate(expression string) (string, error) {
 	return result, nil
 }
 
+// any literal or variable expression
 type configValue interface {
 	Value() string
 }
@@ -82,9 +92,7 @@ func (v *variableExpression) Evaluate() (string, error) {
 	var buf bytes.Buffer
 	prev := eof
 
-	// expression := strings.ReplaceAll(v.value, `\\`, `\`)
-
-	for _, ch := range v.value { //expression {
+	for _, ch := range v.value {
 		if ch == '/' && prev != '\\' {
 			tokens = append(tokens, buf.String())
 			buf.Reset()
@@ -110,6 +118,7 @@ func (v *variableExpression) Evaluate() (string, error) {
 			}
 			matches = re.FindAllStringSubmatch(value, -1)
 		case 2:
+			// if no matches exist, then this expression has no value
 			if len(matches) == 0 {
 				value = ""
 			}
@@ -128,6 +137,9 @@ func (v *variableExpression) Evaluate() (string, error) {
 	return value, nil
 }
 
+// getEnv return the environment variable if no wildcard is included in the variable name. If the variable name
+// does contain a wildcard, then convert to a valid regex and check all envrionemtn variables until we find one that
+// matches, if a match does exist.
 func getEnv(name string) string {
 	if strings.Contains(name, "*") {
 		re := regexp.MustCompile(strings.Replace(name, "*", ".*", -1))
@@ -162,6 +174,7 @@ func NewScanner(expression string) Scanner {
 
 var eof = rune(0)
 
+// ReadTokens returns an array of all literal and variable tokens found in the expression being scanned
 func (s Scanner) ReadTokens() []configValue {
 	tokens := []configValue{}
 	for {
@@ -174,6 +187,7 @@ func (s Scanner) ReadTokens() []configValue {
 	return tokens
 }
 
+// Next returns the next token from the scanner
 func (s Scanner) Next() configValue {
 	ch := s.read()
 	if ch == eof {
