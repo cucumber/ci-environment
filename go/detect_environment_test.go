@@ -29,6 +29,15 @@ func TestDetectCIEnvironment(t *testing.T) {
 
 func testDetectCIEnvironment(envVars map[string]string, want *cienvironment.CiEnvironment) func(*testing.T) {
 	return func(t *testing.T) {
+		// when running on github, unset the variables already present there for this test execution
+		t.Setenv("GITHUB_SERVER_URL", "")
+		t.Setenv("GITHUB_REPOSITORY", "")
+		t.Setenv("GITHUB_RUN_ID", "")
+		t.Setenv("GITHUB_SHA", "")
+		t.Setenv("GITHUB_HEAD_REF", "")
+		t.Setenv("GITHUB_EVENT_NAME", "")
+		t.Setenv("GITHUB_EVENT_PATH", "")
+		// set the environment variables per the .txt file in the testdata directory
 		for k, v := range envVars {
 			t.Setenv(k, v)
 		}

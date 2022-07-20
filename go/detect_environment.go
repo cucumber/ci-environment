@@ -62,8 +62,6 @@ func evalutate(expression string) (string, error) {
 		case *variableExpression:
 			s, err := t.Evaluate()
 			if err != nil {
-				l := log.New(os.Stderr, "", 0)
-				l.Printf("error evalutating %s: %s", expression, err)
 				return result, err
 			}
 			result = fmt.Sprintf("%s%s", result, s)
