@@ -1,0 +1,32 @@
+name: test-go
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_call:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        go-version: [ 1.17.x ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: lint
+        working-directory: go
+        run: gofmt -w .
+      - name: Run go vet
+        working-directory: go
+        run: go vet ./...
+      - name: Run go test
+        working-directory: go
+        run: make test
