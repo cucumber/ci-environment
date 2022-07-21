@@ -20,7 +20,7 @@ type testCase struct {
 	want     *cienvironment.CiEnvironment
 }
 
-func TestDetectCIEnvironment(t *testing.T) {
+func TestDetectCIEnvironment_AcceptanceTests(t *testing.T) {
 	testCases := loadTestData()
 	for _, tc := range testCases {
 		t.Run(tc.fileName, testDetectCIEnvironment(tc.envVars, tc.want))
@@ -51,7 +51,11 @@ func testDetectCIEnvironment(envVars map[string]string, want *cienvironment.CiEn
 			assert.Equal(t, want.Git.Branch, got.Git.Branch, "Git.Branch for %s", want.Name)
 			assert.Equal(t, want.Git.Remote, got.Git.Remote, "Git.Remote for %s", want.Name)
 			assert.Equal(t, want.Git.Tag, got.Git.Tag, "Git.Tag for %s", want.Name)
-			if want.Name != "GitHub Actions" { // TODO: EXPLAIN!
+			// In the acceptance test files (../testdata), for GitHubActionsPullRequestOpened and GitHubActionsPullRequestSynchronize,
+			// the .txt file has a GITHUB_SHA of 99684bcacf01d95875834d87903dcb072306c9ad, but the json files have expected
+			// git.revision values of d79b417f8e974b9a2d5e6483845a96446695f944 and 3738117e3337e54955580f4e98cf767d96b42135, respectively.
+			// The template is "revision": "${GITHUB_SHA}",
+			if want.Name != "GitHub Actions" {
 				assert.Equal(t, want.Git.Revision, got.Git.Revision, "Git.Revision for %s", want.Name)
 			}
 		}

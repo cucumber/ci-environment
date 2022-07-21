@@ -21,31 +21,12 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Go cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/go/pkg/mod
-            ~/.cache/go-build
-          key: ${{ runner.os }}-go-cache-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-cache
-      - name: Run gofmt
+      - name: lint
         working-directory: go
-        run: gofmt -d -e . 2>&1 | tee outfile && test -z "$(cat outfile)" && rm outfile
-      # - name: Run staticcheck
-      #   if: matrix.go-version == '1.17.x'
-      #   run: |
-      #     bin/staticcheck_linux_amd64_2021.1.2 github.com/cucumber/ci-environment/go
+        run: gofmt -w .
       - name: Run go vet
         working-directory: go
         run: go vet ./...
       - name: Run go test
         working-directory: go
-        run: go test ./...
-        # run: go test -coverprofile=coverage.txt -covermode=atomic ./...
-      # - name: Report on code coverage
-      #   if: matrix.go-version == '1.17.x'
-      #   uses: codecov/codecov-action@v1
-      #   with:
-      #     file: ./go/coverage.txt
+        run: make test
