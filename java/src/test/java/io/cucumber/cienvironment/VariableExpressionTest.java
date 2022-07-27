@@ -24,6 +24,14 @@ public class VariableExpressionTest {
         }});
         assertEquals("some_value", result);
     }
+    @Test
+    public void it_escapes_a_value_without_replacement() {
+        String expression = "${SOME_VAR}";
+        String result = evaluate(expression, new HashMap<String, String>() {{
+            put("SOME_VAR", "${SOME_VAR}");
+        }});
+        assertEquals("${SOME_VAR}", result);
+    }
 
     @Test
     public void it_captures_a_group() {
@@ -51,5 +59,14 @@ public class VariableExpressionTest {
             put("VAR2", "gorgeous beautiful");
         }});
         assertEquals("hello-amazing-beautiful-gorgeous-world", result);
+    }
+    @Test
+    public void it_escapes_a_complex_expression() {
+        String expression = "hello-${VAR1}-${VAR2/(.*) (.*)/\\2-\\1}-world";
+        String result = evaluate(expression, new HashMap<String, String>() {{
+            put("VAR1", "${VAR1}");
+            put("VAR2", "${VAR2a} ${VAR2b}");
+        }});
+        assertEquals("hello-${VAR1}-${VAR2b}-${VAR2a}-world", result);
     }
 }
