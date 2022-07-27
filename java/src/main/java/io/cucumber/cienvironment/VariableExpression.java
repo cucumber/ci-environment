@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.util.regex.Matcher.quoteReplacement;
+
 final class VariableExpression {
     private static final Pattern variablePattern = Pattern.compile("\\$\\{(.*?)(?:(?<!\\\\)/(.*)/(.*))?}");
 
@@ -23,7 +25,7 @@ final class VariableExpression {
             }
             String pattern = variableMatcher.group(2);
             if (pattern == null) {
-                variableMatcher.appendReplacement(sb, value);
+                variableMatcher.appendReplacement(sb, quoteReplacement(value));
             } else {
                 Matcher matcher = Pattern.compile(pattern.replace("\\/", "/")).matcher(value);
                 if (!matcher.matches()) {
@@ -34,7 +36,7 @@ final class VariableExpression {
                     String group = matcher.group(i + 1);
                     replacement = replacement.replace("\\" + (i + 1), group);
                 }
-                variableMatcher.appendReplacement(sb, replacement);
+                variableMatcher.appendReplacement(sb, quoteReplacement(replacement));
             }
         }
         variableMatcher.appendTail(sb);

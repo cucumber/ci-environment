@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- [Java] Escape regex replacement patterns in environment variables ([#156](https://github.com/cucumber/ci-environment/issues/156), [#157](https://github.com/cucumber/ci-environment/pull/157))
+
 ### Added
 - [Go] added ci-environment implementation in Go
 
