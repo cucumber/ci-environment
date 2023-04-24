@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - [Java] Enabled reproducible builds
+- Added support for [JetBrains Space](https://www.jetbrains.com/help/space/automation-parameters.html#use-provided-parameters), [#205](https://github.com/cucumber/ci-environment/pull/205)
 
 ## [9.1.0] - 2022-07-27
 ### Added
