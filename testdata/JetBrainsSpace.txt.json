@@ -1,0 +1,10 @@
+{
+  "name": "JetBrains Space",
+  "url": "https://jetbrains.space/p/ij/automation/jobs/executions/4ScCPF3XLIFW",
+  "buildNumber": "25",
+  "git": {
+    "remote": "https://jetbrains.space/p/ij/repositories/intellij",
+    "revision": "057f8fe233b17629af084064c2a7b8d1dbb795ad",
+    "branch": "main"
+  }
+}
