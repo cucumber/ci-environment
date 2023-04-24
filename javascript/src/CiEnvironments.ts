@@ -120,6 +120,17 @@ export const CiEnvironments: readonly CiEnvironment[] = [
     },
   },
   {
+    name: 'JetBrains Space',
+    url: '${JB_SPACE_EXECUTION_URL}',
+    buildNumber: '${JB_SPACE_EXECUTION_NUMBER}',
+    git: {
+      remote:
+        'https://${JB_SPACE_API_URL}/p/${JB_SPACE_PROJECT_KEY}/repositories/${JB_SPACE_GIT_REPOSITORY_NAME}',
+      revision: '${JB_SPACE_GIT_REVISION}',
+      branch: '${JB_SPACE_GIT_BRANCH}',
+    },
+  },
+  {
     name: 'Semaphore',
     url: '${SEMAPHORE_ORGANIZATION_URL}/jobs/${SEMAPHORE_JOB_ID}',
     buildNumber: '${SEMAPHORE_JOB_ID}',
