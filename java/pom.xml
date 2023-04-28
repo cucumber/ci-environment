@@ -10,14 +10,14 @@
     </parent>
 
     <artifactId>ci-environment</artifactId>
-    <version>9.1.1-SNAPSHOT</version>
+    <version>9.2.0</version>
     <packaging>jar</packaging>
     <name>Cucumber CiEnvironment</name>
     <description>Detect CI Environment from environment variables</description>
     <url>https://github.com/cucumber/ci-environment</url>
 
     <properties>
-        <project.build.outputTimestamp>1000000</project.build.outputTimestamp>
+        <project.build.outputTimestamp>1682671875</project.build.outputTimestamp>
         <project.Automatic-Module-Name>io.cucumber.cienvironment</project.Automatic-Module-Name>
     </properties>
 
@@ -25,7 +25,7 @@
         <connection>scm:git:git://github.com/cucumber/ci-environment.git</connection>
         <developerConnection>scm:git:git@github.com:cucumber/ci-environment.git</developerConnection>
         <url>git://github.com/cucumber/ci-environment.git</url>
-        <tag>HEAD</tag>
+        <tag>v9.2.0</tag>
     </scm>
 
     <dependencyManagement>
