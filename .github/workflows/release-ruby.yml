@@ -1,6 +1,7 @@
+---
 name: Release ci-environment ruby gem
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - release/*

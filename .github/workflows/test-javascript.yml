@@ -1,6 +1,7 @@
+---
 name: test-javascript
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - main
@@ -26,17 +27,17 @@ jobs:
             node-version: '16.x'
 
     steps:
-    - name: set git core.autocrlf to 'input'
-      run: git config --global core.autocrlf input
-    - uses: actions/checkout@v3
-    - name: with Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: javascript/package-lock.json
-    - run: npm install-ci-test
-      working-directory: javascript
-    - run: npm run eslint-fix
-      working-directory: javascript
-    - run: ./scripts/fail-if-dirty
+      - name: set git core.autocrlf to 'input'
+        run: git config --global core.autocrlf input
+      - uses: actions/checkout@v3
+      - name: with Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: javascript/package-lock.json
+      - run: npm install-ci-test
+        working-directory: javascript
+      - run: npm run eslint-fix
+        working-directory: javascript
+      - run: ./scripts/fail-if-dirty
