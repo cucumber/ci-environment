@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- [Python] added ci-environment implementation in Python
 
 ## [9.2.0] - 2023-04-28
 ### Added

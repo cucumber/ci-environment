@@ -16,7 +16,7 @@ If a CI server is detected, a `CiEnvironment` struct is returned:
   "url": "...",
   "buildNumber": "...", // optional
   "git": {              // optional
-    "remote": "...",    
+    "remote": "...",
     "revision": "...",
     "branch": "...",    // optional
     "tag": "..."        // optional
@@ -95,6 +95,13 @@ func main() {
     fmt.Println("No CI environment detected")
   }
 }
+```
+
+```python
+import os
+from ci_environment import detect_ci_environment
+
+ci_environment = detect_ci_environment(os.environ)
 ```
 
 ## Supported CI servers
