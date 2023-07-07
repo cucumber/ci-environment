@@ -31,7 +31,7 @@ license = {text = "MIT"}
 maintainers = [
   {name = "Konstantin Goloveshko", email = "kostya.goloveshko@gmail.com"}
 ]
-name = "gherkin-ci-environment"
+name = "ci-environment"
 requires-python = ">=3.8"
 urls = {Repository = "https://github.com/cucumber/ci-environment"}
 version = "0.1.0"
