@@ -1,6 +1,7 @@
+---
 name: test-ruby
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - main
@@ -26,14 +27,14 @@ jobs:
             ruby: 3.2
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+          working-directory: ruby
+      - name: bundle exec rake
         working-directory: ruby
-    - name: bundle exec rake
-      working-directory: ruby
-      run: bundle exec rake
-    - run: ./scripts/fail-if-dirty
+        run: bundle exec rake
+      - run: ./scripts/fail-if-dirty

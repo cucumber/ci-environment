@@ -1,7 +1,7 @@
 copy-template:
 	cp ../CiEnvironments.json CiEnvironments.json
 
-test: copy-template 
+test: copy-template
 	@echo "running all tests"
 	@go install ./...
 	@go fmt ./...

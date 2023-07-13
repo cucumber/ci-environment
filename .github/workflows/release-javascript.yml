@@ -1,10 +1,11 @@
+---
 name: Release ci-environment npm module
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - release/*
-  
+
 jobs:
 
   pre-release-check:
