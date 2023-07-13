@@ -1,12 +1,12 @@
 import assert from 'assert'
 import fs from 'fs'
-import glob from 'glob'
+import { sync } from 'glob'
 import path from 'path'
 
 import detectCiEnvironment, { Env } from '../src/index.js'
 
 describe('detectCiEnvironment', () => {
-  for (const txt of glob.sync(`../testdata/*.txt`)) {
+  for (const txt of sync(`../testdata/*.txt`)) {
     it(`detects ${path.basename(txt, '.txt')}`, () => {
       const envData = fs.readFileSync(txt, { encoding: 'utf8' })
       const entries = envData.split(/\n/).map((line) => line.split(/=/))
