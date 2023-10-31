@@ -34,6 +34,5 @@ jobs:
           bundler-cache: true
           working-directory: ruby
       - run: bundle exec rake
-        with:
-          working-directory: ruby
+        working-directory: ruby
       - run: ./scripts/fail-if-dirty
