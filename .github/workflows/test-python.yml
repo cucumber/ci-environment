@@ -1,7 +1,7 @@
 ---
 name: test-python
 
-on:  # yamllint disable-line rule:truthy
+on:
   push:
     branches:
       - main
@@ -13,13 +13,11 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11"]
-
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
