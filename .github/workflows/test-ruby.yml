@@ -28,13 +28,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
           working-directory: ruby
-      - name: bundle exec rake
-        working-directory: ruby
-        run: bundle exec rake
+      - run: bundle exec rake
+        with:
+          working-directory: ruby
       - run: ./scripts/fail-if-dirty
