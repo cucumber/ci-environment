@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - [Python] added ci-environment implementation in Python
-- [Ruby] Initial rubocop configuration added
+- [Ruby] Initial rubocop configuration added ([#228](https://github.com/cucumber/ci-environment/pull/228))
 
 ### Changed
 - [Ruby] Minimum ruby version is now 2.6 ([#228](https://github.com/cucumber/ci-environment/pull/228))
