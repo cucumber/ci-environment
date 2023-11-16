@@ -1,13 +1,12 @@
 ---
 name: Release ci-environment ruby gem
 
-on:  # yamllint disable-line rule:truthy
+on:
   push:
     branches:
       - release/*
 
 jobs:
-
   pre-release-check:
     uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
 

@@ -1,13 +1,12 @@
 ---
 name: Release on github
 
-on:  # yamllint disable-line rule:truthy
+on:
   push:
     branches:
       - release/*
 
 jobs:
-
   pre-release-check:
     uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
 
@@ -18,7 +17,6 @@ jobs:
     environment: Release
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
       - uses: cucumber/action-create-github-release@v1.1.1

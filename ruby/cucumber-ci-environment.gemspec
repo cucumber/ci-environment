@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/cucumber/ci-environment'
   s.platform    = Gem::Platform::RUBY
   s.license     = 'MIT'
-  s.required_ruby_version = '>= 2.3'
+  s.required_ruby_version = '>= 2.6'
+  s.required_rubygems_version = '>= 3.0.3'
 
   s.metadata = {
     'bug_tracker_uri' => 'https://github.com/cucumber/ci-environment/issues',
@@ -19,16 +20,14 @@ Gem::Specification.new do |s|
     'source_code_uri' => 'https://github.com/cucumber/ci-environment/tree/main/ruby'
   }
 
-  s.add_development_dependency 'rake', '~> 13.0', '>= 13.0.6'
-  s.add_development_dependency 'rspec', '~> 3.11', '>= 3.11.0'
+  s.add_development_dependency 'rake', '~> 13.1'
+  s.add_development_dependency 'rspec', '~> 3.12'
+  s.add_development_dependency 'rubocop', '~> 1.44.0'
+  s.add_development_dependency 'rubocop-performance', '~> 1.16.0'
+  s.add_development_dependency 'rubocop-rake', '~> 0.6.0'
+  s.add_development_dependency 'rubocop-rspec', '~> 2.15.0'
 
-  s.executables      = []
-  s.rubygems_version = '>= 1.6.1', '~> 0.8'
-  s.files            = Dir[
-    'README.md',
-    'LICENSE',
-    'lib/**/*'
-  ]
+  s.files            = Dir['README.md', 'LICENSE', 'lib/**/*']
   s.test_files       = Dir['spec/**/*']
   s.rdoc_options     = ['--charset=UTF-8']
   s.require_path     = 'lib'
