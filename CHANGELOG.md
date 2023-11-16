@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [10.0.0] - 2023-11-16
 ### Added
 - [Python] added ci-environment implementation in Python
 - [Ruby] Initial rubocop configuration added ([#228](https://github.com/cucumber/ci-environment/pull/228))
@@ -175,7 +177,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v9.2.0...main
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v10.0.0...main
+[10.0.0]: https://github.com/cucumber/ci-environment/compare/v9.2.0...main
 [9.2.0]: https://github.com/cucumber/ci-environment/compare/v9.1.0...main
 [9.1.0]: https://github.com/cucumber/ci-environment/compare/v9.0.4...main
 [9.0.4]: https://github.com/cucumber/ci-environment/compare/v9.0.3...main
