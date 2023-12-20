@@ -84,9 +84,9 @@ Gemspec/DevelopmentDependencies:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-Performance/RegexpMatch:
-  Exclude:
-    - 'lib/cucumber/ci_environment/variable_expression.rb'
+#Performance/RegexpMatch:
+#  Exclude:
+#    - 'lib/cucumber/ci_environment/variable_expression.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
