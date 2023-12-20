@@ -163,9 +163,9 @@ Rake/Desc:
 
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
-Style/PerlBackrefs:
-  Exclude:
-    - 'lib/cucumber/ci_environment/variable_expression.rb'
+#Style/PerlBackrefs:
+#  Exclude:
+#    - 'lib/cucumber/ci_environment/variable_expression.rb'
 
 # Offense count: 4
 # This cop supports safe autocorrection (--autocorrect).
