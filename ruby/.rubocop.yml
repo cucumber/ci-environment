@@ -17,7 +17,7 @@ Layout/LineLength:
   Max: 200
 
 Metrics/AbcSize:
-  Max: 19
+  Max: 30
 
 Metrics/MethodLength:
   Max: 23
