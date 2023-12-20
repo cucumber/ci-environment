@@ -24,8 +24,8 @@ Gemspec/DevelopmentDependencies:
 #    - '**/spec/system/**/*'
 #    - '**/spec/views/**/*'
 #    - 'spec/cucumber/ci_environment/detect_ci_environment_spec.rb'
-#    - 'spec/cucumber/ci_environment/evaluate_variable_expression_spec.rb'
-#    - 'spec/cucumber/ci_environment/remove_userinfo_from_url_spec.rb'
+#    - 'spec/cucumber/ci_environment/variable_expression_evaluate_spec.rb'
+#    - 'spec/cucumber/ci_environment/remove_user_info_from_url_spec.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

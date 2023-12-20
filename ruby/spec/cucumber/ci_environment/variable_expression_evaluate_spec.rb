@@ -2,8 +2,8 @@
 
 require 'cucumber/ci_environment'
 
-describe 'Cucumber::CiEnvironment::VariableExpression.evaluate' do
-  include Cucumber::CiEnvironment::VariableExpression
+describe Cucumber::CiEnvironment::VariableExpression, '#evaluate' do
+  include described_class
 
   it 'returns nil when a variable is undefined' do
     expression = 'hello-${SOME_VAR}'
