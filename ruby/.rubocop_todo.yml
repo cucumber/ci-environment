@@ -204,9 +204,9 @@ Rake/Desc:
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowAsExpressionSeparator.
-Style/Semicolon:
-  Exclude:
-    - 'spec/cucumber/ci_environment/github_pull_request_integration_spec.rb'
+#Style/Semicolon:
+#  Exclude:
+#    - 'spec/cucumber/ci_environment/github_pull_request_integration_spec.rb'
 
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
