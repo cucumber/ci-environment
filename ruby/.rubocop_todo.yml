@@ -61,9 +61,9 @@ Gemspec/DevelopmentDependencies:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-Lint/ParenthesesAsGroupedExpression:
-  Exclude:
-    - 'spec/cucumber/ci_environment/github_pull_request_integration_spec.rb'
+#Lint/ParenthesesAsGroupedExpression:
+#  Exclude:
+#    - 'spec/cucumber/ci_environment/github_pull_request_integration_spec.rb'
 
 # Offense count: 3
 # Configuration parameters: AllowedMethods, AllowedPatterns, CountRepeatedAttributes.
