@@ -197,9 +197,9 @@ Rake/Desc:
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: implicit, explicit
-Style/RescueStandardError:
-  Exclude:
-    - 'lib/cucumber/ci_environment/variable_expression.rb'
+#Style/RescueStandardError:
+#  Exclude:
+#    - 'lib/cucumber/ci_environment/variable_expression.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
