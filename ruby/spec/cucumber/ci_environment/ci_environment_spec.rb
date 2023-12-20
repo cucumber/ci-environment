@@ -11,7 +11,7 @@ describe 'detect_ci_environment' do
       let(:ci_environment) { Cucumber::CiEnvironment.detect_ci_environment(env) }
       let(:env) { Hash[entries] }
       let(:entries) { env_data.split("\n").map { |line| line.split('=') } }
-      let(:env_data) { IO.read(test_data_file) }
+      let(:env_data) { File.read(test_data_file) }
 
       let(:expected_json) { File.read("#{test_data_file}.json") }
 

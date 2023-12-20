@@ -126,11 +126,11 @@ Rake/Desc:
 
 # Offense count: 4
 # This cop supports unsafe autocorrection (--autocorrect-all).
-Security/IoMethods:
-  Exclude:
-    - 'bin/print-meta'
-    - 'lib/cucumber/ci_environment.rb'
-    - 'spec/cucumber/ci_environment/ci_environment_spec.rb'
+#Security/IoMethods:
+#  Exclude:
+#    - 'bin/print-meta'
+#    - 'lib/cucumber/ci_environment.rb'
+#    - 'spec/cucumber/ci_environment/ci_environment_spec.rb'
 
 # Offense count: 7
 # This cop supports unsafe autocorrection (--autocorrect-all).

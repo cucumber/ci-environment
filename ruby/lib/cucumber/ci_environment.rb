@@ -8,7 +8,7 @@ module Cucumber
     CI_ENVIRONMENTS_PATH = File.join(File.dirname(__FILE__), 'ci_environment/CiEnvironments.json')
 
     def detect_ci_environment(env)
-      ci_environments = JSON.parse(IO.read(CI_ENVIRONMENTS_PATH))
+      ci_environments = JSON.parse(File.read(CI_ENVIRONMENTS_PATH))
       ci_environments.each do |ci_environment|
         detected = detect(ci_environment, env)
         return detected unless detected.nil?
@@ -55,7 +55,7 @@ module Cucumber
       if env['GITHUB_EVENT_NAME'] == 'pull_request'
         raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
 
-        event = JSON.parse(IO.read(env['GITHUB_EVENT_PATH']))
+        event = JSON.parse(File.read(env['GITHUB_EVENT_PATH']))
         revision = event['pull_request']['head']['sha'] rescue nil
         raise StandardError("Could not find .pull_request.head.sha in #{env['GITHUB_EVENT_PATH']}:\n#{JSON.pretty_generate(event)}") if revision.nil?
 
