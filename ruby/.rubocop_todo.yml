@@ -55,9 +55,9 @@ Gemspec/DevelopmentDependencies:
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
 # SupportedStyles: space, no_space
 # SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceBeforeBlockBraces:
-  Exclude:
-    - 'bin/print-meta'
+#Layout/SpaceBeforeBlockBraces:
+#  Exclude:
+#    - 'bin/print-meta'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
