@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'GitHub' do
   if (ENV['GITHUB_EVENT_NAME'] == 'pull_request')
     it 'detects the correct revision for pull requests' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uri'
 require 'json'
 require 'cucumber/ci_environment/variable_expression'

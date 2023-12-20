@@ -136,15 +136,15 @@ Rake/Desc:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'bin/print-meta'
-    - 'cucumber-ci-environment.gemspec'
-    - 'lib/cucumber/ci_environment.rb'
-    - 'lib/cucumber/ci_environment/variable_expression.rb'
-    - 'spec/cucumber/ci_environment/evaluate_variable_expression_spec.rb'
-    - 'spec/cucumber/ci_environment/github_pull_request_integration_spec.rb'
-    - 'spec/cucumber/ci_environment/remove_userinfo_from_url_spec.rb'
+#Style/FrozenStringLiteralComment:
+#  Exclude:
+#    - 'bin/print-meta'
+#    - 'cucumber-ci-environment.gemspec'
+#    - 'lib/cucumber/ci_environment.rb'
+#    - 'lib/cucumber/ci_environment/variable_expression.rb'
+#    - 'spec/cucumber/ci_environment/evaluate_variable_expression_spec.rb'
+#    - 'spec/cucumber/ci_environment/github_pull_request_integration_spec.rb'
+#    - 'spec/cucumber/ci_environment/remove_userinfo_from_url_spec.rb'
 
 # Offense count: 2
 # This cop supports unsafe autocorrection (--autocorrect-all).
