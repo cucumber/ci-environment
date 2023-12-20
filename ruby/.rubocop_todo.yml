@@ -183,9 +183,9 @@ Rake/Desc:
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
-Style/RedundantStringEscape:
-  Exclude:
-    - 'spec/cucumber/ci_environment/evaluate_variable_expression_spec.rb'
+#Style/RedundantStringEscape:
+#  Exclude:
+#    - 'spec/cucumber/ci_environment/evaluate_variable_expression_spec.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

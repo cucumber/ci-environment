@@ -18,7 +18,7 @@ describe 'Cucumber::CiEnvironment::VariableExpression.evaluate' do
   end
 
   it 'captures a group' do
-    expression = "${SOME_REF/refs\/heads\/(.*)/\\1}"
+    expression = "${SOME_REF/refs/heads/(.*)/\\1}"
     result = evaluate(expression, { 'SOME_REF' => 'refs/heads/main' })
     expect(result).to eq('main')
   end
