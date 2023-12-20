@@ -26,7 +26,7 @@ module Cucumber
       result = {
         name: ci_environment['name'],
         url: url,
-        buildNumber: evaluate(ci_environment['buildNumber'], env),
+        buildNumber: evaluate(ci_environment['buildNumber'], env)
       }
 
       detected_git = detect_git(ci_environment, env)
@@ -43,7 +43,7 @@ module Cucumber
 
       git_info = {
         remote: remove_userinfo_from_url(remote),
-        revision: revision,
+        revision: revision
       }
 
       tag = evaluate(ci_environment['git']['tag'], env)

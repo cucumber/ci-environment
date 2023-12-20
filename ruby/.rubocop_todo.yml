@@ -37,6 +37,6 @@ Rake/Desc:
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyleForMultiline.
 # SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInHashLiteral:
-  Exclude:
-    - 'lib/cucumber/ci_environment.rb'
+#Style/TrailingCommaInHashLiteral:
+#  Exclude:
+#    - 'lib/cucumber/ci_environment.rb'
