@@ -189,9 +189,9 @@ Rake/Desc:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-Style/RescueModifier:
-  Exclude:
-    - 'lib/cucumber/ci_environment.rb'
+#Style/RescueModifier:
+#  Exclude:
+#    - 'lib/cucumber/ci_environment.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
