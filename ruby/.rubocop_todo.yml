@@ -38,9 +38,9 @@ Gemspec/DevelopmentDependencies:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-Layout/SpaceAfterComma:
-  Exclude:
-    - 'bin/print-meta'
+#Layout/SpaceAfterComma:
+#  Exclude:
+#    - 'bin/print-meta'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
