@@ -54,9 +54,11 @@ module Cucumber
     def detect_revision(ci_environment, env)
       if env['GITHUB_EVENT_NAME'] == 'pull_request'
         raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
+
         event = JSON.parse(IO.read(env['GITHUB_EVENT_PATH']))
         revision = event['pull_request']['head']['sha'] rescue nil
         raise StandardError("Could not find .pull_request.head.sha in #{env['GITHUB_EVENT_PATH']}:\n#{JSON.pretty_generate(event)}") if revision.nil?
+
         return revision
       end
 

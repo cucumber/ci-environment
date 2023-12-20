@@ -24,10 +24,10 @@ Gemspec/DevelopmentDependencies:
 
 # Offense count: 5
 # This cop supports safe autocorrection (--autocorrect).
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - 'lib/cucumber/ci_environment.rb'
-    - 'lib/cucumber/ci_environment/variable_expression.rb'
+#Layout/EmptyLineAfterGuardClause:
+#  Exclude:
+#    - 'lib/cucumber/ci_environment.rb'
+#    - 'lib/cucumber/ci_environment/variable_expression.rb'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
