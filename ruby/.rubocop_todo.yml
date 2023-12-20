@@ -46,9 +46,9 @@ Gemspec/DevelopmentDependencies:
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowForAlignment, EnforcedStyleForExponentOperator.
 # SupportedStylesForExponentOperator: space, no_space
-Layout/SpaceAroundOperators:
-  Exclude:
-    - 'lib/cucumber/ci_environment/variable_expression.rb'
+#Layout/SpaceAroundOperators:
+#  Exclude:
+#    - 'lib/cucumber/ci_environment/variable_expression.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

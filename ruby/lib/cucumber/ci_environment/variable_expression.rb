@@ -21,7 +21,7 @@ module Cucumber
               raise "No match for variable #{variable}" if match.nil?
 
               match[1..-1].each_with_index do |group, i|
-                replacement = replacement.gsub("\\#{i+1}", group)
+                replacement = replacement.gsub("\\#{i + 1}", group)
               end
               replacement
             end
