@@ -6,5 +6,6 @@ file 'lib/cucumber/ci_environment/CiEnvironments.json' => '../CiEnvironments.jso
   FileUtils.cp t.prerequisites[0], t.name
 end
 
+desc 'Populates directory with test file'
 task spec: 'lib/cucumber/ci_environment/CiEnvironments.json'
 task default: [:spec]
