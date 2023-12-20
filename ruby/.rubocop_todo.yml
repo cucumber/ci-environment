@@ -115,8 +115,8 @@ RSpec/DescribeClass:
 
 # Offense count: 1
 # Configuration parameters: CountAsOne.
-RSpec/ExampleLength:
-  Max: 6
+#RSpec/ExampleLength:
+#  Max: 6
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

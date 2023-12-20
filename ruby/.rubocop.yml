@@ -22,6 +22,9 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Max: 23
 
+RSpec/ExampleLength:
+  Max: 6
+
 Style/Documentation:
   Enabled: false
 
