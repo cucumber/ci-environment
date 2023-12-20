@@ -210,9 +210,9 @@ Rake/Desc:
 
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
-Style/SlicingWithRange:
-  Exclude:
-    - 'lib/cucumber/ci_environment/variable_expression.rb'
+#Style/SlicingWithRange:
+#  Exclude:
+#    - 'lib/cucumber/ci_environment/variable_expression.rb'
 
 # Offense count: 7
 # This cop supports safe autocorrection (--autocorrect).
