@@ -149,10 +149,10 @@ Rake/Desc:
 # Offense count: 2
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: AllowSplatArgument.
-Style/HashConversion:
-  Exclude:
-    - 'bin/print-meta'
-    - 'spec/cucumber/ci_environment/ci_environment_spec.rb'
+#Style/HashConversion:
+#  Exclude:
+#    - 'bin/print-meta'
+#    - 'spec/cucumber/ci_environment/ci_environment_spec.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

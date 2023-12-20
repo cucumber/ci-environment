@@ -7,7 +7,7 @@ require 'cucumber/create_meta'
 env_path = ARGV[0]
 env_data = File.read(env_path)
 entries = env_data.split("\n").map { |line| line.split("=") }
-env = Hash[entries]
+env = entries.to_h
 meta = Cucumber::CreateMeta.create_meta('cucumber-something', '1.2.3', env)
 ci = meta.ci
 puts ci.to_json

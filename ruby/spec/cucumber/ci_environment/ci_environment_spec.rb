@@ -9,7 +9,7 @@ describe 'detect_ci_environment' do
       subject { JSON.parse(ci_environment.to_json) }
 
       let(:ci_environment) { Cucumber::CiEnvironment.detect_ci_environment(env) }
-      let(:env) { Hash[entries] }
+      let(:env) { entries.to_h }
       let(:entries) { env_data.split("\n").map { |line| line.split('=') } }
       let(:env_data) { File.read(test_data_file) }
 
