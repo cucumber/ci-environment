@@ -109,9 +109,9 @@ RSpec/DescribeClass:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-RSpec/EmptyLineAfterSubject:
-  Exclude:
-    - 'spec/cucumber/ci_environment/ci_environment_spec.rb'
+#RSpec/EmptyLineAfterSubject:
+#  Exclude:
+#    - 'spec/cucumber/ci_environment/ci_environment_spec.rb'
 
 # Offense count: 1
 # Configuration parameters: CountAsOne.

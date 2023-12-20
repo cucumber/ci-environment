@@ -21,6 +21,7 @@ describe 'detect_ci_environment' do
 
   context 'with no CI environment' do
     subject { JSON.parse(ci_environment.to_json) }
+
     let(:ci_environment) { Cucumber::CiEnvironment.detect_ci_environment(env) }
     let(:env) { {} }
 
