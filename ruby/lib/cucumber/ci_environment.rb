@@ -58,11 +58,7 @@ module Cucumber
         raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
 
         event = JSON.parse(File.read(env['GITHUB_EVENT_PATH']))
-        revision = begin
-          event['pull_request']['head']['sha']
-        rescue StandardError
-          nil
-        end
+        revision = event.dig('pull_request', 'head', 'sha')
         raise StandardError("Could not find .pull_request.head.sha in #{env['GITHUB_EVENT_PATH']}:\n#{JSON.pretty_generate(event)}") if revision.nil?
 
         return revision
