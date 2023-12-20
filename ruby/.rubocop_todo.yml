@@ -10,6 +10,6 @@
 # Configuration parameters: EnforcedStyle, AllowedGems, Include.
 # SupportedStyles: Gemfile, gems.rb, gemspec
 # Include: **/*.gemspec, **/Gemfile, **/gems.rb
-Gemspec/DevelopmentDependencies:
-  Exclude:
-    - 'cucumber-ci-environment.gemspec'
+#Gemspec/DevelopmentDependencies:
+#  Exclude:
+#    - 'cucumber-ci-environment.gemspec'
