@@ -77,10 +77,10 @@ Gemspec/DevelopmentDependencies:
 
 # Offense count: 4
 # This cop supports safe autocorrection (--autocorrect).
-Performance/RedundantSplitRegexpArgument:
-  Exclude:
-    - 'bin/print-meta'
-    - 'spec/cucumber/ci_environment/ci_environment_spec.rb'
+#Performance/RedundantSplitRegexpArgument:
+#  Exclude:
+#    - 'bin/print-meta'
+#    - 'spec/cucumber/ci_environment/ci_environment_spec.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
