@@ -90,9 +90,9 @@ Gemspec/DevelopmentDependencies:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-RSpec/BeEq:
-  Exclude:
-    - 'spec/cucumber/ci_environment/evaluate_variable_expression_spec.rb'
+#RSpec/BeEq:
+#  Exclude:
+#    - 'spec/cucumber/ci_environment/evaluate_variable_expression_spec.rb'
 
 # Offense count: 3
 # Configuration parameters: IgnoredMetadata.
