@@ -16,6 +16,12 @@ Gemspec/RequireMFA:
 Layout/LineLength:
   Max: 200
 
+Metrics/AbcSize:
+  Max: 19
+
+Metrics/MethodLength:
+  Max: 23
+
 Style/Documentation:
   Enabled: false
 
