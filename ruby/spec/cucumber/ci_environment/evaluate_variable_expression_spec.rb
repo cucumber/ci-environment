@@ -30,9 +30,9 @@ describe 'Cucumber::CiEnvironment::VariableExpression.evaluate' do
   it 'evaluates a complex expression' do
     expression = "hello-${VAR1}-${VAR2/(.*) (.*)/\\2-\\1}-world"
     result = evaluate(expression, {
-      'VAR1' => 'amazing',
-      'VAR2' => 'gorgeous beautiful'
-    })
+                        'VAR1' => 'amazing',
+                        'VAR2' => 'gorgeous beautiful'
+                      })
     expect(result).to eq('hello-amazing-beautiful-gorgeous-world')
   end
 end

@@ -33,8 +33,8 @@ Layout/EmptyLineAfterGuardClause:
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: IndentationWidth.
 # SupportedStyles: special_inside_parentheses, consistent, align_braces
-Layout/FirstHashElementIndentation:
-  EnforcedStyle: consistent
+#Layout/FirstHashElementIndentation:
+#  EnforcedStyle: consistent
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
