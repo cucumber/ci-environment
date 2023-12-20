@@ -28,7 +28,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop-rspec', '~> 2.15.0'
 
   s.files            = Dir['README.md', 'LICENSE', 'lib/**/*']
-  s.test_files       = Dir['spec/**/*']
   s.rdoc_options     = ['--charset=UTF-8']
   s.require_path     = 'lib'
 end
