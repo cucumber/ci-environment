@@ -3,7 +3,7 @@
 require 'cucumber/ci_environment'
 require 'json'
 
-describe Cucumber::CiEnvironment, '#detect_ci_environment' do
+describe Cucumber::CiEnvironment, '.detect_ci_environment' do
   Dir.glob('../testdata/*.txt') do |test_data_file|
     context "with #{File.basename(test_data_file, '.txt')}" do
       subject { JSON.parse(ci_environment.to_json) }
