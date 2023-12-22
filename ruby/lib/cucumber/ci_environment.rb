@@ -63,7 +63,7 @@ module Cucumber
 
         return revision
       end
-      
+
       evaluate(ci_environment.dig('git', 'revision'), env)
     end
 
