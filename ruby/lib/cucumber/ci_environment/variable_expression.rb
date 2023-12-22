@@ -28,7 +28,7 @@ module Cucumber
               replacement
             end
           end
-        rescue StandardError
+        rescue
           nil
         end
       end
