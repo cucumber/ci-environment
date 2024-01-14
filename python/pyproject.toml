@@ -40,6 +40,9 @@ version = "10.0.0"
 
 [project.scripts]
 
+[project.optional-dependencies]
+test = ["tox"]
+
 [tool.black]
 line-length = 120
 target-version = ["py38", "py39", "py310", "py311"]
