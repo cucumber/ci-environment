@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- [Python] added release workflow to release to Pypi ([#245](https://github.com/cucumber/ci-environment/pull/245))
 
 ## [10.0.0] - 2023-11-16
 ### Added
