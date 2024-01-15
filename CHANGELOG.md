@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [10.0.1] - 2024-01-15
 ### Added
 - [Python] added release workflow to release to Pypi ([#245](https://github.com/cucumber/ci-environment/pull/245))
 
@@ -179,7 +181,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v10.0.0...HEAD
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v10.0.1...HEAD
+[10.0.1]: https://github.com/cucumber/ci-environment/compare/v10.0.0...v10.0.1
 [10.0.0]: https://github.com/cucumber/ci-environment/compare/v9.2.0...v10.0.0
 [9.2.0]: https://github.com/cucumber/ci-environment/compare/v9.1.0...v9.2.0
 [9.1.0]: https://github.com/cucumber/ci-environment/compare/v9.0.4...v9.1.0
