@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- [Python] Reuse the action cucumber/action-publish-pypi in release ([#246](https://github.com/cucumber/ci-environment/pull/246))
 
 ## [10.0.1] - 2024-01-15
 ### Added
