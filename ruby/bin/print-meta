@@ -1,11 +1,13 @@
 #!/usr/bin/env ruby
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__),"../lib"))
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../lib'))
 require 'cucumber/create_meta'
 
 env_path = ARGV[0]
-env_data = IO.read(env_path)
-entries = env_data.split(/\n/).map{ |line| line.split(/=/) }
-env = Hash[entries]
+env_data = File.read(env_path)
+entries = env_data.split("\n").map { |line| line.split('=') }
+env = entries.to_h
 meta = Cucumber::CreateMeta.create_meta('cucumber-something', '1.2.3', env)
 ci = meta.ci
 puts ci.to_json
