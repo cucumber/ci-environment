@@ -27,8 +27,8 @@ describe Cucumber::CiEnvironment do
       it { is_expected.to be_nil }
     end
 
-    context 'for GitHub pull requests' do
-      if ENV['GITHUB_EVENT_NAME'] == 'pull_request'
+    if ENV['GITHUB_EVENT_NAME'] == 'pull_request'
+      context 'when on a GitHub pull request' do
         it 'detects the correct revision for pull requests' do
           ci_environment = described_class.detect_ci_environment(ENV)
 
