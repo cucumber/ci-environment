@@ -1,5 +1,5 @@
 ---
-name: Release ci-environment ruby gem
+name: Release ruby gem
 
 on:
   push:
@@ -18,7 +18,6 @@ jobs:
     needs: [pre-release-check, test-ruby]
     runs-on: ubuntu-latest
     environment: Release
-
     steps:
       - uses: actions/checkout@v4
       - name: Set up Ruby
