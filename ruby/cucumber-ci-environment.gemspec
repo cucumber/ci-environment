@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 version = File.read(File.expand_path('VERSION', __dir__)).strip
 
 Gem::Specification.new do |s|
@@ -28,7 +30,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop-rspec', '~> 3.2.0'
 
   s.files            = Dir['README.md', 'LICENSE', 'lib/**/*']
-  s.test_files       = Dir['spec/**/*']
   s.rdoc_options     = ['--charset=UTF-8']
   s.require_path     = 'lib'
 end
