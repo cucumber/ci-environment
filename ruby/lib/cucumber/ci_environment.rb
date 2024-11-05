@@ -56,21 +56,14 @@ module Cucumber
     end
 
     def detect_revision(ci_environment, env)
-      if env['GITHUB_EVENT_NAME'] == 'pull_request'
-        raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
+      return evaluate(ci_environment['git']['revision'], env) unless env['GITHUB_EVENT_NAME'] == 'pull_request'
 
-        event = JSON.parse(File.read(env['GITHUB_EVENT_PATH']))
-        revision = begin
-          event['pull_request']['head']['sha']
-        rescue StandardError
-          nil
-        end
-        raise StandardError("Could not find .pull_request.head.sha in #{env['GITHUB_EVENT_PATH']}:\n#{JSON.pretty_generate(event)}") if revision.nil?
+      raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
 
-        return revision
+      event = JSON.parse(File.read(env['GITHUB_EVENT_PATH']))
+      event.dig('pull_request', 'head', 'sha').tap do |revision|
+        raise StandardError("Could not find .pull_request.head.sha in GITHUB_EVENT_PATH:\n#{JSON.pretty_generate(event)}") if revision.nil?
       end
-
-      evaluate(ci_environment['git']['revision'], env)
     end
 
     def remove_userinfo_from_url(value)
