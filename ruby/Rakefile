@@ -6,6 +6,8 @@ file 'lib/cucumber/ci_environment/CiEnvironments.json' => '../CiEnvironments.jso
   FileUtils.cp(t.prerequisites[0], t.name)
 end
 
-desc 'Run the unit tests for all Ci Environments'
-task spec: 'lib/cucumber/ci_environment/CiEnvironments.json'
+desc 'Copy the sample Environments & Run the unit tests for all environment types'
+task spec: 'lib/cucumber/ci_environment/CiEnvironments.json' do
+  system('bundle exec rspec')
+end
 task default: [:spec]
