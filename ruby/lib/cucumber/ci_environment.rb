@@ -7,6 +7,8 @@ module Cucumber
     extend VariableExpression
     CI_ENVIRONMENTS_PATH = File.join(File.dirname(__FILE__), 'ci_environment/CiEnvironments.json')
 
+    module_function
+
     def detect_ci_environment(env)
       ci_environments = JSON.parse(IO.read(CI_ENVIRONMENTS_PATH))
       ci_environments.each do |ci_environment|
@@ -76,7 +78,5 @@ module Cucumber
         value
       end
     end
-
-    module_function :detect_ci_environment, :detect, :detect_git, :detect_revision, :remove_userinfo_from_url
   end
 end
