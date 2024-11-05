@@ -20,7 +20,7 @@ module Cucumber
               match = value.match(regexp)
               raise "No match for variable #{variable}" if match.nil?
 
-              match[1..-1].each_with_index do |group, i|
+              match[1..].each_with_index do |group, i|
                 replacement = replacement.gsub("\\#{i + 1}", group)
               end
               replacement
