@@ -13,7 +13,7 @@ describe Cucumber::CiEnvironment do
       context "with #{File.basename(test_data_file, '.txt')}" do
         let(:entries) { env_data.split("\n").map { |line| line.split('=') } }
         let(:env) { entries.to_h }
-        let(:env_data) { IO.read(test_data_file) }
+        let(:env_data) { File.read(test_data_file) }
 
         let(:expected_json) { File.read("#{test_data_file}.json") }
 
