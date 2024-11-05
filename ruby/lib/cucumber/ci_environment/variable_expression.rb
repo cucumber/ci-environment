@@ -3,6 +3,7 @@ module Cucumber
     module VariableExpression
       def evaluate(expression, env)
         return nil if expression.nil?
+
         begin
           expression.gsub(/\${(.*?)(?:(?<!\\)\/(.*)\/(.*))?}/) do
             variable = $1
@@ -11,12 +12,14 @@ module Cucumber
 
             value = get_value(variable, env)
             raise "Undefined variable #{variable}" if value.nil?
+
             if pattern.nil?
               value
             else
               regexp = Regexp.new(pattern.gsub('\/', '/'))
               match = value.match(regexp)
               raise "No match for variable #{variable}" if match.nil?
+
               match[1..-1].each_with_index do |group, i|
                 replacement = replacement.gsub("\\#{i+1}", group)
               end
