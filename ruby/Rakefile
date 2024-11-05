@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(File.expand_path('lib', __dir__))
 
 file 'lib/cucumber/ci_environment/CiEnvironments.json' => '../CiEnvironments.json' do |t|
-  FileUtils.cp t.prerequisites[0], t.name
+  FileUtils.cp(t.prerequisites[0], t.name)
 end
 
+desc 'Run the unit tests for all Ci Environments'
 task spec: 'lib/cucumber/ci_environment/CiEnvironments.json'
 task default: [:spec]
