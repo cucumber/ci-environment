@@ -70,7 +70,7 @@ module Cucumber
         return revision
       end
 
-      return evaluate(ci_environment['git']['revision'], env)
+      evaluate(ci_environment['git']['revision'], env)
     end
 
     def remove_userinfo_from_url(value)
