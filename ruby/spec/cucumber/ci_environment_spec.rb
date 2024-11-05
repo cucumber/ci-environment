@@ -7,7 +7,7 @@ describe Cucumber::CiEnvironment do
   describe '.detect_ci_environment' do
     subject { JSON.parse(ci_environment.to_json) }
 
-    let(:ci_environment) { Cucumber::CiEnvironment.detect_ci_environment(env) }
+    let(:ci_environment) { described_class.detect_ci_environment(env) }
 
     Dir.glob('../testdata/*.txt') do |test_data_file|
       context "with #{File.basename(test_data_file, '.txt')}" do
@@ -30,7 +30,7 @@ describe Cucumber::CiEnvironment do
     context 'for GitHub pull requests' do
       if ENV['GITHUB_EVENT_NAME'] == 'pull_request'
         it 'detects the correct revision for pull requests' do
-          ci_environment = Cucumber::CiEnvironment.detect_ci_environment(ENV)
+          ci_environment = described_class.detect_ci_environment(ENV)
 
           expect(ci_environment).to be_truthy
         end
@@ -40,28 +40,28 @@ describe Cucumber::CiEnvironment do
 
   describe '.remove_user_info_from_url' do
     it 'returns nil for nil' do
-      expect(Cucumber::CiEnvironment.remove_userinfo_from_url(nil)).to be_nil
+      expect(described_class.remove_userinfo_from_url(nil)).to be_nil
     end
 
     it 'returns empty string for empty string' do
-      expect(Cucumber::CiEnvironment.remove_userinfo_from_url('')).to eq('')
+      expect(described_class.remove_userinfo_from_url('')).to eq('')
     end
 
     it 'leaves the data intact when no sensitive information is detected' do
-      expect(Cucumber::CiEnvironment.remove_userinfo_from_url('pretty safe')).to eq('pretty safe')
+      expect(described_class.remove_userinfo_from_url('pretty safe')).to eq('pretty safe')
     end
 
     context 'with URLs' do
       it 'leaves intact when no password is found' do
-        expect(Cucumber::CiEnvironment.remove_userinfo_from_url('https://example.com/git/repo.git')).to eq('https://example.com/git/repo.git')
+        expect(described_class.remove_userinfo_from_url('https://example.com/git/repo.git')).to eq('https://example.com/git/repo.git')
       end
 
       it 'removes credentials when found' do
-        expect(Cucumber::CiEnvironment.remove_userinfo_from_url('http://login@example.com/git/repo.git')).to eq('http://example.com/git/repo.git')
+        expect(described_class.remove_userinfo_from_url('http://login@example.com/git/repo.git')).to eq('http://example.com/git/repo.git')
       end
 
       it 'removes credentials and passwords when found' do
-        expect(Cucumber::CiEnvironment.remove_userinfo_from_url('ssh://login:password@example.com/git/repo.git')).to eq('ssh://example.com/git/repo.git')
+        expect(described_class.remove_userinfo_from_url('ssh://login:password@example.com/git/repo.git')).to eq('ssh://example.com/git/repo.git')
       end
     end
   end
