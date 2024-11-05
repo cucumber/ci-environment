@@ -20,12 +20,12 @@ Gem::Specification.new do |s|
     'source_code_uri' => 'https://github.com/cucumber/ci-environment/tree/main/ruby'
   }
 
-  s.add_development_dependency 'rake', '~> 13.1'
-  s.add_development_dependency 'rspec', '~> 3.12'
-  s.add_development_dependency 'rubocop', '~> 1.44.0'
-  s.add_development_dependency 'rubocop-performance', '~> 1.16.0'
+  s.add_development_dependency 'rake', '~> 13.2'
+  s.add_development_dependency 'rspec', '~> 3.13'
+  s.add_development_dependency 'rubocop', '~> 1.68.0'
+  s.add_development_dependency 'rubocop-performance', '~> 1.22.1'
   s.add_development_dependency 'rubocop-rake', '~> 0.6.0'
-  s.add_development_dependency 'rubocop-rspec', '~> 2.15.0'
+  s.add_development_dependency 'rubocop-rspec', '~> 3.2.0'
 
   s.files            = Dir['README.md', 'LICENSE', 'lib/**/*']
   s.test_files       = Dir['spec/**/*']
