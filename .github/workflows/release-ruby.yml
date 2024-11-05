@@ -23,12 +23,12 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
+          ruby-version: 3.3
           bundler-cache: true
           working-directory: ruby
       - name: Synchronize CiEnvironments.json
         working-directory: ruby
-        run: bundle exec rake lib/cucumber/ci_environment/CiEnvironments.json
+        run: bundle exec rake ci_environments
       - run: ./scripts/fail-if-dirty
       - name: Publish ruby gem
         uses: cucumber/action-publish-rubygem@v1.0.0
