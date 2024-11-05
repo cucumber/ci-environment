@@ -3,7 +3,7 @@
 require 'cucumber/ci_environment'
 require 'json'
 
-describe 'detect_ci_environment' do
+describe '.detect_ci_environment' do
   subject { JSON.parse(ci_environment.to_json) }
 
   let(:ci_environment) { Cucumber::CiEnvironment.detect_ci_environment(env) }

@@ -1,6 +1,6 @@
 require 'cucumber/ci_environment'
 
-describe 'remove_user_info_from_url' do
+describe '.remove_user_info_from_url' do
   it 'returns nil for nil' do
     expect(Cucumber::CiEnvironment.remove_userinfo_from_url(nil)).to be_nil
   end
