@@ -9,7 +9,7 @@ describe 'Cucumber::CiEnvironment::VariableExpression.evaluate' do
     expression = 'hello-${SOME_VAR}'
     result = evaluate(expression, {})
 
-    expect(result).to eq(nil)
+    expect(result).to be_nil
   end
 
   it 'gets a value without replacement' do
