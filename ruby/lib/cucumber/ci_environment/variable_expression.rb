@@ -6,9 +6,9 @@ module Cucumber
 
         begin
           expression.gsub(/\${(.*?)(?:(?<!\\)\/(.*)\/(.*))?}/) do
-            variable = $1
-            pattern = $2
-            replacement = $3
+            variable = Regexp.last_match(1)
+            pattern = Regexp.last_match(2)
+            replacement = Regexp.last_match(3)
 
             value = get_value(variable, env)
             raise "Undefined variable #{variable}" if value.nil?
