@@ -1,4 +1,4 @@
-name: Release Python
+name: Release pip package
 
 on:
   push:

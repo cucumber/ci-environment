@@ -25,7 +25,6 @@ jobs:
             node-version: 18
           - os: macos-latest
             node-version: 18
-
     steps:
       - name: set git core.autocrlf to 'input'
         run: git config --global core.autocrlf input

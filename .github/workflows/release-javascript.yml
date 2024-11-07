@@ -1,5 +1,5 @@
 ---
-name: Release ci-environment npm module
+name: Release npm module
 
 on:
   push:

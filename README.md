@@ -8,9 +8,9 @@
 This library detects the CI environment based on environment variables defined
 by CI servers.
 
-If a CI server is detected, a `CiEnvironment` struct is returned:
+If a CI server is detected, a `CiEnvironment.json` struct is returned:
 
-```javascript
+```json
 {
   "name": "...",
   "url": "...",
@@ -29,7 +29,7 @@ variables are not defined).
 
 Some CI servers expose usernames and passwords in the environment variable
 that is used to detect `git.remote`. For security reasons, this library removes
-the username and password from the `git.remote` field in the `CiEnvironment` struct.
+the username and password from the `git.remote` field in the `CiEnvironment.json` struct.
 
 ### TypeScript
 
@@ -66,7 +66,7 @@ public class CiEnvironmentExample {
 
 ### Ruby
 
-```Gemfile
+```ruby
 gem 'cucumber-ci-environment'
 ```
 
