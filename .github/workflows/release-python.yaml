@@ -1,8 +1,8 @@
-name: Release pip package
+name: Release Python
 
 on:
   push:
-    branches: [release/*]
+    branches: [ release/* ]
 
 jobs:
   release:
@@ -26,6 +26,12 @@ jobs:
       - name: Show Python version
         run: python --version
 
-      - uses: cucumber/action-publish-pypi@v3.0.0
+      - name: Install Python package dependencies
+        run: |
+          python -m pip install build twine
+          python -m build
+          twine check --strict dist/*
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          working-directory: "python"
+          packages-dir: python/dist

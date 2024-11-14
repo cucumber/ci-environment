@@ -34,11 +34,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -U setuptools
-          pip install tox tox-gh-actions codecov
+          python -m pip install pip twine setuptools tox tox-gh-actions codecov
       - name: Test with tox
         working-directory: ./python
         run: |
           tox
           codecov
+      - name: Check build
+        run: |
+          python -m build
+          twine check --strict dist/*
