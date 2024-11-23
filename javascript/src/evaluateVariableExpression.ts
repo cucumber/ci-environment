@@ -31,7 +31,7 @@ export default function evaluateVariableExpression(
       }
       return replacement
     })
-  } catch (err) {
+  } catch (_) {
     // There was an undefined variable
     return undefined
   }

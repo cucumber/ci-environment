@@ -19,12 +19,12 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        node-version: [16, 18, 20]
+        node-version: [18, 20, 22]
         include:
           - os: windows-latest
-            node-version: 18
+            node-version: 22
           - os: macos-latest
-            node-version: 18
+            node-version: 22
     steps:
       - name: set git core.autocrlf to 'input'
         run: git config --global core.autocrlf input

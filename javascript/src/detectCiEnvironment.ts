@@ -20,7 +20,7 @@ export function removeUserInfoFromUrl(value: string): string {
     url.password = ''
     url.username = ''
     return url.toString()
-  } catch (ignore) {
+  } catch (_) {
     return value
   }
 }
