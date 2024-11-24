@@ -14,7 +14,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     strategy:
       matrix:
         python-version:
@@ -26,6 +25,9 @@ jobs:
           - "pypy3.8"
           - "pypy3.9"
           - "pypy3.10"
+    defaults:
+      run:
+        working-directory: python
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
@@ -34,11 +36,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -U setuptools
-          pip install tox tox-gh-actions codecov
+          python -m pip install pip setuptools tox tox-gh-actions codecov
       - name: Test with tox
-        working-directory: ./python
         run: |
           tox
           codecov
+      - name: Build package
+        run: |
+          python -m pip install build twine
+          python -m build
+          twine check --strict dist/*
