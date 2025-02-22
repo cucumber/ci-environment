@@ -27,7 +27,7 @@
     "prepublishOnly": "npm run build",
     "fix": "eslint --max-warnings 0 --fix src test && prettier --write src test",
     "lint": "eslint --max-warnings 0 src test && prettier --check src test",
-    "generate-ci-environments-ts": "shx cat CiEnvironments.ts.header ../CiEnvironments.json > src/CiEnvironments.ts && eslint --fix src/CiEnvironments.ts"
+    "generate-ci-environments-ts": "shx cat CiEnvironments.ts.header ../CiEnvironments.json > src/CiEnvironments.ts && eslint --fix src/CiEnvironments.ts && prettier --write src/CiEnvironments.ts"
   },
   "repository": {
     "type": "git",
