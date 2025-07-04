@@ -10,7 +10,7 @@ by CI servers.
 
 If a CI server is detected, a `CiEnvironment.json` struct is returned:
 
-```json
+```json5
 {
   "name": "...",
   "url": "...",
