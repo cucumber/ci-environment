@@ -6,9 +6,19 @@ on:
     branches:
       - main
       - renovate/**
+    paths:
+      - java/**
+      - CiEnvironments.json
+      - testdata/**
+      - .github/**
   pull_request:
     branches:
       - main
+    paths:
+      - java/**
+      - CiEnvironments.json
+      - testdata/**
+      - .github/**
   workflow_call:
 
 jobs:
