@@ -1,19 +1,9 @@
 package io.cucumber.cienvironment;
 
-import com.eclipsesource.json.Json;
-import com.eclipsesource.json.JsonValue;
-
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-import static io.cucumber.cienvironment.VariableExpression.evaluate;
 import static java.util.Objects.requireNonNull;
-import static java.util.Optional.empty;
-import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 
 final class CiEnvironmentImpl implements CiEnvironment {
@@ -50,48 +40,6 @@ final class CiEnvironmentImpl implements CiEnvironment {
     @Override
     public Optional<CiEnvironment.Git> getGit() {
         return ofNullable(git);
-    }
-
-    Optional<CiEnvironment> detect(Map<String, String> env) {
-        String url = evaluate(getUrl(), env);
-        if (url == null) return empty();
-
-        return of(new CiEnvironmentImpl(
-                name,
-                url,
-                evaluate(getBuildNumber().orElse(null), env),
-                detectGit(env)
-        ));
-    }
-
-    private Git detectGit(Map<String, String> env) {
-        String revision = evaluateRevision(env);
-        if (revision == null) return null;
-
-        String remote = evaluate(git.remote, env);
-        if (remote == null) return null;
-
-        return new Git(
-                RemoveUserInfo.fromUrl(remote),
-                revision,
-                evaluate(git.branch, env),
-                evaluate(git.tag, env)
-        );
-    }
-
-    private String evaluateRevision(Map<String, String> env) {
-        if ("pull_request".equals(env.get("GITHUB_EVENT_NAME"))) {
-            if (env.get("GITHUB_EVENT_PATH") == null) {
-                throw new RuntimeException("GITHUB_EVENT_PATH not set");
-            }
-            try {
-                JsonValue event = Json.parse(new InputStreamReader(new FileInputStream(env.get("GITHUB_EVENT_PATH")), StandardCharsets.UTF_8));
-                return event.asObject().get("pull_request").asObject().get("head").asObject().get("sha").asString();
-            } catch (Exception e) {
-                throw new RuntimeException("Could not read .pull_request.head.sha from " + env.get("GITHUB_EVENT_PATH"), e);
-            }
-        }
-        return evaluate(git.revision, env);
     }
 
     @Override
