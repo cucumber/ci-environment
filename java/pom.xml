@@ -78,23 +78,81 @@
             <artifactId>jackson-databind</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.34</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Copy FreeMarker template files for code generation-->
             <plugin>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>groovy-maven-plugin</artifactId>
-                <version>2.1.1</version>
+                <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>generate-ci-environments</id>
                         <phase>generate-sources</phase>
                         <goals>
-                            <goal>execute</goal>
+                            <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <source>${project.basedir}/src/main/groovy/io/cucumber/cienvironment/CiEnvironments.groovy
-                            </source>
+                            <outputDirectory>${project.build.directory}/codegen-classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/src/codegen/resources</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Make sure to compile code generator before running it -->
+            <!-- Note: both the code generator and regular classes are compiled -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-ci-environments</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                        <configuration>
+                            <compileSourceRoots>${project.basedir}/src/codegen/java</compileSourceRoots>
+                            <outputDirectory>${project.build.directory}/codegen-classes</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Run the code generator -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <id>generate-ci-environments</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <classpathScope>test</classpathScope>
+                            <addOutputToClasspath>false</addOutputToClasspath>
+                            <addResourcesToClasspath>false</addResourcesToClasspath>
+                            <additionalClasspathElements>
+                                ${project.build.directory}/codegen-classes
+                            </additionalClasspathElements>
+                            <mainClass>Generate</mainClass>
+                            <arguments>
+                                <argument>${project.build.directory}/generated-sources/ci-environments/java</argument>
+                                <argument>io/cucumber/cienvironment</argument>
+                            </arguments>
                         </configuration>
                     </execution>
                 </executions>
@@ -104,14 +162,14 @@
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>add-source</id>
+                        <id>generate-ci-environments</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>add-source</goal>
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${basedir}/target/generated-sources/ci-environments/java</source>
+                                <source>${project.build.directory}/generated-sources/ci-environments/java</source>
                             </sources>
                         </configuration>
                     </execution>
