@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -32,7 +33,9 @@ class DetectCiEnvironmentTest {
 
     private static List<Path> acceptance_tests_pass() throws IOException {
         List<Path> paths = new ArrayList<>();
-        newDirectoryStream(Paths.get("..", "testdata"), "*.txt").forEach(paths::add);
+        try  (DirectoryStream<Path> testdata = newDirectoryStream(Paths.get("..", "testdata"), "*.txt")){
+            testdata.forEach(paths::add);
+        }
         paths.sort(Comparator.naturalOrder());
         return paths;
     }
@@ -61,10 +64,10 @@ class DetectCiEnvironmentTest {
     static class Converter implements ArgumentConverter {
         @Override
         public Expectation convert(Object source, ParameterContext context) throws ArgumentConversionException {
-            try {
-                Path path = (Path) source;
-                Map<String, String> env = new HashMap<>();
-                BufferedReader in = newBufferedReader(path);
+            Path path = (Path) source;
+            Map<String, String> env = new HashMap<>();
+
+            try (BufferedReader in = newBufferedReader(path)){
                 String line;
                 while ((line = in.readLine()) != null) {
                     String[] parts = line.split("=");
