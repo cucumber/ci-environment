@@ -3,7 +3,7 @@ import fs from 'fs'
 import { sync } from 'glob'
 import path from 'path'
 
-import detectCiEnvironment, { Env } from '../src/index.js'
+import detectCiEnvironment, { type Env } from '../src/index.js'
 
 describe('detectCiEnvironment', () => {
   for (const txt of sync(`../testdata/*.txt`)) {
