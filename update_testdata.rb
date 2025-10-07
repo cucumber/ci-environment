@@ -3,9 +3,11 @@
 require 'json'
 require 'set'
 
-# This script can be used to update the test data when the CiEnvironments.json file is modified.
-# After running this script, the testdata should be inspected and updated manually
-
+# This script will find all variables in CiEnvironments.json and write them to 
+# the testdata folder. This can be used to update the test data after the
+# CiEnvironments.json file is modified. After running this script, the testdata
+# should be inspected and updated manually to account for scenarios where not all
+# variables are present.
 json = JSON.parse(File.read("#{File.dirname(__FILE__)}/CiEnvironments.json"))
 
 def collect_vars(environment, env_vars)
