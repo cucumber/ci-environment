@@ -8,7 +8,7 @@ require 'set'
 # CiEnvironments.json file is modified. After running this script, the testdata
 # should be inspected and updated manually to account for scenarios where not all
 # variables are present.
-json = JSON.parse(File.read("#{File.dirname(__FILE__)}/CiEnvironments.json"))
+json = JSON.parse(File.read("#{File.dirname(__FILE__)}/../CiEnvironments.json"))
 
 def collect_vars(environment, env_vars)
   environment.each_value do |value|
@@ -25,7 +25,7 @@ end
 
 json.each do |payload|
   name = payload['name']
-  filename = "testdata/#{name.gsub(/\s/, '')}.txt"
+  filename = "src/#{name.gsub(/\s/, '')}.txt"
   puts "--- #{filename}"
   txt_file_env_vars = []
   if File.exist?(filename)
