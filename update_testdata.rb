@@ -21,7 +21,8 @@ def collect_vars(environment, env_vars)
   end
 end
 
-json.each do |name, ci|
+json.each do |payload|
+  name = payload['name']
   filename = "testdata/#{name.gsub(/\s/, '')}.txt"
   puts "--- #{filename}"
   txt_file_env_vars = []
@@ -31,7 +32,7 @@ json.each do |name, ci|
     end
   end
   used_env_vars = Set.new
-  collect_vars(ci, used_env_vars)
+  collect_vars(payload, used_env_vars)
   used_env_vars.to_a.sort.each do |used_env_var|
     exists = txt_file_env_vars.detect { |pair| pair[0] == used_env_var }
     txt_file_env_vars.push([used_env_var, '???']) unless exists
