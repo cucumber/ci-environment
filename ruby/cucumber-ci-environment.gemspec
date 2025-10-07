@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.metadata = {
     'bug_tracker_uri' => 'https://github.com/cucumber/ci-environment/issues',
     'changelog_uri' => 'https://github.com/cucumber/ci-environment/blob/main/CHANGELOG.md',
-    'documentation_uri' => 'https://cucumber.io/docs/gherkin/',
     'source_code_uri' => 'https://github.com/cucumber/ci-environment/tree/main/ruby'
   }
 
