@@ -10,4 +10,4 @@ desc 'Copy the sample environments & run all the unit tests for all environment 
 task spec: :ci_environments do
   system('bundle exec rspec')
 end
-task default: [:spec]
+task default: :spec
