@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Changed
 - [Python] Reuse the action cucumber/action-publish-pypi in release ([#246](https://github.com/cucumber/ci-environment/pull/246))
-- [Ruby] Minimum ruby version is now 3.1 ([#266](https://github.com/cucumber/ci-environment/pull/266))
+- [Ruby] Minimum ruby version is now 3.2 ([#295](https://github.com/cucumber/ci-environment/pull/295))
 - [Ruby] Suite is now almost fully rubocop compliant ([#266](https://github.com/cucumber/ci-environment/pull/266))
 - [JavaScript] BREAKING CHANGE: Remove support for Node.js 16, add support for 22 ([#261](https://github.com/cucumber/ci-environment/pull/261))
 
