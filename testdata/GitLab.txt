@@ -3,3 +3,4 @@ CI_REPOSITORY_URL=https://cukebot:thisIsAVerySensitiveInformation@gitlab.com/cuc
 CI_COMMIT_SHA=123456789
 CI_COMMIT_BRANCH=main
 CI_JOB_ID=713869896
+CI_COMMIT_TAG=???
