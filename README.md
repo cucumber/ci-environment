@@ -97,11 +97,16 @@ func main() {
 }
 ```
 
-```python
-import os
-from ci_environment import detect_ci_environment
+### Python
 
-ci_environment = detect_ci_environment(os.environ)
+```console
+pip install ci-environment
+```
+
+```python
+>>> import os
+>>> from ci_environment import detect_ci_environment
+>>> ci_environment = detect_ci_environment(os.environ)
 ```
 
 ## Supported CI servers

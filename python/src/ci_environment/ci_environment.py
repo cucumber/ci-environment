@@ -1,15 +1,13 @@
 from collections import namedtuple
 from contextlib import suppress
 from functools import partial, wraps
+from importlib.resources import as_file, files
 from itertools import filterfalse
 from json import loads as loads_json
 from operator import is_
 from pathlib import Path
 from pprint import pformat
-from typing import Dict
 from urllib.parse import urlparse
-
-from importlib_resources import as_file, files
 
 from ci_environment.variable_expression import evaluate
 
@@ -17,7 +15,7 @@ _key_value = namedtuple("_key_value", ["key", "value"])
 
 
 @wraps(dict)
-def _opt_dict(*args, **kwargs) -> Dict:
+def _opt_dict(*args, **kwargs) -> dict:
     return {k: v for k, v in dict(*args, **kwargs).items() if v is not None}
 
 
@@ -26,20 +24,24 @@ def _flip(func):
         if len(args) > 1:
             first, *other, last = args
             return func(last, *other, first, **kwargs)
-        else:
-            return func(*args, **kwargs)
+        return func(*args, **kwargs)
 
     return wrapped
 
 
-def detect_ci_environment(env: Dict[str, str]):
+def detect_ci_environment(env: dict[str, str]):
     with as_file(files("ci_environment").joinpath("CiEnvironments.json")) as path:
         ci_environments = loads_json(Path(path).read_text())
 
-    return next(filterfalse(partial(_flip(is_), None), map(partial(detect, env=env), ci_environments)), None)
+    return next(
+        filterfalse(
+            partial(_flip(is_), None), map(partial(detect, env=env), ci_environments)
+        ),
+        None,
+    )
 
 
-def detect(ci_environment, env: Dict[str, str]):
+def detect(ci_environment, env: dict[str, str]):
     if (url := evaluate(ci_environment["url"], env)) is not None:
         return dict(
             name=ci_environment["name"],
@@ -47,9 +49,10 @@ def detect(ci_environment, env: Dict[str, str]):
             buildNumber=evaluate(ci_environment["buildNumber"], env),
             **_opt_dict(git=detect_git(ci_environment, env)),
         )
+    return None
 
 
-def detect_git(ci_environment, env: Dict[str, str]):
+def detect_git(ci_environment, env: dict[str, str]):
     if all(
         [
             (revision := detect_revision(ci_environment, env)) is not None,
@@ -64,9 +67,10 @@ def detect_git(ci_environment, env: Dict[str, str]):
                 branch=evaluate(ci_environment.get("git", {}).get("branch"), env),
             ),
         )
+    return None
 
 
-def detect_revision(ci_environment, env: Dict[str, str]):
+def detect_revision(ci_environment, env: dict[str, str]):
     if env.get("GITHUB_EVENT_NAME") == "pull_request":
         try:
             event = loads_json(Path(env["GITHUB_EVENT_PATH"]).read_text())
@@ -78,12 +82,15 @@ def detect_revision(ci_environment, env: Dict[str, str]):
             raise ValueError(pformat(event)) from e
         else:
             return revision
-    else:
-        return evaluate(ci_environment["git"]["revision"], env)
+    return evaluate(ci_environment["git"]["revision"], env)
 
 
 def remove_userinfo_from_url(remote):
     if remote is not None:
         with suppress(Exception):
-            return (parsed_url := urlparse(remote))._replace(netloc=parsed_url.hostname).geturl()
-        return remote
+            return (
+                (parsed_url := urlparse(remote))
+                ._replace(netloc=parsed_url.hostname)
+                .geturl()
+            )
+    return remote

@@ -1,12 +1,11 @@
 from contextlib import suppress
 from re import compile as compile_re
 from re import subn
-from typing import Dict
 
 
 def evaluate(expression, env):
     if expression is None:
-        return
+        return None
     with suppress(Exception):
         re_pattern = compile_re(r"\$\{(.*?)(?:(?<!\\)/(.*)/(.*))?}")
 
@@ -23,21 +22,18 @@ def evaluate(expression, env):
         replacement = match.group(3)
         if regexp.match(value):
             return regexp.subn(replacement, value)[0]
-        else:
-            raise ValueError
+        raise ValueError
 
     try:
-        result = re_pattern.subn(repl=repl, string=expression)[0]
-        return result
+        return re_pattern.subn(repl=repl, string=expression)[0]
     except ValueError:
         ...
 
 
-def get_value(env: Dict, variable: str):
+def get_value(env: dict, variable: str):
     if "*" in variable:
         pattern = compile_re(variable.replace("*", ".*"))
         for name, value in env.items():
             if pattern.match(name):
                 return value
-    else:
-        return env.get(variable)
+    return env.get(variable)

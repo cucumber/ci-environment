@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Removed
+- [Python] Remove support for end-of-life Python 3.8 and 3.9 ([#297](https://github.com/cucumber/ci-environment/pull/297))
 
 ## [11.0.0] - 2025-10-07
 ### Changed
