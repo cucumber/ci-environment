@@ -23,16 +23,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version:
-          - "3.9"
-          - "3.10"
-          - "3.11"
-          - "3.12"
-          - "pypy3.9"
-          - "pypy3.10"
+        include:
+          - { os: 'windows-latest', python-version: '3.12', toxenv: 'py' }
+          - { os: 'macos-latest', python-version: '3.12', toxenv: 'py' }
+          # Running linting through latest Python
+          - { os: 'ubuntu-latest', python-version: '3.12', toxenv: 'lint,py' }
+        os: ['ubuntu-latest']
+        python-version: ['3.9', '3.10', '3.11', 'pypy3.9', 'pypy3.10']
+        toxenv: ['py']
     defaults:
       run:
         working-directory: python
@@ -44,10 +45,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          python -m pip install pip setuptools tox tox-gh-actions codecov
-      - name: Test with tox
+          python -m pip install pip tox codecov
+      - name: Linting and testing
         run: |
-          tox
+          tox -e ${{ matrix.toxenv }}
           codecov
       - name: Build package
         run: |

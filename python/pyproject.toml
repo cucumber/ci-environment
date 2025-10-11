@@ -40,11 +40,11 @@ requires-python = ">=3.8"
 version = "11.0.0"
 
 [project.urls]
-Homepage = "https://github.com/cucumber/ci-environment"
-Repository = "https://github.com/cucumber/ci-environment"
-Download = "https://pypi.org/project/ci-environment/"
-Issues = "https://github.com/cucumber/ci-environment/issues"
 Changelog = "https://github.com/cucumber/ci-environment/releases"
+Download = "https://pypi.org/project/ci-environment/"
+Homepage = "https://github.com/cucumber/ci-environment"
+Issues = "https://github.com/cucumber/ci-environment/issues"
+Repository = "https://github.com/cucumber/ci-environment"
 
 [tool.mypy]
 files = "src/ci_environment/**/*.py"
@@ -66,4 +66,22 @@ module = [
 extend-select = [
   "I",
   "UP"
+]
+
+[tool.tox]
+env_list = ["lint", "3.12", "3.11", "3.10", "3.9", "3.8", "pypy310", "pypy39", "pypy38"]
+requires = ["tox>=4.22"]
+
+[tool.tox.env.lint]
+commands = [["pre-commit", "run", "--all-files", "--show-diff-on-failure"]]
+deps = ["pre-commit-uv>=4.1.1"]
+description = "Run linting and formatting checks (and auto-fixes)"
+
+[tool.tox.env_run_base]
+commands = [
+  ["coverage", "run", "--append", "-m", "pytest", "-vvl"]
+]
+deps = [
+  "coverage",
+  "pytest"
 ]
