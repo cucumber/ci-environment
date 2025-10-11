@@ -2,6 +2,13 @@
 build-backend = "uv_build"
 requires = ["uv_build>=0.9.0,<0.10.0"]
 
+[dependency-groups]
+dev = [
+  "coverage>=7.6.1",
+  "pytest>=8.3.5",
+  "python-dotenv>=1.0.1"
+]
+
 [project]
 authors = [
   {name = "Cucumber Limited", email = "cukes@googlegroups.com"}
@@ -22,8 +29,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12"
 ]
 dependencies = [
-  "importlib_resources",
-  "python-dotenv"
+  "importlib_resources"
 ]
 description = "This library detects the CI environment based on environment variables defined by CI servers."
 keywords = ["cucumber", "ci"]
@@ -81,7 +87,6 @@ description = "Run linting and formatting checks (and auto-fixes)"
 commands = [
   ["coverage", "run", "--append", "-m", "pytest", "-vvl"]
 ]
-deps = [
-  "coverage",
-  "pytest"
+dependency_groups = [
+  "dev"
 ]
