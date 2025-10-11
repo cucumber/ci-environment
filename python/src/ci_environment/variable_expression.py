@@ -1,7 +1,6 @@
 from contextlib import suppress
 from re import compile as compile_re
 from re import subn
-from typing import Dict
 
 
 def evaluate(expression, env):
@@ -26,13 +25,12 @@ def evaluate(expression, env):
         raise ValueError
 
     try:
-        result = re_pattern.subn(repl=repl, string=expression)[0]
+        return re_pattern.subn(repl=repl, string=expression)[0]
     except ValueError:
         ...
-    return result
 
 
-def get_value(env: Dict, variable: str):
+def get_value(env: dict, variable: str):
     if "*" in variable:
         pattern = compile_re(variable.replace("*", ".*"))
         for name, value in env.items():
