@@ -9,7 +9,7 @@ describe Cucumber::CiEnvironment do
 
     let(:ci_environment) { described_class.detect_ci_environment(env) }
 
-    Dir.glob('../testdata/*.txt') do |test_data_file|
+    Dir.glob('../testdata/src/*.txt') do |test_data_file|
       context "with #{File.basename(test_data_file, '.txt')}" do
         let(:entries) { env_data.split("\n").map { |line| line.split('=') } }
         let(:env) { entries.to_h }
