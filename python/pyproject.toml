@@ -25,16 +25,16 @@ dependencies = [
   "importlib_resources",
   "python-dotenv"
 ]
+description = "This library detects the CI environment based on environment variables defined by CI servers."
 dynamic = [
   "optional-dependencies"
 ]
-description = "This library detects the CI environment based on environment variables defined by CI servers."
-readme = {file = "README.md", content-type = "text/markdown"}
 license = {text = "MIT"}
 maintainers = [
   {name = "Konstantin Goloveshko", email = "kostya.goloveshko@gmail.com"}
 ]
 name = "ci-environment"
+readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.8"
 urls = {Repository = "https://github.com/cucumber/ci-environment"}
 version = "11.0.0"
@@ -42,16 +42,6 @@ version = "11.0.0"
 [project.entry-points]
 
 [project.scripts]
-
-[tool.black]
-line-length = 120
-target-version = ["py38", "py39", "py310", "py311", "py312"]
-verbose = true
-
-[tool.isort]
-line_length = 120
-multi_line_output = 3
-profile = "black"
 
 [tool.mypy]
 files = "src/ci_environment/**/*.py"
@@ -67,4 +57,10 @@ warn_unused_configs = true
 [[tool.mypy.overrides]]
 ignore_missing_imports = true
 module = [
+]
+
+[tool.ruff.lint]
+extend-select = [
+  "I",
+  "UP"
 ]

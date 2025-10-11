@@ -36,7 +36,12 @@ def detect_ci_environment(env: Dict[str, str]):
     with as_file(files("ci_environment").joinpath("CiEnvironments.json")) as path:
         ci_environments = loads_json(Path(path).read_text())
 
-    return next(filterfalse(partial(_flip(is_), None), map(partial(detect, env=env), ci_environments)), None)
+    return next(
+        filterfalse(
+            partial(_flip(is_), None), map(partial(detect, env=env), ci_environments)
+        ),
+        None,
+    )
 
 
 def detect(ci_environment, env: Dict[str, str]):
@@ -85,5 +90,9 @@ def detect_revision(ci_environment, env: Dict[str, str]):
 def remove_userinfo_from_url(remote):
     if remote is not None:
         with suppress(Exception):
-            return (parsed_url := urlparse(remote))._replace(netloc=parsed_url.hostname).geturl()
+            return (
+                (parsed_url := urlparse(remote))
+                ._replace(netloc=parsed_url.hostname)
+                .geturl()
+            )
         return remote
