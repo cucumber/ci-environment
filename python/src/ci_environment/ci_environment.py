@@ -26,8 +26,7 @@ def _flip(func):
         if len(args) > 1:
             first, *other, last = args
             return func(last, *other, first, **kwargs)
-        else:
-            return func(*args, **kwargs)
+        return func(*args, **kwargs)
 
     return wrapped
 
@@ -52,6 +51,7 @@ def detect(ci_environment, env: Dict[str, str]):
             buildNumber=evaluate(ci_environment["buildNumber"], env),
             **_opt_dict(git=detect_git(ci_environment, env)),
         )
+    return None
 
 
 def detect_git(ci_environment, env: Dict[str, str]):
@@ -69,6 +69,7 @@ def detect_git(ci_environment, env: Dict[str, str]):
                 branch=evaluate(ci_environment.get("git", {}).get("branch"), env),
             ),
         )
+    return None
 
 
 def detect_revision(ci_environment, env: Dict[str, str]):
@@ -95,4 +96,4 @@ def remove_userinfo_from_url(remote):
                 ._replace(netloc=parsed_url.hostname)
                 .geturl()
             )
-        return remote
+    return remote

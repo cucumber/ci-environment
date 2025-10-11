@@ -70,7 +70,16 @@ module = [
 
 [tool.ruff.lint]
 extend-select = [
+  "B",
+  "C4",
+  "FURB",
   "I",
+  "ISC",
+  "N",
+  "PERF",
+  "PIE",
+  "RET",
+  "TID",
   "UP"
 ]
 
