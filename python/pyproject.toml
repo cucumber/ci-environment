@@ -1,6 +1,13 @@
 [build-system]
-build-backend = "setuptools.build_meta"
-requires = ["setuptools", "wheel"]
+build-backend = "uv_build"
+requires = ["uv_build>=0.9.0,<0.10.0"]
+
+[dependency-groups]
+dev = [
+  "coverage>=7.6.1",
+  "pytest>=8.3.5",
+  "python-dotenv>=1.0.1"
+]
 
 [project]
 authors = [
@@ -15,43 +22,33 @@ classifiers = [
   "Operating System :: MacOS :: MacOS X",
   "Topic :: Utilities",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12"
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14"
 ]
-dependencies = [
-  "importlib_resources",
-  "python-dotenv"
-]
-dynamic = [
-  "optional-dependencies"
-]
+dependencies = []
 description = "This library detects the CI environment based on environment variables defined by CI servers."
-readme = {file = "README.md", content-type = "text/markdown"}
-license = {text = "MIT"}
+keywords = ["cucumber", "ci"]
+license = "MIT"
+license-files = [
+  "LICENSE"
+]
 maintainers = [
   {name = "Konstantin Goloveshko", email = "kostya.goloveshko@gmail.com"}
 ]
 name = "ci-environment"
-requires-python = ">=3.8"
-urls = {Repository = "https://github.com/cucumber/ci-environment"}
+readme = "README.md"
+requires-python = ">=3.10"
 version = "11.0.0"
 
-[project.entry-points]
-
-[project.scripts]
-
-[tool.black]
-line-length = 120
-target-version = ["py38", "py39", "py310", "py311", "py312"]
-verbose = true
-
-[tool.isort]
-line_length = 120
-multi_line_output = 3
-profile = "black"
+[project.urls]
+Changelog = "https://github.com/cucumber/ci-environment/releases"
+Download = "https://pypi.org/project/ci-environment/"
+Homepage = "https://github.com/cucumber/ci-environment"
+Issues = "https://github.com/cucumber/ci-environment/issues"
+Repository = "https://github.com/cucumber/ci-environment"
 
 [tool.mypy]
 files = "src/ci_environment/**/*.py"
@@ -67,4 +64,37 @@ warn_unused_configs = true
 [[tool.mypy.overrides]]
 ignore_missing_imports = true
 module = [
+]
+
+[tool.ruff.lint]
+extend-select = [
+  "B",
+  "C4",
+  "FURB",
+  "I",
+  "ISC",
+  "N",
+  "PERF",
+  "PIE",
+  "RET",
+  "TID",
+  "UP"
+]
+
+[tool.tox]
+env_list = ["lint", "3.14", "3.13", "3.12", "3.11", "3.10", "pypy311", "pypy310"]
+requires = ["tox>=4.22"]
+
+[tool.tox.env.lint]
+commands = [["pre-commit", "run", "--all-files", "--show-diff-on-failure"]]
+deps = ["pre-commit-uv>=4.1.1"]
+description = "Run linting and formatting checks (and auto-fixes)"
+
+[tool.tox.env_run_base]
+commands = [
+  ["coverage", "run", "--append", "-m", "pytest", "-vvl"],
+  ["coverage", "xml"]
+]
+dependency_groups = [
+  "dev"
 ]
