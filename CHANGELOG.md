@@ -6,9 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [12.0.0] - 2025-10-27
+### Changed
+- [Java] Replace `minimal-json` with regular expression ([#301](https://github.com/cucumber/ci-environment/pull/301))
+
+### Removed
+- [Python] Remove support for end-of-life Python 3.8 and 3.9 ([#297](https://github.com/cucumber/ci-environment/pull/297))
+
+## [11.0.0] - 2025-10-07
 ### Changed
 - [Python] Reuse the action cucumber/action-publish-pypi in release ([#246](https://github.com/cucumber/ci-environment/pull/246))
-- [Ruby] Minimum ruby version is now 3.1 ([#266](https://github.com/cucumber/ci-environment/pull/266))
+- [Ruby] Minimum ruby version is now 3.2 ([#295](https://github.com/cucumber/ci-environment/pull/295))
 - [Ruby] Suite is now almost fully rubocop compliant ([#266](https://github.com/cucumber/ci-environment/pull/266))
 - [JavaScript] BREAKING CHANGE: Remove support for Node.js 16, add support for 22 ([#261](https://github.com/cucumber/ci-environment/pull/261))
 
@@ -186,7 +195,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v10.0.1...HEAD
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v12.0.0...HEAD
+[12.0.0]: https://github.com/cucumber/ci-environment/compare/v11.0.0...v12.0.0
+[11.0.0]: https://github.com/cucumber/ci-environment/compare/v10.0.1...v11.0.0
 [10.0.1]: https://github.com/cucumber/ci-environment/compare/v10.0.0...v10.0.1
 [10.0.0]: https://github.com/cucumber/ci-environment/compare/v9.2.0...v10.0.0
 [9.2.0]: https://github.com/cucumber/ci-environment/compare/v9.1.0...v9.2.0

@@ -22,14 +22,13 @@ import java.util.List;
 import java.util.Map;
 
 import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
+import static io.cucumber.cienvironment.Jackson.OBJECT_MAPPER;
 import static java.nio.file.Files.newBufferedReader;
 import static java.nio.file.Files.newDirectoryStream;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DetectCiEnvironmentTest {
-    private static final ObjectMapper mapper = new ObjectMapper()
-            .enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
 
     private static List<Path> acceptance_tests_pass() throws IOException {
         List<Path> paths = new ArrayList<>();
@@ -78,7 +77,7 @@ class DetectCiEnvironmentTest {
                         env.put(parts[0], parts[1]);
                     }
                 }
-                CiEnvironment expected = mapper.readValue(new File(path + ".json"), CiEnvironmentImpl.class);
+                CiEnvironment expected = OBJECT_MAPPER.readValue(new File(path + ".json"), CiEnvironmentImpl.class);
                 return new Expectation(env, expected);
             } catch (IOException e) {
                 throw new ArgumentConversionException("Could not load " + source, e);
