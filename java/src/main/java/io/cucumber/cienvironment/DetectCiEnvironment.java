@@ -1,12 +1,5 @@
 package io.cucumber.cienvironment;
 
-import com.eclipsesource.json.Json;
-import com.eclipsesource.json.JsonValue;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Optional;
 
@@ -66,37 +59,9 @@ public final class DetectCiEnvironment {
     }
 
     private static String evaluateRevision(CiEnvironment ci, Map<String, String> env) {
-        String revision = evaluateRevisionGithub(env);
+        String revision = GithubEventParser.evaluateRevisionGithub(env);
         if (revision != null) return revision;
         return ci.getGit().map(git -> evaluate(git.getRevision(), env)).orElse(null);
-    }
-
-    /*
-     * Evaluate the current revision on GitHub.
-     *
-     * The GITHUB_SHA environment variable doesn't quite work as expected.
-     * See:
-     *  * https://github.com/cucumber/ci-environment/issues/67
-     *  * https://github.com/orgs/community/discussions/26325
-     *  * https://github.com/cucumber/ci-environment/issues/86
-     */
-    private static String evaluateRevisionGithub(Map<String, String> env) {
-        if (!"pull_request".equals(env.get("GITHUB_EVENT_NAME"))) {
-            return null;
-        }
-        if (env.get("GITHUB_EVENT_PATH") == null) {
-            throw new RuntimeException("GITHUB_EVENT_PATH not set");
-        }
-        try (InputStreamReader is = getGithubEvent(env)) {
-            JsonValue event = Json.parse(is);
-            return event.asObject().get("pull_request").asObject().get("head").asObject().get("sha").asString();
-        } catch (Exception e) {
-            throw new RuntimeException("Could not read .pull_request.head.sha from " + env.get("GITHUB_EVENT_PATH"), e);
-        }
-    }
-
-    private static InputStreamReader getGithubEvent(Map<String, String> env) throws FileNotFoundException {
-        return new InputStreamReader(new FileInputStream(env.get("GITHUB_EVENT_PATH")), StandardCharsets.UTF_8);
     }
 
 }

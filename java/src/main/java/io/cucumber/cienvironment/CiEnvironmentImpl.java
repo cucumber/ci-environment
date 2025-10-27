@@ -12,9 +12,6 @@ final class CiEnvironmentImpl implements CiEnvironment {
     public String buildNumber;
     public Git git;
 
-    CiEnvironmentImpl() {
-    }
-
     CiEnvironmentImpl(String name, String url, String buildNumber, Git git) {
         this.name = requireNonNull(name);
         this.url = requireNonNull(url);
@@ -70,9 +67,6 @@ final class CiEnvironmentImpl implements CiEnvironment {
         public String revision;
         public String branch;
         public String tag;
-
-        Git() {
-        }
 
         Git(String remote, String revision, String branch, String tag) {
             this.remote = requireNonNull(remote);
