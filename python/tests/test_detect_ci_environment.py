@@ -6,7 +6,7 @@ from pytest import mark
 
 from ci_environment import detect_ci_environment
 
-_data_path = Path(__file__) / ".." / ".." / ".." / "testdata"
+_data_path = Path(__file__) / ".." / ".." / ".." / "testdata" / "src"
 
 
 @mark.parametrize("envfile", _data_path.glob("*.txt"))

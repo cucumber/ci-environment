@@ -1,0 +1,7 @@
+GITHUB_SERVER_URL=https://github.com
+GITHUB_REPOSITORY=cucumber-ltd/shouty.rb
+GITHUB_RUN_ID=154666429
+GITHUB_SHA=99684bcacf01d95875834d87903dcb072306c9ad
+GITHUB_HEAD_REF=some-branch
+GITHUB_EVENT_NAME=pull_request
+GITHUB_EVENT_PATH=../testdata/src/_github_workflow/opened_event.json

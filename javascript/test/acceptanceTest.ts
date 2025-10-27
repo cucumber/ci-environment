@@ -6,7 +6,7 @@ import path from 'path'
 import detectCiEnvironment, { type Env } from '../src/index.js'
 
 describe('detectCiEnvironment', () => {
-  for (const txt of sync(`../testdata/*.txt`)) {
+  for (const txt of sync(`../testdata/src/*.txt`)) {
     it(`detects ${path.basename(txt, '.txt')}`, () => {
       const envData = fs.readFileSync(txt, { encoding: 'utf8' })
       const entries = envData.split(/\n/).map((line) => line.split(/=/))

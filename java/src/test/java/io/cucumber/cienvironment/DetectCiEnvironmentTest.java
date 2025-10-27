@@ -32,7 +32,7 @@ class DetectCiEnvironmentTest {
 
     private static List<Path> acceptance_tests_pass() throws IOException {
         List<Path> paths = new ArrayList<>();
-        try  (DirectoryStream<Path> testdata = newDirectoryStream(Paths.get("..", "testdata"), "*.txt")){
+        try  (DirectoryStream<Path> testdata = newDirectoryStream(Paths.get("..", "testdata", "src"), "*.txt")){
             testdata.forEach(paths::add);
         }
         paths.sort(Comparator.naturalOrder());

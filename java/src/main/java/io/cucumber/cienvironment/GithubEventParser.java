@@ -52,7 +52,7 @@ final class GithubEventParser {
                     "\\{" +
                     // Any leading key-value pairs.
                     ".*?" +
-                    // sha key and value, must be a hash-like string 
+                    // sha key and value, must be a hash-like string
                     "\"sha\" *: *\"([a-z0-9]+)\"" +
                     // Any key-value pairs.
                     ".*" +
