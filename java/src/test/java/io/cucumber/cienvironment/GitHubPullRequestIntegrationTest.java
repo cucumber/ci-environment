@@ -12,7 +12,7 @@ import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GitHubPullRequestIntegrationTest {
-    
+
     @Test
     @EnabledIfEnvironmentVariable(named = "GITHUB_EVENT_NAME", matches = "pull_request", disabledReason = "Must be tested by creating a pull request on Github")
     void detects_the_correct_revision_for_pull_requests() throws IOException {
