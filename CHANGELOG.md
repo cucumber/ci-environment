@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- [Java] Replace `minimal-json` with regular expression ([#301](https://github.com/cucumber/ci-environment/pull/301)) 
+
 ### Removed
 - [Python] Remove support for end-of-life Python 3.8 and 3.9 ([#297](https://github.com/cucumber/ci-environment/pull/297))
 
