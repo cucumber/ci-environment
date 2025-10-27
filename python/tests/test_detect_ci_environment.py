@@ -16,5 +16,6 @@ def test_detect_ci_environment(envfile):
 
     assert detect_ci_environment(env) == expected
 
+
 def test_detect_ci_environment_when_no_environment():
     assert detect_ci_environment({}) is None
