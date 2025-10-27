@@ -6,8 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [12.0.0] - 2025-10-27
 ### Changed
-- [Java] Replace `minimal-json` with regular expression ([#301](https://github.com/cucumber/ci-environment/pull/301)) 
+- [Java] Replace `minimal-json` with regular expression ([#301](https://github.com/cucumber/ci-environment/pull/301))
 
 ### Removed
 - [Python] Remove support for end-of-life Python 3.8 and 3.9 ([#297](https://github.com/cucumber/ci-environment/pull/297))
@@ -193,7 +195,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v11.0.0...HEAD
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v12.0.0...HEAD
+[12.0.0]: https://github.com/cucumber/ci-environment/compare/v11.0.0...v12.0.0
 [11.0.0]: https://github.com/cucumber/ci-environment/compare/v10.0.1...v11.0.0
 [10.0.1]: https://github.com/cucumber/ci-environment/compare/v10.0.0...v10.0.1
 [10.0.0]: https://github.com/cucumber/ci-environment/compare/v9.2.0...v10.0.0
