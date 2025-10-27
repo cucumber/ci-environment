@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.cucumber</groupId>
         <artifactId>cucumber-parent</artifactId>
-        <version>4.5.0</version>
+        <version>5.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>ci-environment</artifactId>
@@ -109,10 +109,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-<!--                    TODO: Pull up to parent pom-->
-                    <parameters>true</parameters>
-                </configuration>
                 <executions>
                     <execution>
                         <id>generate-ci-environments</id>
@@ -127,6 +123,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <!-- Run the code generator -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
