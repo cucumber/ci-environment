@@ -1,5 +1,7 @@
 package io.cucumber.cienvironment;
 
+import org.jspecify.annotations.Nullable;
+
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,7 +15,7 @@ final class VariableExpression {
 
     }
 
-    static String evaluate(String expression, Map<String, String> env) {
+    static @Nullable String evaluate(@Nullable String expression, Map<String, String> env) {
         if (expression == null) return null;
         Matcher variableMatcher = variablePattern.matcher(expression);
         StringBuilder sb = new StringBuilder();
@@ -43,7 +45,7 @@ final class VariableExpression {
         return sb.toString();
     }
 
-    private static String getValue(Map<String, String> env, String variable) {
+    private static @Nullable String getValue(Map<String, String> env, String variable) {
         if (variable.contains("*")) {
             Pattern pattern = Pattern.compile(variable.replace("*", ".*"));
             // GoCD env var with dynamic "material" name
