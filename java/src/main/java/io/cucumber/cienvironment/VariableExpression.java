@@ -16,7 +16,7 @@ final class VariableExpression {
     static String evaluate(String expression, Map<String, String> env) {
         if (expression == null) return null;
         Matcher variableMatcher = variablePattern.matcher(expression);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         while (variableMatcher.find()) {
             String variable = variableMatcher.group(1);
             String value = getValue(env, variable);
