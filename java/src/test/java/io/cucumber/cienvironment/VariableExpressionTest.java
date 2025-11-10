@@ -23,6 +23,7 @@ public class VariableExpressionTest {
         String result = evaluate(expression, Map.of("SOME_VAR", "some_value"));
         assertEquals("some_value", result);
     }
+
     @Test
     public void it_escapes_a_value_without_replacement() {
         String expression = "${SOME_VAR}";
@@ -53,12 +54,13 @@ public class VariableExpressionTest {
         ));
         assertEquals("hello-amazing-beautiful-gorgeous-world", result);
     }
+
     @Test
     public void it_escapes_a_complex_expression() {
         String expression = "hello-${VAR1}-${VAR2/(.*) (.*)/\\2-\\1}-world";
         String result = evaluate(expression, Map.of(
-            "VAR1", "${VAR1}",
-            "VAR2", "${VAR2a} ${VAR2b}"
+                "VAR1", "${VAR1}",
+                "VAR2", "${VAR2a} ${VAR2b}"
         ));
         assertEquals("hello-${VAR1}-${VAR2b}-${VAR2a}-world", result);
     }

@@ -10,7 +10,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 final class GithubEventParser {
-
+    
+    private GithubEventParser(){
+        // Utility class
+    }
+    
     /*
      * Evaluate the current revision on GitHub.
      *
