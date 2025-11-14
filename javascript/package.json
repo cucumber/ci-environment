@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/cucumber/ci-environment",
   "devDependencies": {
-    "@eslint/compat": "^1.2.7",
+    "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.21.0",
     "@types/glob": "9.0.0",
