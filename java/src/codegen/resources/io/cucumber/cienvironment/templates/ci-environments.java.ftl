@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import static java.util.Arrays.asList;
 
-class CiEnvironments {
+final class CiEnvironments {
     static final Collection<CiEnvironmentImpl> TEMPLATES = asList(
 <#list ciEnvironments as ciEnvironment>
             new CiEnvironmentImpl(
@@ -20,4 +20,8 @@ class CiEnvironments {
 </#list>
 
     );
+
+    private CiEnvironments(){
+        // Utility class
+    }
 }
