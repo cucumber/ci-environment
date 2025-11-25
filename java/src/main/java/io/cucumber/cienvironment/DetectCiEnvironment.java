@@ -1,11 +1,11 @@
 package io.cucumber.cienvironment;
 
+import org.jspecify.annotations.Nullable;
+
 import java.util.Map;
 import java.util.Optional;
 
 import static io.cucumber.cienvironment.VariableExpression.evaluate;
-import static java.util.Optional.empty;
-import static java.util.Optional.of;
 
 public final class DetectCiEnvironment {
     private DetectCiEnvironment() {
@@ -28,9 +28,9 @@ public final class DetectCiEnvironment {
 
     private static Optional<CiEnvironment> detect(CiEnvironment ci, Map<String, String> env) {
         String url = evaluate(ci.getUrl(), env);
-        if (url == null) return empty();
+        if (url == null) return Optional.empty();
 
-        return of(new CiEnvironmentImpl(
+        return Optional.of(new CiEnvironmentImpl(
                 ci.getName(),
                 url,
                 ci.getBuildNumber().map(buildNumber -> evaluate(buildNumber, env)).orElse(null),
@@ -38,7 +38,7 @@ public final class DetectCiEnvironment {
         ));
     }
 
-    private static CiEnvironmentImpl.Git detectGit(CiEnvironment ci, Map<String, String> env) {
+    private static CiEnvironmentImpl.@Nullable Git detectGit(CiEnvironment ci, Map<String, String> env) {
         String revision = evaluateRevision(ci, env);
         if (revision == null) return null;
 
@@ -58,7 +58,7 @@ public final class DetectCiEnvironment {
         );
     }
 
-    private static String evaluateRevision(CiEnvironment ci, Map<String, String> env) {
+    private static @Nullable String evaluateRevision(CiEnvironment ci, Map<String, String> env) {
         String revision = GithubEventParser.evaluateRevisionGithub(env);
         if (revision != null) return revision;
         return ci.getGit().map(git -> evaluate(git.getRevision(), env)).orElse(null);

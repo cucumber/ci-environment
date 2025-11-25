@@ -1,3 +1,5 @@
+package io.cucumber.cienvironment;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import freemarker.template.Configuration;
