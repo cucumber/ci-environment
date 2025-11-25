@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 final class RemoveUserInfo {
 
     private RemoveUserInfo(){
-        // Utility class
+        /* no-op */
     }
     
     static String fromUrl(String value) {

@@ -22,6 +22,6 @@ final class CiEnvironments {
     );
 
     private CiEnvironments(){
-        // Utility class
+        /* no-op */
     }
 }

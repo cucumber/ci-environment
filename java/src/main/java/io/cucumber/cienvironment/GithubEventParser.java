@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 final class GithubEventParser {
     
     private GithubEventParser(){
-        // Utility class
+        /* no-op */
     }
     
     /*
