@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import static io.cucumber.cienvironment.DetectCiEnvironment.detectCiEnvironment;
+import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GitHubPullRequestIntegrationTest {
@@ -28,7 +29,8 @@ class GitHubPullRequestIntegrationTest {
     }
 
     private static String parsePullRequestHeadShaWithJackson(Map<String, String> env) throws IOException {
-        File file = new File(env.get("GITHUB_EVENT_PATH"));
+        String githubEventPath = requireNonNull(env.get("GITHUB_EVENT_PATH"));
+        File file = new File(githubEventPath);
         JsonNode event = Jackson.OBJECT_MAPPER.readTree(file);
         return event.get("pull_request").get("head").get("sha").textValue();
     }

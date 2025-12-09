@@ -1,5 +1,7 @@
 package io.cucumber.cienvironment;
 
+import org.jspecify.annotations.Nullable;
+
 import java.util.Objects;
 import java.util.Optional;
 
@@ -7,12 +9,12 @@ import static java.util.Objects.requireNonNull;
 import static java.util.Optional.ofNullable;
 
 final class CiEnvironmentImpl implements CiEnvironment {
-    public String name;
-    public String url;
-    public String buildNumber;
-    public Git git;
+    private final String name;
+    private final String url;
+    private final @Nullable String buildNumber;
+    private final @Nullable Git git;
 
-    CiEnvironmentImpl(String name, String url, String buildNumber, Git git) {
+    CiEnvironmentImpl(String name, String url, @Nullable String buildNumber, @Nullable Git git) {
         this.name = requireNonNull(name);
         this.url = requireNonNull(url);
         this.buildNumber = buildNumber;
@@ -63,12 +65,12 @@ final class CiEnvironmentImpl implements CiEnvironment {
     }
 
     final static class Git implements CiEnvironment.Git {
-        public String remote;
-        public String revision;
-        public String branch;
-        public String tag;
+        private final String remote;
+        private final String revision;
+        private final @Nullable String branch;
+        private final @Nullable String tag;
 
-        Git(String remote, String revision, String branch, String tag) {
+        Git(String remote, String revision, @Nullable String branch, @Nullable String tag) {
             this.remote = requireNonNull(remote);
             this.revision = requireNonNull(revision);
             this.branch = branch;
