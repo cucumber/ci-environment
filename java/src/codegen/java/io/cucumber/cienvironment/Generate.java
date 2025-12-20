@@ -61,7 +61,7 @@ public class Generate {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_21);
         cfg.setClassForTemplateLoading(Generate.class, "templates");
         cfg.setDefaultEncoding("UTF-8");
-        cfg.setLocale(Locale.US);
+        cfg.setLocale(Locale.ROOT);
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         return cfg.getTemplate("ci-environments.java.ftl");
     }
