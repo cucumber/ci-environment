@@ -18,6 +18,7 @@
 
     <properties>
         <project.build.outputTimestamp>1761575231</project.build.outputTimestamp>
+        <osgi.bundle-symbolic-name>io.cucumber.cienvironment</osgi.bundle-symbolic-name>
     </properties>
 
     <scm>
