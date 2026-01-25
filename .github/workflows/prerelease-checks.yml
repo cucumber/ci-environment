@@ -9,7 +9,7 @@ jobs:
     name: Check commit ancestor
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - name: Check commit has been pushed on origin/main
         run: |
           git fetch --quiet origin main
