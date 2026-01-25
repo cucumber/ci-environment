@@ -5,10 +5,10 @@ import java.net.URISyntaxException;
 
 final class RemoveUserInfo {
 
-    private RemoveUserInfo(){
+    private RemoveUserInfo() {
         /* no-op */
     }
-    
+
     static String fromUrl(String value) {
         try {
             URI uri = URI.create(value);

@@ -31,7 +31,7 @@ class DetectCiEnvironmentTest {
 
     static List<Path> acceptance_tests_pass() throws IOException {
         List<Path> paths = new ArrayList<>();
-        try  (DirectoryStream<Path> testdata = newDirectoryStream(Paths.get("..", "testdata", "src"), "*.txt")){
+        try (DirectoryStream<Path> testdata = newDirectoryStream(Paths.get("..", "testdata", "src"), "*.txt")) {
             testdata.forEach(paths::add);
         }
         paths.sort(Comparator.naturalOrder());
@@ -65,11 +65,11 @@ class DetectCiEnvironmentTest {
             if (source == null) {
                 throw new ArgumentConversionException("Could not convert null");
             }
-            
+
             Path path = (Path) source;
             Map<String, String> env = new HashMap<>();
 
-            try (BufferedReader in = newBufferedReader(path)){
+            try (BufferedReader in = newBufferedReader(path)) {
                 String line;
                 while ((line = in.readLine()) != null) {
                     String[] parts = line.split("=", 2);
