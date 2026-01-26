@@ -6,11 +6,11 @@
     <parent>
         <groupId>io.cucumber</groupId>
         <artifactId>cucumber-parent</artifactId>
-        <version>4.6.0</version>
+        <version>5.0.0</version>
     </parent>
 
     <artifactId>ci-environment</artifactId>
-    <version>12.0.1-SNAPSHOT</version>
+    <version>13.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Cucumber CiEnvironment</name>
     <description>Detect CI Environment from environment variables</description>
@@ -18,7 +18,6 @@
 
     <properties>
         <project.build.outputTimestamp>1761575231</project.build.outputTimestamp>
-        <project.Automatic-Module-Name>io.cucumber.cienvironment</project.Automatic-Module-Name>
     </properties>
 
     <scm>
@@ -48,6 +47,12 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.jspecify</groupId>
+            <artifactId>jspecify</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -109,10 +114,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-<!--                    TODO: Pull up to parent pom-->
-                    <parameters>true</parameters>
-                </configuration>
                 <executions>
                     <execution>
                         <id>generate-ci-environments</id>
@@ -127,6 +128,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <!-- Run the code generator -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -146,7 +148,7 @@
                             <additionalClasspathElements>
                                 ${project.build.directory}/codegen-classes
                             </additionalClasspathElements>
-                            <mainClass>Generate</mainClass>
+                            <mainClass>io.cucumber.cienvironment.Generate</mainClass>
                             <arguments>
                                 <argument>${project.build.directory}/generated-sources/ci-environments/java</argument>
                                 <argument>io/cucumber/cienvironment</argument>
@@ -170,6 +172,19 @@
                                 <source>${project.build.directory}/generated-sources/ci-environments/java</source>
                             </sources>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

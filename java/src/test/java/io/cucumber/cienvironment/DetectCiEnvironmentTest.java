@@ -1,7 +1,6 @@
 package io.cucumber.cienvironment;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
@@ -30,9 +29,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DetectCiEnvironmentTest {
 
-    private static List<Path> acceptance_tests_pass() throws IOException {
+    static List<Path> acceptance_tests_pass() throws IOException {
         List<Path> paths = new ArrayList<>();
-        try  (DirectoryStream<Path> testdata = newDirectoryStream(Paths.get("..", "testdata", "src"), "*.txt")){
+        try (DirectoryStream<Path> testdata = newDirectoryStream(Paths.get("..", "testdata", "src"), "*.txt")) {
             testdata.forEach(paths::add);
         }
         paths.sort(Comparator.naturalOrder());
@@ -62,14 +61,18 @@ class DetectCiEnvironmentTest {
 
     static class Converter implements ArgumentConverter {
         @Override
-        public Expectation convert(Object source, ParameterContext context) throws ArgumentConversionException {
+        public Expectation convert(@Nullable Object source, @Nullable ParameterContext context) throws ArgumentConversionException {
+            if (source == null) {
+                throw new ArgumentConversionException("Could not convert null");
+            }
+
             Path path = (Path) source;
             Map<String, String> env = new HashMap<>();
 
-            try (BufferedReader in = newBufferedReader(path)){
+            try (BufferedReader in = newBufferedReader(path)) {
                 String line;
                 while ((line = in.readLine()) != null) {
-                    String[] parts = line.split("=");
+                    String[] parts = line.split("=", 2);
 
                     if (parts.length == 1) {
                         env.put(parts[0], "");

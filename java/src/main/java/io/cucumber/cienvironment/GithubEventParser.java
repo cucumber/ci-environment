@@ -1,14 +1,19 @@
 package io.cucumber.cienvironment;
 
+import org.jspecify.annotations.Nullable;
+
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 final class GithubEventParser {
+
+    private GithubEventParser() {
+        /* no-op */
+    }
 
     /*
      * Evaluate the current revision on GitHub.
@@ -19,16 +24,16 @@ final class GithubEventParser {
      *  * https://github.com/orgs/community/discussions/26325
      *  * https://github.com/cucumber/ci-environment/issues/86
      */
-    static String evaluateRevisionGithub(Map<String, String> env) {
+    static @Nullable String evaluateRevisionGithub(Map<String, String> env) {
         if (!"pull_request".equals(env.get("GITHUB_EVENT_NAME"))) {
             return null;
         }
-        if (env.get("GITHUB_EVENT_PATH") == null) {
+        String path = env.get("GITHUB_EVENT_PATH");
+        if (path == null) {
             return null;
         }
         try {
-            Path path = Paths.get(env.get("GITHUB_EVENT_PATH"));
-            String event = String.join(" ", Files.readAllLines(path));
+            String event = String.join(" ", Files.readAllLines(Paths.get(path)));
             return parsePullRequestHeadSha(event);
         } catch (IOException e) {
             return null;
@@ -67,7 +72,7 @@ final class GithubEventParser {
                     // End of object
                     "}$");
 
-    static String parsePullRequestHeadSha(String eventJson) {
+    static @Nullable String parsePullRequestHeadSha(String eventJson) {
         // Parse json using regex. Not ideal but works for the limited input.
         Matcher matcher = GITHUB_EVENT_PATTERN.matcher(eventJson.trim());
         if (!matcher.matches()) {
