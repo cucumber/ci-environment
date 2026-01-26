@@ -1,10 +1,10 @@
 version = 1
-revision = 4
+revision = 5
 requires-python = ">=3.10"
 
 [[package]]
 name = "ci-environment"
-version = "12.0.0"
+version = "13.0.0"
 source = { editable = "." }
 
 [package.dev-dependencies]

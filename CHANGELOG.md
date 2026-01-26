@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [13.0.0] - 2026-01-26
 ### Changed
 - [Java] Set release version to 17 ([#303](https://github.com/cucumber/ci-environment/pull/303))
 
@@ -197,7 +199,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v12.0.0...HEAD
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v13.0.0...HEAD
+[13.0.0]: https://github.com/cucumber/ci-environment/compare/v12.0.0...v13.0.0
 [12.0.0]: https://github.com/cucumber/ci-environment/compare/v11.0.0...v12.0.0
 [11.0.0]: https://github.com/cucumber/ci-environment/compare/v10.0.1...v11.0.0
 [10.0.1]: https://github.com/cucumber/ci-environment/compare/v10.0.0...v10.0.1
