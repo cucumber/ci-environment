@@ -3,6 +3,7 @@
 /.env
 *.orig
 **/__pycache__
+coverage.xml
 
 # C extensions
 *.so
