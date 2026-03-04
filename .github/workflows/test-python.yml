@@ -19,7 +19,6 @@ on:
       - CiEnvironments.json
       - testdata/**
       - .github/**
-  workflow_dispatch:
 
 jobs:
   build:

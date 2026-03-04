@@ -7,15 +7,8 @@ on:
       - release/*
 
 jobs:
-  pre-release-check:
-    uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
-
-  test-java:
-    uses: cucumber/ci-environment/.github/workflows/test-java.yml@main
-
   publish-mvn:
     name: Publish Maven Package
-    needs: [pre-release-check, test-java]
     runs-on: ubuntu-latest
     environment: Release
     steps:

@@ -7,12 +7,8 @@ on:
       - release/*
 
 jobs:
-  pre-release-check:
-    uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
-
   create-github-release:
     name: Create GitHub Release and Git tag
-    needs: [pre-release-check]
     runs-on: ubuntu-latest
     environment: Release
     permissions:

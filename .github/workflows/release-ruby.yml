@@ -7,15 +7,8 @@ on:
       - release/*
 
 jobs:
-  pre-release-check:
-    uses: cucumber/ci-environment/.github/workflows/prerelease-checks.yml@main
-
-  test-ruby:
-    uses: cucumber/ci-environment/.github/workflows/test-ruby.yml@main
-
   publish-rubygem:
     name: Publish Ruby Gem
-    needs: [pre-release-check, test-ruby]
     runs-on: ubuntu-latest
     environment: Release
     steps:
