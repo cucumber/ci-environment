@@ -1,5 +1,6 @@
----
 name: test-java
+
+permissions: {}
 
 on:
   push:

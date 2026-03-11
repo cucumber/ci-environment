@@ -1,5 +1,7 @@
 name: Release Python
 
+permissions: {}
+
 on:
   push:
     branches: [release/*]
