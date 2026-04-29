@@ -1,4 +1,4 @@
-import { Env } from './types.js'
+import type { Env } from './types.js'
 
 export default function evaluateVariableExpression(
   expression: string | undefined,
@@ -8,8 +8,8 @@ export default function evaluateVariableExpression(
     return undefined
   }
   try {
-    const re = new RegExp('\\${(.*?)(?:(?<!\\\\)/(.*)/(.*))?}', 'g')
-    return expression.replace(re, (substring, ...args): string => {
+    const re = /\${(.*?)(?:(?<!\\)\/(.*)\/(.*))?}/g
+    return expression.replace(re, (_substring, ...args): string => {
       const variable = args[0]
       const value = getValue(env, variable)
       if (value === undefined) {

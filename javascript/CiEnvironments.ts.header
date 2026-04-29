@@ -1,5 +1,4 @@
 /* This file is auto-generated using npm run build-ci-environments */
-/* eslint-disable no-useless-escape */
 
 import { CiEnvironment } from './types.js'
 

@@ -1,7 +1,6 @@
 /* This file is auto-generated using npm run build-ci-environments */
-/* eslint-disable no-useless-escape */
 
-import { CiEnvironment } from './types.js'
+import type { CiEnvironment } from './types.js'
 
 export const CiEnvironments: readonly CiEnvironment[] = [
   {
@@ -11,8 +10,8 @@ export const CiEnvironments: readonly CiEnvironment[] = [
     git: {
       remote: '${BUILD_REPOSITORY_URI}',
       revision: '${BUILD_SOURCEVERSION}',
-      branch: '${BUILD_SOURCEBRANCH/refs\/heads\/(.*)/\\1}',
-      tag: '${BUILD_SOURCEBRANCH/refs\/tags\/(.*)/\\1}',
+      branch: '${BUILD_SOURCEBRANCH/refs/heads/(.*)/\\1}',
+      tag: '${BUILD_SOURCEBRANCH/refs/tags/(.*)/\\1}',
     },
   },
   {
@@ -86,7 +85,7 @@ export const CiEnvironments: readonly CiEnvironment[] = [
       remote: '${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git',
       revision: '${GITHUB_SHA}',
       branch: '${GITHUB_HEAD_REF}',
-      tag: '${GITHUB_REF/refs\/tags\/(.*)/\\1}',
+      tag: '${GITHUB_REF/refs/tags/(.*)/\\1}',
     },
   },
   {

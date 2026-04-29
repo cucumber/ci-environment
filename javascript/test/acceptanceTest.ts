@@ -1,7 +1,7 @@
-import assert from 'assert'
-import fs from 'fs'
+import assert from 'node:assert'
+import fs from 'node:fs'
+import path from 'node:path'
 import { sync } from 'glob'
-import path from 'path'
 
 import detectCiEnvironment, { type Env } from '../src/index.js'
 

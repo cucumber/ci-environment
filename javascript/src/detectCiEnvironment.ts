@@ -1,8 +1,8 @@
-import { readFileSync } from 'fs'
+import { readFileSync } from 'node:fs'
 
 import { CiEnvironments } from './CiEnvironments.js'
 import evaluateVariableExpression from './evaluateVariableExpression.js'
-import { CiEnvironment, Env, Git } from './types.js'
+import type { CiEnvironment, Env, Git } from './types.js'
 
 export default function detectCiEnvironment(env: Env): CiEnvironment | undefined {
   for (const ciEnvironment of CiEnvironments) {
