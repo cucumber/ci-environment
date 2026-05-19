@@ -19,7 +19,7 @@ export default function evaluateVariableExpression(
       if (!pattern) {
         return value
       }
-      const regExp = new RegExp(pattern.replace('/', '/'))
+      const regExp = new RegExp(pattern.replaceAll('\\/', '/'))
       const match = regExp.exec(value)
       if (!match) {
         throw new Error(`No match for: ${variable}`)
