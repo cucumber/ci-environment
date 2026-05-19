@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- [Java] Replace all wildcard instances in variable names ([#342](https://github.com/cucumber/ci-environment/pull/342))
+- [JavaScript] Replace all wildcard instances in variable names ([#342(https://github.com/cucumber/ci-environment/pull/342))
 
 ## [13.0.0] - 2026-01-26
 ### Changed

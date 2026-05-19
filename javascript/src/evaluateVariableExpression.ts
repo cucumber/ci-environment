@@ -19,7 +19,7 @@ export default function evaluateVariableExpression(
       if (!pattern) {
         return value
       }
-      const regExp = new RegExp(pattern.replaceAll('\\/', '/'))
+      const regExp = new RegExp(pattern.replace(/\\\//g, '/'))
       const match = regExp.exec(value)
       if (!match) {
         throw new Error(`No match for: ${variable}`)
@@ -39,7 +39,9 @@ export default function evaluateVariableExpression(
 
 function getValue(env: Env, variable: string) {
   if (variable.includes('*')) {
-    const regexp = new RegExp(variable.replace('*', '.*'))
+    const regexp = new RegExp(variable.replace(/\*/g, '.*'))
+    // GoCD env var with dynamic "material" name
+    // https://github.com/ashwanthkumar/gocd-build-github-pull-requests#github
     for (const [name, value] of Object.entries(env)) {
       if (regexp.exec(name)) {
         return value
