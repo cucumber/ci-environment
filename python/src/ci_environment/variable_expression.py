@@ -33,6 +33,8 @@ def evaluate(expression, env):
 def get_value(env: dict, variable: str):
     if "*" in variable:
         pattern = compile_re(variable.replace("*", ".*"))
+        # GoCD env var with dynamic "material" name
+        # https://github.com/ashwanthkumar/gocd-build-github-pull-requests#github
         for name, value in env.items():
             if pattern.match(name):
                 return value

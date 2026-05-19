@@ -35,8 +35,11 @@ module Cucumber
 
       def get_value(variable, env)
         if variable.index('*')
+          regexp = Regexp.new(variable.gsub('*', '.*'))
+          # GoCD env var with dynamic "material" name
+          # https://github.com/ashwanthkumar/gocd-build-github-pull-requests#github
           env.each do |name, value|
-            return value if Regexp.new(variable.gsub('*', '.*')).match?(name)
+            return value if regexp.match?(name)
           end
         end
         env[variable]

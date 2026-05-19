@@ -141,6 +141,8 @@ func (v *variableExpression) Evaluate() (string, error) {
 func getEnv(name string) string {
 	if strings.Contains(name, "*") {
 		re := regexp.MustCompile(strings.Replace(name, "*", ".*", -1))
+        // GoCD env var with dynamic "material" name
+        // https://github.com/ashwanthkumar/gocd-build-github-pull-requests#github
 		for _, element := range os.Environ() {
 			variable := strings.Split(element, "=")
 			if re.MatchString(variable[0]) {

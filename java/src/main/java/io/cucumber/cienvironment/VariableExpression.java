@@ -47,7 +47,7 @@ final class VariableExpression {
 
     private static @Nullable String getValue(Map<String, String> env, String variable) {
         if (variable.contains("*")) {
-            Pattern pattern = Pattern.compile(variable.replace("*", ".*"));
+            Pattern pattern = Pattern.compile(variable.replaceAll("\\*", ".*"));
             // GoCD env var with dynamic "material" name
             // https://github.com/ashwanthkumar/gocd-build-github-pull-requests#github
             for (Map.Entry<String, String> nameAndValue : env.entrySet()) {
