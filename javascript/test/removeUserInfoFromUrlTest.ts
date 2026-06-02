@@ -1,6 +1,6 @@
 import assert from 'node:assert'
 
-import { removeUserInfoFromUrl } from '../src/detectCiEnvironment.js'
+import { removeUserInfoFromUrl } from '../src/detectCiEnvironment'
 
 describe('removeUserInfoFromUrl', () => {
   it('returns empty string for empty string', () => {

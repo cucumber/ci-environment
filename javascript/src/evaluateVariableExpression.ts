@@ -1,4 +1,4 @@
-import type { Env } from './types.js'
+import type { Env } from './types'
 
 export default function evaluateVariableExpression(
   expression: string | undefined,
