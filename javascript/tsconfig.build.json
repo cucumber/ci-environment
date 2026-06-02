@@ -1,15 +1,8 @@
 {
   "extends": "./tsconfig.json",
+  "include": ["src"],
   "compilerOptions": {
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "target": "es6",
-    "module": "commonjs",
-    "rootDir": ".",
-    "outDir": "dist",
-    "noEmit": false
-  },
-  "include": ["src", "test"]
+    "rootDir": "src",
+    "outDir": "dist"
+  }
 }
