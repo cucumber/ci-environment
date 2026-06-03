@@ -14,7 +14,9 @@ export default function detectCiEnvironment(env: Env): CiEnvironment | undefined
 }
 
 export function removeUserInfoFromUrl(value: string): string {
-  if (!value) return value
+  if (!value) {
+    return value
+  }
   try {
     const url = new URL(value)
     url.password = ''
@@ -49,7 +51,9 @@ function detectGit(ciEnvironment: CiEnvironment, env: Env): Git | undefined {
 
 function detectRevision(ciEnvironment: CiEnvironment, env: Env): string | undefined {
   if (env.GITHUB_EVENT_NAME === 'pull_request') {
-    if (!env.GITHUB_EVENT_PATH) throw new Error('GITHUB_EVENT_PATH not set')
+    if (!env.GITHUB_EVENT_PATH) {
+      throw new Error('GITHUB_EVENT_PATH not set')
+    }
     const json = readFileSync(env.GITHUB_EVENT_PATH, 'utf-8')
     const event = JSON.parse(json)
     const revision = event.pull_request?.head?.sha
