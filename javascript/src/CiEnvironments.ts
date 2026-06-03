@@ -1,6 +1,6 @@
 /* This file is auto-generated using npm run build-ci-environments */
 
-import type { CiEnvironment } from './types.js'
+import type { CiEnvironment } from './types'
 
 export const CiEnvironments: readonly CiEnvironment[] = [
   {

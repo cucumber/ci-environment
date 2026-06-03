@@ -1,6 +1,6 @@
 import assert from 'node:assert'
 
-import evaluateVariableExpression from '../src/evaluateVariableExpression.js'
+import evaluateVariableExpression from '../src/evaluateVariableExpression'
 
 describe('createMeta', () => {
   it('returns undefined when a variable is undefined', () => {
