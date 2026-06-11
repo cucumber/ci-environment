@@ -2,6 +2,7 @@
   "name": "@cucumber/ci-environment",
   "version": "13.0.0",
   "description": "Detect CI Environment from environment variables",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -14,6 +15,7 @@
     "prepublishOnly": "npm run build",
     "fix": "biome check --fix --error-on-warnings",
     "lint": "biome check --error-on-warnings",
+    "postbuild": "node -e \"require('.')\"",
     "generate-ci-environments-ts": "shx cat CiEnvironments.ts.header ../CiEnvironments.json > src/CiEnvironments.ts && biome check --fix --error-on-warnings src/CiEnvironments.ts"
   },
   "repository": {
