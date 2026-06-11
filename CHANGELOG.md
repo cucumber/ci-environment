@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [14.0.0] - 2026-06-11
 ### Changed
 - BREAKING CHANGE: [JavaScript] Switch to ESM ([#348](https://github.com/cucumber/ci-environment/pull/348))
 
@@ -205,7 +207,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v13.0.0...HEAD
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v14.0.0...HEAD
+[14.0.0]: https://github.com/cucumber/ci-environment/compare/v13.0.0...v14.0.0
 [13.0.0]: https://github.com/cucumber/ci-environment/compare/v12.0.0...v13.0.0
 [12.0.0]: https://github.com/cucumber/ci-environment/compare/v11.0.0...v12.0.0
 [11.0.0]: https://github.com/cucumber/ci-environment/compare/v10.0.1...v11.0.0
