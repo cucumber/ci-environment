@@ -1,6 +1,6 @@
 import assert from 'node:assert'
 
-import detectCiEnvironment from '../src/index'
+import detectCiEnvironment from '../src/index.js'
 
 describe('GitHub', () => {
   if (process.env.GITHUB_EVENT_NAME === 'pull_request') {
