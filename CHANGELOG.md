@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- BREAKING CHANGE: [JavaScript] Switch to ESM ([#348](https://github.com/cucumber/ci-environment/pull/348))
+
 ### Fixed
 - [Java] Replace all wildcard instances in variable names ([#342](https://github.com/cucumber/ci-environment/pull/342))
 - [JavaScript] Replace all wildcard instances in variable names ([#342(https://github.com/cucumber/ci-environment/pull/342))
