@@ -1,11 +1,11 @@
 {
+  "buildNumber": "1234",
   "git": {
     "branch": "main",
-    "tag": "v1.2.3",
     "remote": "https://scmhost.com/path/to/the/project",
-    "revision": "decafbad"
+    "revision": "decafbad",
+    "tag": "v1.2.3"
   },
   "name": "Bitrise",
-  "url": "https://cihost.com/path/to/the/build",
-  "buildNumber": "1234"
+  "url": "https://cihost.com/path/to/the/build"
 }

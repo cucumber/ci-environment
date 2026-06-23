@@ -1,10 +1,10 @@
 {
+  "buildNumber": "154666429",
   "git": {
+    "branch": "some-branch",
     "remote": "https://github.com/cucumber-ltd/shouty.rb.git",
-    "revision": "d79b417f8e974b9a2d5e6483845a96446695f944",
-    "branch": "some-branch"
+    "revision": "d79b417f8e974b9a2d5e6483845a96446695f944"
   },
   "name": "GitHub Actions",
-  "url": "https://github.com/cucumber-ltd/shouty.rb/actions/runs/154666429",
-  "buildNumber": "154666429"
+  "url": "https://github.com/cucumber-ltd/shouty.rb/actions/runs/154666429"
 }

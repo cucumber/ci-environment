@@ -1,5 +1,5 @@
 {
+  "buildNumber": "1234",
   "name": "Jenkins",
-  "url": "https://cihost.com/path/to/the/build",
-  "buildNumber": "1234"
+  "url": "https://cihost.com/path/to/the/build"
 }
