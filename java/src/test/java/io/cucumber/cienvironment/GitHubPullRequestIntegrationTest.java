@@ -1,6 +1,6 @@
 package io.cucumber.cienvironment;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
@@ -28,10 +28,10 @@ class GitHubPullRequestIntegrationTest {
                 .orElseThrow(() -> new RuntimeException("No Github Event detected"));
     }
 
-    private static String parsePullRequestHeadShaWithJackson(Map<String, String> env) throws IOException {
+    private static String parsePullRequestHeadShaWithJackson(Map<String, String> env) {
         String githubEventPath = requireNonNull(env.get("GITHUB_EVENT_PATH"));
         File file = new File(githubEventPath);
         JsonNode event = Jackson.OBJECT_MAPPER.readTree(file);
-        return event.get("pull_request").get("head").get("sha").textValue();
+        return event.get("pull_request").get("head").get("sha").stringValue();
     }
 }
