@@ -33,7 +33,7 @@
   "homepage": "https://github.com/cucumber/ci-environment",
   "devDependencies": {
     "@biomejs/biome": "^2.4.13",
-    "@cucumber/biome-config": "github:cucumber/biome-config#v0.3.0",
+    "@cucumber/biome-config": "github:cucumber/biome-config#v0.6.0",
     "@tsconfig/recommended": "^1.0.13",
     "@types/glob": "9.0.0",
     "@types/mocha": "10.0.10",
