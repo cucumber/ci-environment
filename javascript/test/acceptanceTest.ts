@@ -9,7 +9,7 @@ describe('detectCiEnvironment', () => {
   for (const txt of sync(`../testdata/src/*.txt`)) {
     it(`detects ${path.basename(txt, '.txt')}`, () => {
       const envData = fs.readFileSync(txt, { encoding: 'utf8' })
-      const entries = envData.split(/\n/).map((line) => line.split(/=/))
+      const entries = envData.split(/\r\n|\n/).map((line) => line.split(/=/))
       const env: Env = Object.fromEntries(entries)
       const ciEnvironment = detectCiEnvironment(env)
 
