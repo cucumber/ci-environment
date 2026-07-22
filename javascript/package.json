@@ -9,14 +9,14 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
-    "pretest": "npm run generate-ci-environments-ts",
+    "build": "npm run generate-ci-environments-ts && tsc --project tsconfig.build.json",
+    "pretest" : "npm run generate-ci-environments-ts",
     "test": "mocha",
     "prepublishOnly": "npm run build",
     "fix": "biome check --fix --error-on-warnings",
     "lint": "biome check --error-on-warnings",
     "postbuild": "node -e \"require('.')\"",
-    "generate-ci-environments-ts": "shx cat CiEnvironments.ts.header ../CiEnvironments.json > src/CiEnvironments.ts && biome check --fix --error-on-warnings src/CiEnvironments.ts"
+    "generate-ci-environments-ts": "shx cat CiEnvironments.ts.header ../CiEnvironments.json > src/CiEnvironments.ts && biome check --fix --error-on-warnings --vcs-use-ignore-file false src/CiEnvironments.ts"
   },
   "repository": {
     "type": "git",
