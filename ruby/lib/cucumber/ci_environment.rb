@@ -2,7 +2,7 @@
 
 require 'uri'
 require 'json'
-require 'cucumber/ci_environment/variable_expression'
+require 'cucumber/variable_expression'
 
 module Cucumber
   class CiEnvironment
