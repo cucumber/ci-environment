@@ -23,6 +23,10 @@ jobs:
         with:
           ruby-version: 4.0.6
           working-directory: ruby
+      - name: Synchronize CiEnvironments.json
+        working-directory: ruby
+        run: bundle exec rake ci_environments
+      - run: ./scripts/fail-if-dirty
       - uses: rubygems/configure-rubygems-credentials@dc5a8d8553e6ee01fc26761a49e99e733d17954a # v2.1.0
       - uses: cucumber/action-publish-rubygem@4e79bb9aed597c835e8438f57c04d0996ab80d72 # v2.0.0
         with:
