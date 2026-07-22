@@ -5,73 +5,75 @@ require 'json'
 require 'cucumber/ci_environment/variable_expression'
 
 module Cucumber
-  module CiEnvironment
+  class CiEnvironment
     extend VariableExpression
 
     CI_ENVIRONMENTS_PATH = File.join(File.dirname(__FILE__), 'ci_environment/CiEnvironments.json')
 
-    module_function
+    class << self
+      def detect_ci_environment(env)
+        ci_environments = JSON.parse(File.read(CI_ENVIRONMENTS_PATH))
+        ci_environments.each do |ci_environment|
+          detected = detect(ci_environment, env)
+          return detected unless detected.nil?
+        end
 
-    def detect_ci_environment(env)
-      ci_environments = JSON.parse(File.read(CI_ENVIRONMENTS_PATH))
-      ci_environments.each do |ci_environment|
-        detected = detect(ci_environment, env)
-        return detected unless detected.nil?
+        nil
       end
 
-      nil
-    end
+      def remove_userinfo_from_url(value)
+        return nil if value.nil?
 
-    def detect(ci_environment, env)
-      url = evaluate(ci_environment['url'], env)
-      return nil if url.nil?
-
-      result = {
-        name: ci_environment['name'],
-        url: url,
-        buildNumber: evaluate(ci_environment['buildNumber'], env)
-      }
-
-      detected_git = detect_git(ci_environment, env)
-      result[:git] = detected_git if detected_git
-      result
-    end
-
-    def detect_git(ci_environment, env)
-      revision = detect_revision(ci_environment, env)
-      return nil if revision.nil?
-
-      remote = evaluate(ci_environment['git']['remote'], env)
-      return nil if remote.nil?
-
-      {
-        remote: remove_userinfo_from_url(remote),
-        revision: revision,
-        tag: evaluate(ci_environment['git']['tag'], env),
-        branch: evaluate(ci_environment['git']['branch'], env)
-      }.compact
-    end
-
-    def detect_revision(ci_environment, env)
-      return evaluate(ci_environment['git']['revision'], env) unless env['GITHUB_EVENT_NAME'] == 'pull_request'
-
-      raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
-
-      event = JSON.parse(File.read(env['GITHUB_EVENT_PATH']))
-      event.dig('pull_request', 'head', 'sha').tap do |revision|
-        raise StandardError("Could not find .pull_request.head.sha in GITHUB_EVENT_PATH:\n#{JSON.pretty_generate(event)}") if revision.nil?
+        begin
+          uri = URI(value)
+          uri.userinfo = ''
+          uri.to_s
+        rescue StandardError
+          value
+        end
       end
-    end
 
-    def remove_userinfo_from_url(value)
-      return nil if value.nil?
+      private
 
-      begin
-        uri = URI(value)
-        uri.userinfo = ''
-        uri.to_s
-      rescue StandardError
-        value
+      def detect(ci_environment, env)
+        url = evaluate(ci_environment['url'], env)
+        return nil if url.nil?
+
+        result = {
+          name: ci_environment['name'],
+          url: url,
+          buildNumber: evaluate(ci_environment['buildNumber'], env)
+        }
+
+        detected_git = detect_git(ci_environment, env)
+        result[:git] = detected_git if detected_git
+        result
+      end
+
+      def detect_git(ci_environment, env)
+        revision = detect_revision(ci_environment, env)
+        return nil if revision.nil?
+
+        remote = evaluate(ci_environment['git']['remote'], env)
+        return nil if remote.nil?
+
+        {
+          remote: remove_userinfo_from_url(remote),
+          revision: revision,
+          tag: evaluate(ci_environment['git']['tag'], env),
+          branch: evaluate(ci_environment['git']['branch'], env)
+        }.compact
+      end
+
+      def detect_revision(ci_environment, env)
+        return evaluate(ci_environment['git']['revision'], env) unless env['GITHUB_EVENT_NAME'] == 'pull_request'
+
+        raise StandardError('GITHUB_EVENT_PATH not set') unless env['GITHUB_EVENT_PATH']
+
+        event = JSON.parse(File.read(env['GITHUB_EVENT_PATH']))
+        event.dig('pull_request', 'head', 'sha').tap do |revision|
+          raise StandardError("Could not find .pull_request.head.sha in GITHUB_EVENT_PATH:\n#{JSON.pretty_generate(event)}") if revision.nil?
+        end
       end
     end
   end
