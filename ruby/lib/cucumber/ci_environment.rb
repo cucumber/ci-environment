@@ -7,6 +7,7 @@ require 'cucumber/ci_environment/variable_expression'
 module Cucumber
   module CiEnvironment
     extend VariableExpression
+
     CI_ENVIRONMENTS_PATH = File.join(File.dirname(__FILE__), 'ci_environment/CiEnvironments.json')
 
     module_function
@@ -43,16 +44,12 @@ module Cucumber
       remote = evaluate(ci_environment['git']['remote'], env)
       return nil if remote.nil?
 
-      git_info = {
+      {
         remote: remove_userinfo_from_url(remote),
-        revision: revision
-      }
-
-      tag = evaluate(ci_environment['git']['tag'], env)
-      branch = evaluate(ci_environment['git']['branch'], env)
-      git_info[:tag] = tag if tag
-      git_info[:branch] = branch if branch
-      git_info
+        revision: revision,
+        tag: evaluate(ci_environment['git']['tag'], env),
+        branch: evaluate(ci_environment['git']['branch'], env)
+      }.compact
     end
 
     def detect_revision(ci_environment, env)

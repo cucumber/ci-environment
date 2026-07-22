@@ -6,31 +6,29 @@ module Cucumber
       def evaluate(expression, env)
         return nil if expression.nil?
 
-        begin
-          expression.gsub(/\${(.*?)(?:(?<!\\)\/(.*)\/(.*))?}/) do
-            variable = Regexp.last_match(1)
-            pattern = Regexp.last_match(2)
-            replacement = Regexp.last_match(3)
+        expression.gsub(/\${(.*?)(?:(?<!\\)\/(.*)\/(.*))?}/) do
+          variable = Regexp.last_match(1)
+          pattern = Regexp.last_match(2)
+          replacement = Regexp.last_match(3)
 
-            value = get_value(variable, env)
-            raise "Undefined variable #{variable}" if value.nil?
+          value = get_value(variable, env)
+          raise "Undefined variable #{variable}" if value.nil?
 
-            if pattern.nil?
-              value
-            else
-              regexp = Regexp.new(pattern.gsub('\/', '/'))
-              match = value.match(regexp)
-              raise "No match for variable #{variable}" if match.nil?
+          if pattern.nil?
+            value
+          else
+            regexp = Regexp.new(pattern.gsub('\/', '/'))
+            match = value.match(regexp)
+            raise "No match for variable #{variable}" if match.nil?
 
-              match[1..].each_with_index do |group, i|
-                replacement = replacement.gsub("\\#{i + 1}", group)
-              end
-              replacement
+            match[1..].each_with_index do |group, i|
+              replacement = replacement.gsub("\\#{i + 1}", group)
             end
+            replacement
           end
-        rescue StandardError
-          nil
         end
+      rescue StandardError
+        nil
       end
 
       def get_value(variable, env)
