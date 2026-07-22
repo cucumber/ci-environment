@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "npm run generate-ci-environments-ts && tsc --project tsconfig.build.json",
-    "pretest" : "npm run generate-ci-environments-ts",
+    "pretest": "npm run generate-ci-environments-ts",
     "test": "mocha",
     "prepublishOnly": "npm run build",
     "fix": "biome check --fix --error-on-warnings",

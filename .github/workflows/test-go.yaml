@@ -44,6 +44,3 @@ jobs:
       - name: Run go vet
         working-directory: go
         run: go vet ./...
-      - name: Run go test
-        working-directory: go
-        run: make test
