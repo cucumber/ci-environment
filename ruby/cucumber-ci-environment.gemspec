@@ -5,7 +5,7 @@ version = File.read(File.expand_path('VERSION', __dir__)).strip
 Gem::Specification.new do |s|
   s.name        = 'cucumber-ci-environment'
   s.version     = version
-  s.authors     = ['Vincent Prêtre']
+  s.authors     = ['Vincent Prêtre', 'Luke Hill']
   s.description = 'Detect CI Environment from environment variables'
   s.summary     = "#{s.name}-#{s.version}"
   s.email       = 'cukes@googlegroups.com'

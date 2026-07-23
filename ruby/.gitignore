@@ -3,7 +3,5 @@ coverage/
 pkg/
 *.gem
 .compared
-.deps
-.tested*
 *-go
 *.iml
