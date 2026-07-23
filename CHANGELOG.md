@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- [Ruby] Ensure `CiEnvironments.json` is published (in new dir), in gem package
+- BREAKING CHANGE: [Ruby] change `VariableExpression` module namespace to be top level alongside `CiEnvironment` module
 
 ## [14.0.0] - 2026-06-11
 ### Changed

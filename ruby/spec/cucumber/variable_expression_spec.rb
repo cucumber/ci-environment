@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'cucumber/ci_environment'
+require 'cucumber/variable_expression'
 
-describe Cucumber::CiEnvironment::VariableExpression do
+describe Cucumber::VariableExpression do
   describe '.evaluate' do
     subject(:ci_environment) { Cucumber::CiEnvironment }
 
