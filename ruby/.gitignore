@@ -3,6 +3,5 @@ coverage/
 pkg/
 *.gem
 .compared
-lib/cucumber/CiEnvironments.json
 *-go
 *.iml

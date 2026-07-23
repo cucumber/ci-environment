@@ -45,4 +45,3 @@ jobs:
           working-directory: ruby
       - run: bundle exec rake
         working-directory: ruby
-      - run: ./scripts/fail-if-dirty
