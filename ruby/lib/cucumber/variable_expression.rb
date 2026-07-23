@@ -3,9 +3,6 @@
 module Cucumber
   module VariableExpression
     def evaluate(expression, env)
-      previous_timeout = Regexp.timeout
-
-      Regexp.timeout = 5
       return nil if expression.nil?
 
       expression.gsub(/\${(.*?)(?:(?<!\\)\/(.*)\/(.*))?}/) do
@@ -31,8 +28,6 @@ module Cucumber
       end
     rescue StandardError
       nil
-    ensure
-      Regexp.timeout = previous_timeout
     end
 
     def get_value(variable, env)
