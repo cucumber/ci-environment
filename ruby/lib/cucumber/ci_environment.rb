@@ -8,7 +8,7 @@ module Cucumber
   class CiEnvironment
     extend VariableExpression
 
-    CI_ENVIRONMENTS_PATH = File.join(File.dirname(__FILE__), 'ci_environment/CiEnvironments.json')
+    CI_ENVIRONMENTS_PATH = File.join(File.dirname(__FILE__), './CiEnvironments.json')
 
     class << self
       def detect_ci_environment(env)
