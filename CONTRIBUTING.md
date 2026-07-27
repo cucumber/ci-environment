@@ -2,12 +2,9 @@
 
 Thank you for considering contributing to Cucumber ci-environment!
 
-## Code of Conduct
+Please read [cucumber/.github/CONTRIBUTING.md](https://github.com/cucumber/.github/blob/main/CONTRIBUTING.md) first.
 
-Everyone interacting in this codebase and issue tracker is expected to follow
-the Cucumber [code of conduct](https://cucumber.io/conduct).
-
-## Adding support for new CI servers
+# Adding support for new CI servers
 
 If you want to see support for a new CI server, please submit a pull request.
 
@@ -17,6 +14,8 @@ Here are the steps:
   See [ARCHITECTURE.md](./ARCHITECTURE.md#ci-definitions) for more information on
   `CiEnvironments.json`.
 * Add an approval test in `testdata/YourCi.txt` and `testdata/YourCi.txt.json`.
+
+* Copy the `CiEnvironments.json` to the other projects by running `make copy-ci-environment`.
 
 Then build and run the tests for all implementations:
 
