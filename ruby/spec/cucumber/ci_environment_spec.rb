@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'cucumber/ci_environment'
-require 'json'
 
 describe Cucumber::CiEnvironment do
   describe '.detect_ci_environment' do
