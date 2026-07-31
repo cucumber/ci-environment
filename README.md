@@ -1,9 +1,9 @@
 # CiEnvironment
 
-[![test-java](https://github.com/cucumber/ci-environment/actions/workflows/test-java.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-java.yml)
-[![test-javascript](https://github.com/cucumber/ci-environment/actions/workflows/test-javascript.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-javascript.yml)
-[![test-ruby](https://github.com/cucumber/ci-environment/actions/workflows/test-ruby.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-ruby.yml)
-[![test-go](https://github.com/cucumber/ci-environment/actions/workflows/test-go.yml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-go.yml)
+[![test-java](https://github.com/cucumber/ci-environment/actions/workflows/test-java.yaml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-java.yaml)
+[![test-javascript](https://github.com/cucumber/ci-environment/actions/workflows/test-javascript.yaml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-javascript.yaml)
+[![test-ruby](https://github.com/cucumber/ci-environment/actions/workflows/test-ruby.yaml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-ruby.yaml)
+[![test-go](https://github.com/cucumber/ci-environment/actions/workflows/test-go.yaml/badge.svg)](https://github.com/cucumber/ci-environment/actions/workflows/test-go.yaml)
 
 This library detects the CI environment based on environment variables defined
 by CI servers.
