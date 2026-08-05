@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Changed
-- BREAKING CHANGE: [Ruby] change `VariableExpression` module namespace to be top level alongside `CiEnvironment` module
+- [Ruby] change `VariableExpression` module namespace to be top level alongside `CiEnvironment` module
 - [Ruby] Minimum ruby version is now 3.3
 
 ### Fixed
@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [14.0.0] - 2026-06-11
 ### Changed
-- BREAKING CHANGE: [JavaScript] Switch to ESM ([#348](https://github.com/cucumber/ci-environment/pull/348))
+- [JavaScript] Switch to ESM ([#348](https://github.com/cucumber/ci-environment/pull/348))
 
 ### Fixed
 - [Java] Replace all wildcard instances in variable names ([#342](https://github.com/cucumber/ci-environment/pull/342))
