@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [15.0.0] - 2026-08-05
 ### Changed
 - [Ruby] change `VariableExpression` module namespace to be top level alongside `CiEnvironment` module
 - [Ruby] Minimum ruby version is now 3.3
@@ -214,7 +216,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v14.0.0...HEAD
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v15.0.0...HEAD
+[15.0.0]: https://github.com/cucumber/ci-environment/compare/v14.0.0...v15.0.0
 [14.0.0]: https://github.com/cucumber/ci-environment/compare/v13.0.0...v14.0.0
 [13.0.0]: https://github.com/cucumber/ci-environment/compare/v12.0.0...v13.0.0
 [12.0.0]: https://github.com/cucumber/ci-environment/compare/v11.0.0...v12.0.0
