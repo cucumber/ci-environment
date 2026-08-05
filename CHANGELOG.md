@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - [Ruby] Minimum ruby version is now 3.3
 
 ### Fixed
+- [Java] Use version range for `org.jspecify:jspecify`
 - [Ruby] Ensure `CiEnvironments.json` is published (in new dir), in gem package
 
 ## [14.0.0] - 2026-06-11
