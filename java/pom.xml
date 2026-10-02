@@ -21,9 +21,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/cucumber/ci-environment.git</connection>
+        <connection>scm:git:https://github.com/cucumber/ci-environment.git</connection>
         <developerConnection>scm:git:git@github.com:cucumber/ci-environment.git</developerConnection>
-        <url>git://github.com/cucumber/ci-environment.git</url>
+        <url>https://github.com/cucumber/ci-environment.git</url>
         <tag>HEAD</tag>
     </scm>
 
