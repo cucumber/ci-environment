@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [15.1.0] - 2026-11-15
 ### Added
 - [Java] Add OSGI Bundle name ([#381](https://github.com/cucumber/ci-environment/pull/381))
 
@@ -218,7 +220,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release
 
-[Unreleased]: https://github.com/cucumber/ci-environment/compare/v15.0.0...HEAD
+[Unreleased]: https://github.com/cucumber/ci-environment/compare/v15.1.0...HEAD
+[15.1.0]: https://github.com/cucumber/ci-environment/compare/v15.0.0...v15.1.0
 [15.0.0]: https://github.com/cucumber/ci-environment/compare/v14.0.0...v15.0.0
 [14.0.0]: https://github.com/cucumber/ci-environment/compare/v13.0.0...v14.0.0
 [13.0.0]: https://github.com/cucumber/ci-environment/compare/v12.0.0...v13.0.0
