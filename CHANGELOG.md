@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - [Java] Add OSGI Bundle name ([#381](https://github.com/cucumber/ci-environment/pull/381))
-- 
+
 ## [15.0.0] - 2026-08-05
 ### Changed
 - [Ruby] change `VariableExpression` module namespace to be top level alongside `CiEnvironment` module
