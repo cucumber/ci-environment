@@ -17,6 +17,7 @@
     <url>https://github.com/cucumber/ci-environment</url>
 
     <properties>
+        <osgi.bundle-symbolic-name>io.cucumber.cienvironment</osgi.bundle-symbolic-name>
         <project.build.outputTimestamp>1785962632</project.build.outputTimestamp>
     </properties>
 
@@ -93,11 +94,13 @@
         <plugins>
             <!-- Copy FreeMarker template files for code generation-->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>generate-ci-environments</id>
-                        <phase>generate-sources</phase>
+                        <!-- BUG(?): Should run in generate-sources phase, but Maven executes the other plugins first for some reason -->
+                        <phase>initialize</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
@@ -176,6 +179,19 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>biz.aQute.bnd</groupId>
+                <artifactId>bnd-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
